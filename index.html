@@ -259,6 +259,8 @@
     return score;
   }
 
+  let SHARED = [];   // shared-management programmes by country
+
   async function loadCalls() {
     if (Array.isArray(window.CALLS_DATA)) return window.CALLS_DATA;
     try {
@@ -275,7 +277,16 @@
     } catch(e) { console.error(e); return []; }
   }
 
-  CALLS = await loadCalls();
+  async function loadShared() {
+    try {
+      const res  = await fetch('./shared_programmes.json', { cache: 'no-store' });
+      const data = await res.json();
+      return Array.isArray(data.programmes) ? data.programmes : [];
+    } catch(e) { return []; }
+  }
+
+  CALLS  = await loadCalls();
+  SHARED = await loadShared();
 
   const MISSION_TO_CLUSTER = {CANCER:'1',CLIMA:'5',SOIL:'6'};
 
@@ -492,6 +503,52 @@
         ${c.url?`<div class="meta">Link: <a href="${encodeURI(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.url)}</a></div>`:''}
       </div>`;
     });
+
+    // ── Shared management programmes for selected country ──────────────────
+    const ms = answers.member_state;
+    const wantedT = answers.thematic_cluster || '';
+    if (ms && ms !== 'OTHER' && SHARED.length) {
+      const msProgs = SHARED.filter(p =>
+        p.country_code === ms &&
+        (!wantedT || (p.thematic_clusters || []).includes(wantedT))
+      );
+
+      if (msProgs.length) {
+        html += `<h2 style="margin-top:22px">
+          &#127981; Shared management programmes in ${MS_NAMES[ms]||ms}
+          <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
+            — ERDF / ESF+ / JTF / Interreg (2021-2027)
+          </span>
+        </h2>`;
+        html += `<div class="box muted" style="margin-bottom:10px">
+          These programmes are managed by national or regional authorities.
+          Contact the managing authority directly to enquire about open calls
+          and eligibility conditions.
+        </div>`;
+
+        msProgs.forEach(p => {
+          const themes = (p.thematic_clusters||[]).join(', ');
+          const meta = [
+            p.fund     ? `Fund: ${p.fund}` : '',
+            p.cci      ? `CCI: ${p.cci}` : '',
+            themes     ? `Areas: ${themes}` : '',
+          ].filter(Boolean).join(' · ');
+
+          const contact = [
+            p.managing_authority ? `<strong>${esc(p.managing_authority)}</strong>` : '',
+            p.contact_name       ? esc(p.contact_name) : '',
+            p.email              ? `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : '',
+          ].filter(Boolean).join(' — ');
+
+          html += `<div class="call" style="border-left:4px solid #16a34a">
+            <h3>${esc(p.programme_name||'(no name)')}</h3>
+            <div class="meta">${esc(meta)}</div>
+            <div class="meta" style="margin-top:6px">${contact}</div>
+            ${p.url ? `<div class="meta">Programme page: <a href="${encodeURI(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.url)}</a></div>` : ''}
+          </div>`;
+        });
+      }
+    }
 
     results.innerHTML = html;
     results.scrollIntoView({behavior:'smooth'});
