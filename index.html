@@ -178,7 +178,6 @@
     <fieldset style="background:#fff8ed;border-color:#f59e0b">
       <legend style="color:#92400e">&#9432; Note on co-financing</legend>
       <p style="margin:4px 0;font-size:.93rem;line-height:1.5;color:#1f2937">
-        This tool assumes the project is already funded by <strong>Horizon Europe</strong>.
         Suggested calls may be used as co-financing or sequential funding sources,
         subject to the rule that <em>the same cost items cannot be covered twice</em>
         by different programmes (Art. 15, Reg. EU 2021/695).
@@ -217,8 +216,6 @@
   };
 
   // ── Partner × programme affinity ─────────────────────────────────────────
-  // Since beneficiary_hint is mostly empty in the dataset, we score
-  // based on known programme–partner affinities instead.
   function partnerProgrammeScore(partnerType, programme, action) {
     const p = (programme || '').toLowerCase();
     const a = (action || '').toUpperCase();
@@ -418,7 +415,7 @@
 
   // ── Cumulation notes ──────────────────────────────────────────────────────
   const CUMULATION_NOTES = {
-    "European Defence Fund": "⚠️ Operates under a separate legal framework (EDF Reg. 2021/697). Cumulation with civilian programmes is permitted only for the non-defence components of dual-use projects. Civilian-only rule under review for FP10.",
+    "European Defence Fund": "⚠️ Operates under a separate legal framework (EDF Reg. 2021/697). Cumulation with civilian programmes is permitted only for the non-defence components of dual-use projects.",
     "default": "Co-financing with Horizon Europe is permitted provided no cost overlap (Art. 15, Reg. EU 2021/695). Contributions may be calculated on a pro-rata basis. Cumulative funding cannot exceed total eligible costs.",
   };
 
