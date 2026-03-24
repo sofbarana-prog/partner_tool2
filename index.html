@@ -20,20 +20,15 @@
     legend{font-weight:700;padding:0 8px}
     label{display:block;margin-top:8px;font-weight:600}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
-    select,input[type="text"]{width:100%;padding:10px 12px;border:1px solid #cfcfcf;border-radius:10px;background:white;font-size:.97rem}
+    select{width:100%;padding:10px 12px;border:1px solid #cfcfcf;border-radius:10px;background:white;font-size:.97rem}
     .radio{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
     .radio label{font-weight:500;margin:0;display:flex;gap:6px;align-items:center}
     .actions{display:flex;gap:12px;margin-top:10px;align-items:center;flex-wrap:wrap}
     button{padding:10px 14px;border-radius:10px;border:0;background:var(--primary);color:#fff;font-weight:700;cursor:pointer;font-size:.95rem}
     .secondary{background:var(--secondary)}
-    .load-more{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
     .box{background:#f7f7f7;padding:12px;border-radius:10px;border:1px solid #e9e9e9;margin-bottom:12px}
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #ddd;margin:0 8px 6px 0;font-size:.9rem;background:#fff}
     .results{margin-top:18px}
-    .results-head{display:none}
-    .results-head.visible{display:block}
-    .filters{display:none;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 18px}
-    .filters.visible{display:grid}
     .call{border:1px solid #ececec;border-radius:12px;padding:14px;margin-bottom:12px;background:#fff}
     .call.mission{border-left:4px solid #f59e0b;background:#fffbeb}
     .call h3{margin:0 0 8px;font-size:1.02rem;line-height:1.35}
@@ -45,11 +40,10 @@
     .cumul-note{margin-top:8px;padding:7px 10px;background:#f0f7ff;border-left:3px solid #2563eb;border-radius:0 6px 6px 0;font-size:.87rem;color:#1e3a5f;line-height:1.45}
     .cumul-note strong,.ms-note strong{font-weight:600}
     .ms-note{margin-top:8px;padding:7px 10px;background:#f0fdf4;border-left:3px solid #16a34a;border-radius:0 6px 6px 0;font-size:.87rem;color:#14532d;line-height:1.45}
-    .topic-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .topic-tag{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;font-size:.8rem;font-weight:700}
-    .results-footer{display:none;flex-direction:column;align-items:center;gap:10px;margin-top:18px}
-    .results-footer.visible{display:flex}
-    @media(max-width:760px){.row,.filters.visible{grid-template-columns:1fr}}
+    .event-card{border:1px solid #ececec;border-radius:12px;padding:14px;margin-bottom:10px;background:#fff}
+    .event-card h3{margin:0 0 6px;font-size:1rem;line-height:1.35}
+    .event-source{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.78rem;font-weight:700;background:#e0f2fe;color:#0369a1;margin-bottom:6px}
+    @media(max-width:760px){.row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -64,6 +58,7 @@
   <div id="lastUpdated" class="box muted" style="display:none;margin-bottom:14px"></div>
 
   <form id="survey">
+
     <fieldset>
       <legend>1) Project closure timeframe</legend>
       <div class="row">
@@ -152,15 +147,33 @@
       <label for="member_state">Which EU Member State are you from?</label>
       <select id="member_state" name="member_state" required>
         <option value="" selected disabled>Select…</option>
-        <option value="AT">Austria</option><option value="BE">Belgium</option><option value="BG">Bulgaria</option>
-        <option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option>
-        <option value="DK">Denmark</option><option value="EE">Estonia</option><option value="FI">Finland</option>
-        <option value="FR">France</option><option value="DE">Germany</option><option value="GR">Greece</option>
-        <option value="HU">Hungary</option><option value="IE">Ireland</option><option value="IT">Italy</option>
-        <option value="LV">Latvia</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option>
-        <option value="MT">Malta</option><option value="NL">Netherlands</option><option value="PL">Poland</option>
-        <option value="PT">Portugal</option><option value="RO">Romania</option><option value="SK">Slovakia</option>
-        <option value="SI">Slovenia</option><option value="ES">Spain</option><option value="SE">Sweden</option>
+        <option value="AT">Austria</option>
+        <option value="BE">Belgium</option>
+        <option value="BG">Bulgaria</option>
+        <option value="HR">Croatia</option>
+        <option value="CY">Cyprus</option>
+        <option value="CZ">Czech Republic</option>
+        <option value="DK">Denmark</option>
+        <option value="EE">Estonia</option>
+        <option value="FI">Finland</option>
+        <option value="FR">France</option>
+        <option value="DE">Germany</option>
+        <option value="GR">Greece</option>
+        <option value="HU">Hungary</option>
+        <option value="IE">Ireland</option>
+        <option value="IT">Italy</option>
+        <option value="LV">Latvia</option>
+        <option value="LT">Lithuania</option>
+        <option value="LU">Luxembourg</option>
+        <option value="MT">Malta</option>
+        <option value="NL">Netherlands</option>
+        <option value="PL">Poland</option>
+        <option value="PT">Portugal</option>
+        <option value="RO">Romania</option>
+        <option value="SK">Slovakia</option>
+        <option value="SI">Slovenia</option>
+        <option value="ES">Spain</option>
+        <option value="SE">Sweden</option>
         <option value="OTHER">Non-EU / Associated country</option>
       </select>
     </fieldset>
@@ -191,189 +204,161 @@
 
 <script>
 (async function () {
-  const form = document.getElementById('survey');
+  const form    = document.getElementById('survey');
   const results = document.getElementById('results');
-  const resetBtn = document.getElementById('resetBtn');
+  const resetBtn= document.getElementById('resetBtn');
   let CALLS = [];
-  let SHARED = [];
-  let lastAnswers = null;
-  let lastGenerated = [];
-  let visibleCount = 20;
-  const PAGE_SIZE = 20;
 
-  const TOPIC_CATALOG = {
-    "Health & Life Sciences": ["health","cancer","biotech","pharma","medtech","diagnostics","digital health","genomics","neuroscience","public health"],
-    "Culture, Creativity & Inclusion": ["heritage","creative industries","inclusion","democracy","education","migration"],
-    "Security & Resilience": ["cybersecurity","disaster resilience","border security","civil protection","critical infrastructure","urban security"],
-    "Digital, Industry & Space": ["digital","ai","robotics","semiconductors","quantum","data cloud","manufacturing","materials","space"],
-    "Climate, Energy & Mobility": ["climate","energy","hydrogen","batteries","mobility","transport","renewables","storage","smart grids","buildings","cities","circularity","water"],
-    "Food, Bioeconomy & Environment": ["agriculture","food systems","bioeconomy","biodiversity","forestry","soil","environment","water resources"],
-    "Defence": ["defence systems","autonomy","sensing","secure comm"],
-    "SME, Entrepreneurship & Market Uptake": ["sme","startup","scaleup","market uptake","entrepreneurship"],
-    "External Action & International Cooperation": ["development","global health","governance","humanitarian","international partnerships"],
-    "Climate-neutral & Smart Cities": ["cities","smart cities","urban mobility","urban energy","buildings","climate neutrality"],
-    "Healthy Oceans, Seas, Coastal & Inland Waters": ["marine","coastal","inland waters","blue economy","water pollution"],
-    "Clean Aviation": ["aircraft","propulsion","sustainable fuels","emissions","airport ops"],
-    "Regional Development & Territorial Cooperation": ["regional development","territorial cooperation","interreg","cohesion","local development"],
-    "Cross-cutting / Other": ["interdisciplinary","policy","skills","digital transition","green transition"]
-  };
-
+  // ── MS development tier (CPR 2021/1060 Art. 108) ─────────────────────────
   const MS_TIER = {
-    BG:'less',HR:'less',GR:'less',HU:'less',LV:'less',LT:'less',PL:'less',RO:'less',SK:'less',
-    EE:'transition',CY:'transition',CZ:'transition',MT:'transition',PT:'transition',SI:'transition',
-    AT:'more',BE:'more',DK:'more',FI:'more',FR:'more',DE:'more',IE:'more',IT:'more',LU:'more',NL:'more',ES:'more',SE:'more',OTHER:'more'
+    BG:'less',HR:'less',GR:'less',HU:'less',LV:'less',LT:'less',
+    PL:'less',RO:'less',SK:'less',EE:'transition',CY:'transition',
+    CZ:'transition',MT:'transition',PT:'transition',SI:'transition',
+    AT:'more',BE:'more',DK:'more',FI:'more',FR:'more',DE:'more',
+    IE:'more',IT:'more',LU:'more',NL:'more',ES:'more',SE:'more',OTHER:'more'
   };
 
-  const MS_NAMES = {AT:'Austria',BE:'Belgium',BG:'Bulgaria',HR:'Croatia',CY:'Cyprus',CZ:'Czech Republic',DK:'Denmark',EE:'Estonia',FI:'Finland',FR:'France',DE:'Germany',GR:'Greece',HU:'Hungary',IE:'Ireland',IT:'Italy',LV:'Latvia',LT:'Lithuania',LU:'Luxembourg',MT:'Malta',NL:'Netherlands',PL:'Poland',PT:'Portugal',RO:'Romania',SK:'Slovakia',SI:'Slovenia',ES:'Spain',SE:'Sweden',OTHER:'Non-EU / Associated country'};
-  const PARTNER_NAMES = {ngo:'NGO / Non-profit',sme:'SME',large:'Large enterprise',research:'University / Research org.',public:'Public body'};
-  const MISSION_TO_CLUSTER = {CANCER:'1',CLIMA:'5',SOIL:'6'};
-
-  const CUMULATION_NOTES = {
-    "European Defence Fund": "⚠️ Operates under a separate legal framework (EDF Reg. 2021/697). Cumulation with civilian programmes is permitted only for the non-defence components of dual-use projects. Civilian-only rule under review for FP10.",
-    "default": "Co-financing with Horizon Europe is permitted provided no cost overlap (Art. 15, Reg. EU 2021/695). Contributions may be calculated on a pro-rata basis. Cumulative funding cannot exceed total eligible costs."
-  };
-
+  // ── Partner × programme affinity ─────────────────────────────────────────
+  // Since beneficiary_hint is mostly empty in the dataset, we score
+  // based on known programme–partner affinities instead.
   function partnerProgrammeScore(partnerType, programme, action) {
     const p = (programme || '').toLowerCase();
     const a = (action || '').toUpperCase();
     let score = 0;
+
     if (partnerType === 'ngo') {
-      if (p.includes('cerv')) score += 25;
+      if (p.includes('cerv'))            score += 25;
       if (p.includes('external action')) score += 25;
-      if (p.includes('euba')) score += 20;
-      if (p.includes('solidarity')) score += 20;
-      if (p.includes('erasmus')) score += 10;
-      if (a === 'CSA') score += 10;
+      if (p.includes('euba'))            score += 20;
+      if (p.includes('solidarity'))      score += 20;
+      if (p.includes('erasmus'))         score += 10;
+      if (a === 'CSA')                   score += 10;
     } else if (partnerType === 'sme') {
-      if (p.includes('single market')) score += 25;
+      if (p.includes('single market'))   score += 25;
       if (p.includes('innovation fund')) score += 20;
-      if (p.includes('digital europe')) score += 15;
-      if (a === 'IA') score += 15;
-      if (p.includes('eic')) score += 20;
+      if (p.includes('digital europe'))  score += 15;
+      if (a === 'IA')                    score += 15;
+      if (p.includes('eic'))             score += 20;
     } else if (partnerType === 'large') {
-      if (p.includes('digital europe')) score += 20;
-      if (p.includes('defence')) score += 20;
+      if (p.includes('digital europe'))  score += 20;
+      if (p.includes('defence'))         score += 20;
       if (p.includes('cef') || p.includes('connecting europe')) score += 15;
-      if (a === 'IA') score += 10;
+      if (a === 'IA')                    score += 10;
     } else if (partnerType === 'research') {
-      if (p.includes('horizon')) score += 15;
-      if (a === 'RIA') score += 15;
-      if (a === 'CSA') score += 10;
+      if (p.includes('horizon'))         score += 15;
+      if (a === 'RIA')                   score += 15;
+      if (a === 'CSA')                   score += 10;
       if (p.includes('msca') || p.includes('marie')) score += 20;
-      if (p.includes('euratom')) score += 15;
+      if (p.includes('euratom'))         score += 15;
       if (p.includes('infrast') || p.includes('infra')) score += 15;
     } else if (partnerType === 'public') {
       if (p.includes('cohesion') || p.includes('erdf') || p.includes('esf')) score += 25;
       if (p.includes('cef') || p.includes('connecting europe')) score += 20;
-      if (p.includes('life')) score += 15;
-      if (p.includes('ucpm')) score += 20;
+      if (p.includes('life'))            score += 15;
+      if (p.includes('ucpm'))            score += 20;
       if (p.includes('isf') || p.includes('security fund')) score += 20;
-      if (a === 'CSA') score += 10;
+      if (a === 'CSA')                   score += 10;
     }
     return score;
   }
 
+  let SHARED = [];   // shared-management programmes by country
+
+  async function loadCalls() {
+    if (Array.isArray(window.CALLS_DATA)) return window.CALLS_DATA;
+    try {
+      const res  = await fetch('./calls.json', { cache: 'no-store' });
+      const data = await res.json();
+      if (data.generated) {
+        const d   = new Date(data.generated);
+        const fmt = d.toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit',year:'numeric'})
+                  + ' ' + d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+        const el  = document.getElementById('lastUpdated');
+        if (el) { el.textContent = `Data last updated: ${fmt} UTC`; el.style.display='block'; }
+      }
+      return Array.isArray(data.calls) ? data.calls : [];
+    } catch(e) { console.error(e); return []; }
+  }
+
+  async function loadShared() {
+    try {
+      const res  = await fetch('./shared_programmes.json', { cache: 'no-store' });
+      const data = await res.json();
+      return Array.isArray(data.programmes) ? data.programmes : [];
+    } catch(e) { return []; }
+  }
+
+  let EVENTS = [];
+
+  async function loadEvents() {
+    try {
+      const res  = await fetch('./events.json', { cache: 'no-store' });
+      const data = await res.json();
+      return Array.isArray(data.events) ? data.events : [];
+    } catch(e) { return []; }
+  }
+
+  CALLS  = await loadCalls();
+  SHARED = await loadShared();
+  EVENTS = await loadEvents();
+
+  const MISSION_TO_CLUSTER = {CANCER:'1',CLIMA:'5',SOIL:'6'};
+
   function esc(s) {
     if (!s) return '';
-    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   }
 
   function normalizeCluster(v) {
-    const s = String(v || '').trim();
-    if (/^M-/.test(s) || MISSION_TO_CLUSTER[s]) return s;
+    const s = String(v||'').trim();
+    if (/^M-/.test(s)||MISSION_TO_CLUSTER[s]) return s;
     const m = s.match(/(\d+)/);
     return m ? m[1] : '';
   }
 
-  function resolveCluster(id) { return MISSION_TO_CLUSTER[id] || id; }
+  function resolveCluster(id) { return MISSION_TO_CLUSTER[id]||id; }
 
   function normalizeAction(v) {
-    const s = (v || '').toLowerCase();
+    const s = (v||'').toLowerCase();
     if (s.includes('research and innovation')) return 'RIA';
-    if (s.includes('innovation action')) return 'IA';
-    if (s.includes('coordination')) return 'CSA';
-    if (s.includes('cofund')) return 'COFUND';
-    return (v || '').toUpperCase();
+    if (s.includes('innovation action'))       return 'IA';
+    if (s.includes('coordination'))            return 'CSA';
+    if (s.includes('cofund'))                  return 'COFUND';
+    return (v||'').toUpperCase();
   }
 
-  function isHorizon(p) { return String(p || '').toLowerCase().includes('horizon'); }
+  function isHorizon(p) { return String(p||'').toLowerCase().includes('horizon'); }
 
-  function projectEndIso(y, q) {
-    if (!y || !q) return '';
-    return {Q1:`${y}-03-31`,Q2:`${y}-06-30`,Q3:`${y}-09-30`,Q4:`${y}-12-31`}[q] || '';
+  function projectEndIso(y,q) {
+    if (!y||!q) return '';
+    return {Q1:`${y}-03-31`,Q2:`${y}-06-30`,Q3:`${y}-09-30`,Q4:`${y}-12-31`}[q]||'';
   }
 
   function fallbackIso(d) {
     if (!d) return '';
     const dt = new Date(d);
-    if (!isNaN(dt)) {
+    if (!isNaN(dt))
       return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
-    }
     return '';
-  }
-
-  function getCumulationNote(programme) {
-    if (!programme || isHorizon(programme)) return null;
-    const p = programme.toLowerCase();
-    for (const [key, note] of Object.entries(CUMULATION_NOTES)) {
-      if (key === 'default') continue;
-      if (p.includes(key.toLowerCase())) return note;
-    }
-    return CUMULATION_NOTES.default;
-  }
-
-  function getMsNote(ms, programme) {
-    const tier = MS_TIER[ms] || 'more';
-    if (tier === 'more') return null;
-    const p = (programme || '').toLowerCase();
-    const isShared = p.includes('erdf') || p.includes('cohesion') || p.includes('esf') || p.includes('eafrd') || p.includes('emfaf') || p.includes('just transition');
-    if (!isShared) return null;
-    return tier === 'less'
-      ? 'Your country is classified as a less-developed region (CPR 2021/1060 Art. 108) — ERDF/ESF+ co-financing rates up to 85% may apply.'
-      : 'Your country is classified as a transition region (CPR 2021/1060 Art. 108) — ERDF/ESF+ co-financing rates up to 70% may apply.';
-  }
-
-  function buildSearchText(call) {
-    return [call.name, call.programme, call.thematic_cluster, call.action, call.url]
-      .filter(Boolean)
-      .join(' ')
-      .toLowerCase();
-  }
-
-  function detectTopics(call) {
-    const area = String(call.thematic_cluster || '').trim();
-    const catalog = TOPIC_CATALOG[area] || [];
-    const text = buildSearchText(call);
-    return catalog.filter(topic => text.includes(topic.toLowerCase()));
-  }
-
-  function enrichCall(call, answers) {
-    return {
-      ...call,
-      _thematic: String(call.thematic_cluster || '').trim(),
-      _official: normalizeCluster(call.cluster_num),
-      _deadline: call.deadline_iso || fallbackIso(call.deadline),
-      _action_norm: normalizeAction(call.action),
-      _topics: detectTopics(call),
-      _searchText: buildSearchText(call),
-      _score: scoreCall(call, answers)
-    };
   }
 
   function scoreCall(call, answers) {
     let score = 0;
     const wantedThematic = answers.thematic_cluster || '';
     const wantedOfficial = normalizeCluster(answers.official_cluster);
-    const wantedNature = answers.project_nature || '';
-    const projectEnd = projectEndIso(answers.closure_year, answers.closure_quarter);
-    const msTier = MS_TIER[answers.member_state] || 'more';
+    const wantedNature   = answers.project_nature || '';
+    const projectEnd     = projectEndIso(answers.closure_year, answers.closure_quarter);
+    const msTier         = MS_TIER[answers.member_state] || 'more';
 
-    const callThematic = String(call.thematic_cluster || '').trim();
+    const callThematic = String(call.thematic_cluster||'').trim();
     const callOfficial = normalizeCluster(call.cluster_num);
-    const callAction = normalizeAction(call.action);
-    const deadlineIso = call.deadline_iso || fallbackIso(call.deadline);
+    const callAction   = normalizeAction(call.action);
+    const deadlineIso  = call.deadline_iso || fallbackIso(call.deadline);
 
+    // Thematic match
     if (wantedThematic && callThematic === wantedThematic) score += 60;
+
+    // Cluster match
     if (wantedOfficial) {
       const rw = resolveCluster(wantedOfficial);
       const rc = resolveCluster(callOfficial);
@@ -383,25 +368,32 @@
       }
     }
 
+    // Research nature × action affinity
     if (wantedNature === 'basic') {
       if (callAction === 'RIA') score += 20;
       if (callAction === 'CSA') score += 10;
     } else if (wantedNature === 'applied') {
       if (callAction === 'RIA') score += 15;
-      if (callAction === 'IA') score += 15;
+      if (callAction === 'IA')  score += 15;
     } else if (wantedNature === 'industrial') {
-      if (callAction === 'IA') score += 20;
+      if (callAction === 'IA')  score += 20;
     }
 
+    // Partner × programme affinity
     score += partnerProgrammeScore(answers.partner_type, call.programme, call.action);
 
+    // MS tier bonus for shared management funds
     if (msTier === 'less' || msTier === 'transition') {
-      const p = (call.programme || '').toLowerCase();
-      const isShared = p.includes('erdf') || p.includes('cohesion') || p.includes('esf') || p.includes('eafrd') || p.includes('emfaf') || p.includes('just transition');
+      const p = (call.programme||'').toLowerCase();
+      const isShared = p.includes('erdf')||p.includes('cohesion')||p.includes('esf')||
+                       p.includes('eafrd')||p.includes('emfaf')||p.includes('just transition');
       if (isShared) score += (msTier === 'less' ? 15 : 8);
     }
 
+    // Deadline after project closure
     if (projectEnd && deadlineIso && deadlineIso > projectEnd) score += 15;
+
+    // Mission bonus
     if (call.is_mission) score += 10;
 
     return score;
@@ -410,129 +402,160 @@
   function filterCalls(answers) {
     const wantedThematic = answers.thematic_cluster || '';
     const wantedOfficial = normalizeCluster(answers.official_cluster);
-    const projectEnd = projectEndIso(answers.closure_year, answers.closure_quarter);
+    const projectEnd     = projectEndIso(answers.closure_year, answers.closure_quarter);
 
-    let out = CALLS.map(c => enrichCall(c, answers));
+    let out = CALLS.map(c => ({
+      ...c,
+      _thematic: String(c.thematic_cluster||'').trim(),
+      _official: normalizeCluster(c.cluster_num),
+      _deadline: c.deadline_iso || fallbackIso(c.deadline),
+      _score:    scoreCall(c, answers)
+    }));
 
-    if (wantedThematic) out = out.filter(c => c._thematic === wantedThematic);
+    if (wantedThematic)
+      out = out.filter(c => c._thematic === wantedThematic);
+
     if (wantedOfficial) {
       const rw = resolveCluster(wantedOfficial);
       out = out.filter(c => resolveCluster(c._official) === rw);
     }
-    if (projectEnd) out = out.filter(c => c._deadline && c._deadline > projectEnd);
+
+    if (projectEnd)
+      out = out.filter(c => c._deadline && c._deadline > projectEnd);
 
     return out
       .filter(c => c._score >= 20)
-      .sort((a,b) => b._score !== a._score ? b._score - a._score : (a._deadline || '').localeCompare(b._deadline || ''));
+      .sort((a,b) => b._score !== a._score ? b._score-a._score : (a._deadline||'').localeCompare(b._deadline||''))
+      .slice(0,30);
   }
 
-  function populateTopicDropdown(filtered) {
-    const found = new Set();
-    filtered.forEach(c => (c._topics || []).forEach(t => found.add(t)));
-    const topics = Array.from(found).sort((a,b) => a.localeCompare(b));
-    const opts = ['<option value="">All subtopics</option>']
-      .concat(topics.map(t => `<option value="${esc(t)}">${esc(t.replace(/\b\w/g, x => x.toUpperCase()))}</option>`));
-    return opts.join('');
+  // ── Cumulation notes ──────────────────────────────────────────────────────
+  const CUMULATION_NOTES = {
+    "European Defence Fund": "⚠️ Operates under a separate legal framework (EDF Reg. 2021/697). Cumulation with civilian programmes is permitted only for the non-defence components of dual-use projects. Civilian-only rule under review for FP10.",
+    "default": "Co-financing with Horizon Europe is permitted provided no cost overlap (Art. 15, Reg. EU 2021/695). Contributions may be calculated on a pro-rata basis. Cumulative funding cannot exceed total eligible costs.",
+  };
+
+  function getCumulationNote(programme) {
+    if (!programme || isHorizon(programme)) return null;
+    const p = programme.toLowerCase();
+    for (const [key,note] of Object.entries(CUMULATION_NOTES)) {
+      if (key === 'default') continue;
+      if (p.includes(key.toLowerCase())) return note;
+    }
+    return CUMULATION_NOTES['default'];
   }
 
-  function applyPostFilters(filtered) {
-    const topic = document.getElementById('live_topic_filter')?.value || '';
-    const keyword = (document.getElementById('keyword_filter')?.value || '').trim().toLowerCase();
-
-    return filtered.filter(c => {
-      const okTopic = !topic || (c._topics || []).includes(topic);
-      const okKeyword = !keyword || c._searchText.includes(keyword);
-      return okTopic && okKeyword;
-    });
+  function getMsNote(ms, programme) {
+    const tier = MS_TIER[ms]||'more';
+    if (tier === 'more') return null;
+    const p = (programme||'').toLowerCase();
+    const isShared = p.includes('erdf')||p.includes('cohesion')||p.includes('esf')||
+                     p.includes('eafrd')||p.includes('emfaf')||p.includes('just transition');
+    if (!isShared) return null;
+    return tier === 'less'
+      ? "Your country is classified as a less-developed region (CPR 2021/1060 Art. 108) — ERDF/ESF+ co-financing rates up to 85% may apply."
+      : "Your country is classified as a transition region (CPR 2021/1060 Art. 108) — ERDF/ESF+ co-financing rates up to 70% may apply.";
   }
+
+  // ── Render ────────────────────────────────────────────────────────────────
+  const MS_NAMES = {AT:'Austria',BE:'Belgium',BG:'Bulgaria',HR:'Croatia',CY:'Cyprus',
+    CZ:'Czech Republic',DK:'Denmark',EE:'Estonia',FI:'Finland',FR:'France',DE:'Germany',
+    GR:'Greece',HU:'Hungary',IE:'Ireland',IT:'Italy',LV:'Latvia',LT:'Lithuania',
+    LU:'Luxembourg',MT:'Malta',NL:'Netherlands',PL:'Poland',PT:'Portugal',RO:'Romania',
+    SK:'Slovakia',SI:'Slovenia',ES:'Spain',SE:'Sweden',OTHER:'Non-EU / Associated country'};
+  const PARTNER_NAMES = {ngo:'NGO / Non-profit',sme:'SME',large:'Large enterprise',
+    research:'University / Research org.',public:'Public body'};
 
   function renderResults(answers, filtered) {
     const pills = [
-      `Closure: ${answers.closure_year || ''} ${answers.closure_quarter || ''}`,
+      `Closure: ${answers.closure_year||''} ${answers.closure_quarter||''}`,
       answers.project_nature ? `Nature: ${answers.project_nature}` : 'Nature: any',
-      `Area: ${answers.thematic_cluster || ''}`,
+      `Area: ${answers.thematic_cluster||''}`,
       answers.official_cluster ? `Cluster: ${answers.official_cluster}` : '',
-      `Partner: ${PARTNER_NAMES[answers.partner_type] || ''}`,
-      `Country: ${MS_NAMES[answers.member_state] || ''}`
-    ].filter(Boolean).map(t => `<span class="pill">${esc(t)}</span>`).join('');
-
-    const postFiltered = applyPostFilters(filtered);
-    const visible = postFiltered.slice(0, visibleCount);
+      `Partner: ${PARTNER_NAMES[answers.partner_type]||''}`,
+      `Country: ${MS_NAMES[answers.member_state]||''}`
+    ].filter(Boolean).map(t=>`<span class="pill">${esc(t)}</span>`).join('');
 
     let html = `<div class="box"><strong>Your answers</strong><div style="margin-top:8px">${pills}</div></div>`;
 
     if (!CALLS.length) {
       html += `<div class="box error">No data found. Make sure <code>calls.json</code> is present.</div>`;
-      results.innerHTML = html;
-      return;
+      results.innerHTML = html; return;
     }
 
-    html += `
-      <div id="postFilters" class="toolbar">
-        <div class="field">
-          <label for="live_topic_filter">Filter by subtopic</label>
-          <select id="live_topic_filter">${populateTopicDropdown(filtered)}</select>
-        </div>
-        <div class="field">
-          <label for="keyword_filter">Keyword</label>
-          <input id="keyword_filter" type="text" placeholder="Example: hydrogen, cybersecurity, cancer" value="${esc(document.getElementById('keyword_filter')?.value || '')}" />
-        </div>
-      </div>
-    `;
+    html += `<h2 style="margin-top:14px">Suggested calls (${filtered.length})</h2>`;
 
-    html += `<h2 style="margin-top:14px">Suggested calls (${postFiltered.length})</h2>`;
-
-    if (!postFiltered.length) {
-      html += `<div class="box">No calls found with the current filters.</div>`;
-      results.innerHTML = html;
-      bindPostFilterEvents();
-      updateFooter(postFiltered.length);
-      return;
+    if (!filtered.length) {
+      html += `<div class="box">No calls found. Try selecting an earlier project closure date.</div>`;
+      results.innerHTML = html; return;
     }
 
-    visible.forEach(c => {
+    filtered.forEach(c => {
       const badge = c.is_mission ? `<span class="mission-badge">Mission</span>` : '';
-      const meta = [
-        c.programme ? `Programme: ${c.programme}` : '',
+      const meta  = [
+        c.programme        ? `Programme: ${c.programme}` : '',
         c.thematic_cluster ? `Area: ${c.thematic_cluster}` : '',
-        c.action ? `Type of action: ${c.action}` : '',
-        c.opening ? `Opening: ${c.opening}` : '',
-        c.deadline ? `Deadline: ${c.deadline}` : ''
+        c.action           ? `Type of action: ${c.action}` : '',
+        c.opening          ? `Opening: ${c.opening}` : '',
+        c.deadline         ? `Deadline: ${c.deadline}` : '',
       ].filter(Boolean).join(' · ');
 
       const cumulNote = getCumulationNote(c.programme);
-      const cumulHtml = cumulNote ? `<div class="cumul-note">&#9432; <strong>Cumulation with Horizon Europe:</strong> ${esc(cumulNote)}</div>` : '';
-
-      const msNote = getMsNote(answers.member_state, c.programme);
-      const msHtml = msNote ? `<div class="ms-note">&#127981; <strong>Regional co-financing note:</strong> ${esc(msNote)}</div>` : '';
-
-      const topicsHtml = c._topics.length
-        ? `<div class="topic-tags">${c._topics.map(t => `<span class="topic-tag">${esc(t.replace(/\b\w/g, x => x.toUpperCase()))}</span>`).join('')}</div>`
+      const cumulHtml = cumulNote
+        ? `<div class="cumul-note">&#9432; <strong>Cumulation with Horizon Europe:</strong> ${esc(cumulNote)}</div>`
         : '';
 
-      html += `<div class="${c.is_mission ? 'call mission' : 'call'}">
-        <h3>${esc(c.name || '(no title)')}${badge}</h3>
+      const msNote = getMsNote(answers.member_state, c.programme);
+      const msHtml = msNote
+        ? `<div class="ms-note">&#127981; <strong>Regional co-financing note:</strong> ${esc(msNote)}</div>`
+        : '';
+
+      html += `<div class="${c.is_mission?'call mission':'call'}">
+        <h3>${esc(c.name||'(no title)')}${badge}</h3>
         <div class="meta">${esc(meta)}</div>
-        ${topicsHtml}
         ${cumulHtml}${msHtml}
-        ${c.url ? `<div class="meta">Link: <a href="${encodeURI(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.url)}</a></div>` : ''}
+        ${c.url?`<div class="meta">Link: <a href="${encodeURI(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.url)}</a></div>`:''}
       </div>`;
     });
 
+    // ── Shared management programmes for selected country ──────────────────
     const ms = answers.member_state;
     const wantedT = answers.thematic_cluster || '';
     if (ms && ms !== 'OTHER' && SHARED.length) {
-      const msProgs = SHARED.filter(p => p.country_code === ms && (!wantedT || (p.thematic_clusters || []).includes(wantedT)));
+      const msProgs = SHARED.filter(p =>
+        p.country_code === ms &&
+        (!wantedT || (p.thematic_clusters || []).includes(wantedT))
+      );
+
       if (msProgs.length) {
-        html += `<h2 style="margin-top:22px">&#127981; Shared management programmes in ${MS_NAMES[ms] || ms}<span style="font-size:.85rem;font-weight:400;color:#6b7280;"> — ERDF / ESF+ / JTF / Interreg (2021-2027)</span></h2>`;
-        html += `<div class="box muted" style="margin-bottom:10px">These programmes are managed by national or regional authorities. Contact the managing authority directly to enquire about open calls and eligibility conditions.</div>`;
+        html += `<h2 style="margin-top:22px">
+          &#127981; Shared management programmes in ${MS_NAMES[ms]||ms}
+          <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
+            — ERDF / ESF+ / JTF / Interreg (2021-2027)
+          </span>
+        </h2>`;
+        html += `<div class="box muted" style="margin-bottom:10px">
+          These programmes are managed by national or regional authorities.
+          Contact the managing authority directly to enquire about open calls
+          and eligibility conditions.
+        </div>`;
 
         msProgs.forEach(p => {
-          const themes = (p.thematic_clusters || []).join(', ');
-          const meta = [p.fund ? `Fund: ${p.fund}` : '', p.cci ? `CCI: ${p.cci}` : '', themes ? `Areas: ${themes}` : ''].filter(Boolean).join(' · ');
-          const contact = [p.managing_authority ? `<strong>${esc(p.managing_authority)}</strong>` : '', p.contact_name ? esc(p.contact_name) : '', p.email ? `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : ''].filter(Boolean).join(' — ');
+          const themes = (p.thematic_clusters||[]).join(', ');
+          const meta = [
+            p.fund     ? `Fund: ${p.fund}` : '',
+            p.cci      ? `CCI: ${p.cci}` : '',
+            themes     ? `Areas: ${themes}` : '',
+          ].filter(Boolean).join(' · ');
+
+          const contact = [
+            p.managing_authority ? `<strong>${esc(p.managing_authority)}</strong>` : '',
+            p.contact_name       ? esc(p.contact_name) : '',
+            p.email              ? `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : '',
+          ].filter(Boolean).join(' — ');
+
           html += `<div class="call" style="border-left:4px solid #16a34a">
-            <h3>${esc(p.programme_name || '(no name)')}</h3>
+            <h3>${esc(p.programme_name||'(no name)')}</h3>
             <div class="meta">${esc(meta)}</div>
             <div class="meta" style="margin-top:6px">${contact}</div>
             ${p.url ? `<div class="meta">Programme page: <a href="${encodeURI(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.url)}</a></div>` : ''}
@@ -541,83 +564,83 @@
       }
     }
 
-    html += `
-      <div id="resultsFooter" class="results-footer visible">
-        <div id="resultsProgress">Showing ${Math.min(visibleCount, postFiltered.length)} of ${postFiltered.length} results</div>
-        ${visibleCount < postFiltered.length ? '<button id="loadMoreBtn" type="button" class="load-more">Show more</button>' : ''}
-      </div>
-    `;
+    // ── Innovation events section ────────────────────────────────────────────
+    if (EVENTS.length) {
+      html += `<h2 style="margin-top:22px">
+        &#128197; Upcoming Innovation Events &amp; Opportunities
+        <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
+          — EEN, EIC, EBAN, BpiFrance, ESN and more
+        </span>
+      </h2>`;
+      html += `<div class="box muted" style="margin-bottom:10px">
+        Matchmaking events, investor days, info days and open opportunities from
+        key European innovation networks. Sourced nightly from 8 platforms.
+      </div>`;
+
+      // Optional: filter by keyword from thematic area
+      const thematic = answers.thematic_cluster || '';
+      const THEMATIC_KEYWORDS = {
+        'Health & Life Sciences':               ['health','medic','pharma','biotech','rare disease','cancer','neuro'],
+        'Digital, Industry & Space':            ['digital','ai','artificial intelligence','tech','software','space','data','cyber'],
+        'Climate, Energy & Mobility':           ['climate','energy','green','mobility','transport','hydrogen','battery','clean'],
+        'Food, Bioeconomy & Environment':       ['food','bio','agri','ocean','marine','environment','nature'],
+        'Security & Resilience':                ['security','defence','resilience','cyber','border'],
+        'Culture, Creativity & Inclusion':      ['culture','creative','education','social','inclusion','media'],
+        'SME, Entrepreneurship & Market Uptake':['startup','sme','entrepreneur','venture','invest','scale','fund'],
+        'Climate-neutral & Smart Cities':       ['city','cities','urban','smart city'],
+      };
+
+      const keywords = THEMATIC_KEYWORDS[thematic] || [];
+
+      let eventsToShow = EVENTS;
+      if (keywords.length) {
+        const relevant = EVENTS.filter(ev => {
+          const text = ((ev.title||'') + ' ' + (ev.description||'')).toLowerCase();
+          return keywords.some(k => text.includes(k));
+        });
+        // Show relevant first, then others
+        const others = EVENTS.filter(ev => !relevant.includes(ev));
+        eventsToShow = [...relevant, ...others].slice(0, 20);
+      } else {
+        eventsToShow = EVENTS.slice(0, 20);
+      }
+
+      eventsToShow.forEach(ev => {
+        const dateStr = ev.date ? `${ev.date}${ev.date_end ? ' — ' + ev.date_end : ''}` : 'Date TBC';
+        const loc     = ev.location ? ` &nbsp;·&nbsp; ${esc(ev.location)}` : '';
+        const desc    = ev.description ? `<div class="meta" style="margin-top:4px">${esc(ev.description)}</div>` : '';
+        html += `<div class="event-card">
+          <span class="event-source">${esc(ev.source)}</span>
+          <h3>${esc(ev.title||'(no title)')}</h3>
+          <div class="meta">${esc(dateStr)}${loc}</div>
+          ${desc}
+          ${ev.url ? `<div class="meta" style="margin-top:4px">
+            <a href="${encodeURI(ev.url)}" target="_blank" rel="noopener noreferrer">${esc(ev.url)}</a>
+          </div>` : ''}
+        </div>`;
+      });
+    }
 
     results.innerHTML = html;
-    bindPostFilterEvents();
-    document.getElementById('loadMoreBtn')?.addEventListener('click', function () {
-      visibleCount += PAGE_SIZE;
-      renderResults(lastAnswers, lastGenerated);
-    });
     results.scrollIntoView({behavior:'smooth'});
   }
 
-  function bindPostFilterEvents() {
-    document.getElementById('live_topic_filter')?.addEventListener('change', function () {
-      visibleCount = PAGE_SIZE;
-      renderResults(lastAnswers, lastGenerated);
-    });
-    document.getElementById('keyword_filter')?.addEventListener('input', function () {
-      visibleCount = PAGE_SIZE;
-      renderResults(lastAnswers, lastGenerated);
-    });
-  }
-
-  async function loadCalls() {
-    if (Array.isArray(window.CALLS_DATA)) return window.CALLS_DATA;
-    try {
-      const res = await fetch('./calls.json', { cache: 'no-store' });
-      const data = await res.json();
-      if (data.generated) {
-        const d = new Date(data.generated);
-        const fmt = d.toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit',year:'numeric'}) + ' ' + d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-        const el = document.getElementById('lastUpdated');
-        if (el) { el.textContent = `Data last updated: ${fmt} UTC`; el.style.display = 'block'; }
-      }
-      return Array.isArray(data.calls) ? data.calls : [];
-    } catch (e) { console.error(e); return []; }
-  }
-
-  async function loadShared() {
-    try {
-      const res = await fetch('./shared_programmes.json', { cache: 'no-store' });
-      const data = await res.json();
-      return Array.isArray(data.programmes) ? data.programmes : [];
-    } catch (e) { return []; }
-  }
-
-  CALLS = await loadCalls();
-  SHARED = await loadShared();
-
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     const fd = new FormData(form);
-    lastAnswers = {
-      closure_year: fd.get('closure_year'),
+    const answers = {
+      closure_year:    fd.get('closure_year'),
       closure_quarter: fd.get('closure_quarter'),
-      project_nature: fd.get('project_nature'),
-      thematic_cluster: fd.get('thematic_cluster'),
-      official_cluster: fd.get('official_cluster'),
-      partner_type: fd.get('partner_type'),
-      member_state: fd.get('member_state')
+      project_nature:  fd.get('project_nature'),
+      thematic_cluster:fd.get('thematic_cluster'),
+      official_cluster:fd.get('official_cluster'),
+      partner_type:    fd.get('partner_type'),
+      member_state:    fd.get('member_state'),
     };
-    visibleCount = PAGE_SIZE;
-    lastGenerated = filterCalls(lastAnswers);
-    renderResults(lastAnswers, lastGenerated);
+    renderResults(answers, filterCalls(answers));
   });
 
-  resetBtn.addEventListener('click', function () {
-    form.reset();
-    results.innerHTML = '';
-    lastAnswers = null;
-    lastGenerated = [];
-    visibleCount = PAGE_SIZE;
-  });
+  resetBtn.addEventListener('click', function() { form.reset(); results.innerHTML = ''; });
 })();
 </script>
 </body>
