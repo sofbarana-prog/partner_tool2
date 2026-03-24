@@ -48,6 +48,8 @@
   <h1>EU Funding Call Matcher — Partners</h1>
   <p class="intro">
     This tool suggests EU funding calls compatible with your project profile.
+    It assumes your project is currently funded by Horizon Europe and helps identify
+    complementary or follow-on funding opportunities.
   </p>
 
   <div id="lastUpdated" class="box muted" style="display:none;margin-bottom:14px"></div>
@@ -214,6 +216,8 @@
   };
 
   // ── Partner × programme affinity ─────────────────────────────────────────
+  // Since beneficiary_hint is mostly empty in the dataset, we score
+  // based on known programme–partner affinities instead.
   function partnerProgrammeScore(partnerType, programme, action) {
     const p = (programme || '').toLowerCase();
     const a = (action || '').toUpperCase();
@@ -413,7 +417,7 @@
 
   // ── Cumulation notes ──────────────────────────────────────────────────────
   const CUMULATION_NOTES = {
-    "European Defence Fund": "⚠️ Operates under a separate legal framework (EDF Reg. 2021/697). Cumulation with civilian programmes is permitted only for the non-defence components of dual-use projects.",
+    "European Defence Fund": "⚠️ Operates under a separate legal framework (EDF Reg. 2021/697). Cumulation with civilian programmes is permitted only for the non-defence components of dual-use projects. Civilian-only rule under review for FP10.",
     "default": "Co-financing with Horizon Europe is permitted provided no cost overlap (Art. 15, Reg. EU 2021/695). Contributions may be calculated on a pro-rata basis. Cumulative funding cannot exceed total eligible costs.",
   };
 
