@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-25T06:46:05.035569+00:00",
+  "generated": "2026-03-26T10:51:51.696569+00:00",
   "count": 83,
   "events": [
     {
@@ -21,6 +21,42 @@
       "description": "One Newsletter, Endless Startup Opportunities Across Europe. – Sign up now!"
     },
     {
+      "title": "SustainableSolutionsMatch 2026",
+      "source": "EEN",
+      "date": "2026-03-27",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/sustainablesolutionsmatch-2026",
+      "description": ""
+    },
+    {
+      "title": "B2B event at Forward Green Expo & Renewable EnergyTech Expo",
+      "source": "EEN",
+      "date": "2026-03-27",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/b2b-event-forward-green-expo-renewable-energytech-expo",
+      "description": ""
+    },
+    {
+      "title": "Innovent Forum 2026",
+      "source": "EEN",
+      "date": "2026-03-29",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/innovent-forum-2026",
+      "description": ""
+    },
+    {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "2026-03-30",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/cyprus-greece-high-technology-and-innovation-conference",
+      "description": ""
+    },
+    {
       "title": "Tous nos évènements",
       "source": "BpiFrance",
       "date": "2026-03-30",
@@ -30,144 +66,18 @@
       "description": ""
     },
     {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/greenenergycommunity",
-      "description": ""
-    },
-    {
-      "title": "NEXTCHAIN - Building Europe's Future Value Chains",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/nextchain-building-europes-future-value-chains",
-      "description": ""
-    },
-    {
-      "title": "EU-Japan Green Transition 2025-2026",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/eu-japan-green-transition-2025-2026",
-      "description": ""
-    },
-    {
-      "title": "EDF Partner Pool",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/edf-partner-pool",
-      "description": ""
-    },
-    {
-      "title": "The International MSCA Staff Exchanges Brokerage Event!",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/international-msca-staff-exchanges-brokerage-event",
-      "description": ""
-    },
-    {
-      "title": "SustainableSolutionsMatch 2026",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/sustainablesolutionsmatch-2026",
-      "description": ""
-    },
-    {
-      "title": "Alimentaria Open Innovation Challenge 2026",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/alimentaria-open-innovation-challenge-2026",
-      "description": ""
-    },
-    {
-      "title": "Health Tech Hub Styria 2026",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/health-tech-hub-styria-2026",
-      "description": ""
-    },
-    {
-      "title": "Health Tech Hub Styria",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/health-tech-hub-styria",
-      "description": ""
-    },
-    {
       "title": "X International Forum on Dual-Use Technologies 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-03-31",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/x-international-forum-dual-use-technologies-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/international-brokerage-event-digital-innovation-zone-40-conference",
-      "description": ""
-    },
-    {
-      "title": "B2B event at Forward Green Expo & Renewable EnergyTech Expo",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/b2b-event-forward-green-expo-renewable-energytech-expo",
-      "description": ""
-    },
-    {
-      "title": "MatchMaker Albania 2nd Edition",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/matchmaker-albania-2nd-edition",
-      "description": ""
-    },
-    {
-      "title": "Innovent Forum 2026",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/innovent-forum-2026",
-      "description": ""
-    },
-    {
-      "title": "Cyprus–Greece High Technology and Innovation Conference",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/cyprus-greece-high-technology-and-innovation-conference",
-      "description": ""
-    },
-    {
       "title": "NL-UA Business Forum 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-03-31",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/nl-ua-business-forum-2026",
@@ -176,16 +86,25 @@
     {
       "title": "Women Entrepreneurship: e-Catalogue Pitch & Networking – Enterprise Europe Network",
       "source": "EEN",
-      "date": "",
+      "date": "2026-03-31",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/women-entrepreneurship-e-catalogue-pitch-networking-enterprise-europe-network",
       "description": ""
     },
     {
+      "title": "Alimentaria Open Innovation Challenge 2026",
+      "source": "EEN",
+      "date": "2026-04-01",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/alimentaria-open-innovation-challenge-2026",
+      "description": ""
+    },
+    {
       "title": "Drone Seminar 2026 Matchmaking",
       "source": "EEN",
-      "date": "",
+      "date": "2026-04-14",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/drone-seminar-2026-matchmaking",
@@ -194,7 +113,7 @@
     {
       "title": "Connect2Slovenia 2026: Metal&Plastic",
       "source": "EEN",
-      "date": "",
+      "date": "2026-04-15",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/connect2slovenia-2026-metalplastic",
@@ -203,25 +122,16 @@
     {
       "title": "Baltic Sea Business Day",
       "source": "EEN",
-      "date": "",
+      "date": "2026-04-16",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/baltic-sea-business-day",
       "description": ""
     },
     {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/dmea-business-meetings-2026",
-      "description": ""
-    },
-    {
       "title": "11th International Cooperation Exchange Barleben",
       "source": "EEN",
-      "date": "",
+      "date": "2026-04-22",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/11th-international-cooperation-exchange-barleben",
@@ -230,43 +140,43 @@
     {
       "title": "Technology & Business Cooperation Days @ HANNOVER MESSE 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-04-23",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/technology-business-cooperation-days-hannover-messe-2026",
       "description": ""
     },
     {
+      "title": "DMEA Business Meetings 2026",
+      "source": "EEN",
+      "date": "2026-04-24",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/dmea-business-meetings-2026",
+      "description": ""
+    },
+    {
       "title": "Women Entrepreneurs: Be Prepared to Be Resilient",
       "source": "EEN",
-      "date": "",
+      "date": "2026-04-24",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/women-entrepreneurs-be-prepared-be-resilient",
       "description": ""
     },
     {
-      "title": "BUILD'N GREEN 2026 - Circularity in Action",
+      "title": "Filter by",
       "source": "EEN",
-      "date": "",
+      "date": "2026-04-29",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/buildn-green-2026-circularity-action",
       "description": ""
     },
     {
-      "title": "IFAT 2026 Business Matchmaking",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/ifat-2026-business-matchmaking",
-      "description": ""
-    },
-    {
       "title": "Business Forum: Istrian Region – Montenegro",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-05",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/business-forum-istrian-region-montenegro",
@@ -275,7 +185,7 @@
     {
       "title": "Matchmaking at Eastern Finland Energy Days 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-06",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/matchmaking-eastern-finland-energy-days-2026",
@@ -284,43 +194,52 @@
     {
       "title": "Networking event at the Plastic Recycling Show Europe - PRSE",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-06",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/networking-event-plastic-recycling-show-europe-prse",
       "description": ""
     },
     {
-      "title": "India Energy Storage Week (IESW) 2026",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/india-energy-storage-week-iesw-2026",
-      "description": ""
-    },
-    {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/een-cooperation-days-viking-days-2026",
-      "description": ""
-    },
-    {
       "title": "Eureka Global Innovation Summit 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-06",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/eureka-global-innovation-summit-2026",
       "description": ""
     },
     {
+      "title": "IFAT 2026 Business Matchmaking",
+      "source": "EEN",
+      "date": "2026-05-07",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/ifat-2026-business-matchmaking",
+      "description": ""
+    },
+    {
+      "title": "India Energy Storage Week (IESW) 2026",
+      "source": "EEN",
+      "date": "2026-05-07",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/india-energy-storage-week-iesw-2026",
+      "description": ""
+    },
+    {
+      "title": "EEN Cooperation Days - \"Viking Days\" 2026",
+      "source": "EEN",
+      "date": "2026-05-07",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/een-cooperation-days-viking-days-2026",
+      "description": ""
+    },
+    {
       "title": "B2B @ Waste Management Europe 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-21",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-waste-management-europe-2026",
@@ -329,25 +248,25 @@
     {
       "title": "Energy Storage B2B Session Spring Edition",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-21",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/energy-storage-b2b-session-spring-edition",
       "description": ""
     },
     {
-      "title": "chii 2026 - Conference & Matchmaking Event for Hyperspectral Imaging in Industry 2026",
+      "title": "Filter by",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-21",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/chii-2026-conference-matchmaking-event-hyperspectral-imaging-industry-2026",
       "description": ""
     },
     {
       "title": "Balkonnect Festival 2026 - B2B Matchmaking Event",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-22",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/balkonnect-festival-2026-b2b-matchmaking-event",
@@ -356,88 +275,97 @@
     {
       "title": "OPD2026 Matchmaking",
       "source": "EEN",
-      "date": "",
+      "date": "2026-05-28",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/opd2026-matchmaking",
       "description": ""
     },
     {
+      "title": "The International MSCA Staff Exchanges Brokerage Event!",
+      "source": "EEN",
+      "date": "2026-06-01",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/international-msca-staff-exchanges-brokerage-event",
+      "description": ""
+    },
+    {
       "title": "Startup Pitching Session at the EBAN Congress 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-06-02",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/startup-pitching-session-eban-congress-2026",
       "description": ""
     },
     {
-      "title": "AI ABEL 2026 Artificial Intelligence Applications in Business and Everyday Life",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/ai-abel-2026-artificial-intelligence-applications-business-and-everyday-life",
-      "description": ""
-    },
-    {
       "title": "World Sauna Forum 2026 Matchmaking",
       "source": "EEN",
-      "date": "",
+      "date": "2026-06-11",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Go International Business Meetings @ Nexus Luxembourg 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-06-11",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/go-international-business-meetings-nexus-luxembourg-2026",
       "description": ""
     },
     {
-      "title": "Connect Spain 2026 – Virtual Consultation & Matchmaking Event",
+      "title": "AI ABEL 2026 Artificial Intelligence Applications in Business and Everyday Life",
       "source": "EEN",
-      "date": "",
+      "date": "2026-06-12",
       "date_end": "",
       "location": "Online",
-      "url": "https://een.ec.europa.eu/events/connect-spain-2026-virtual-consultation-matchmaking-event",
+      "url": "https://een.ec.europa.eu/events/ai-abel-2026-artificial-intelligence-applications-business-and-everyday-life",
       "description": ""
     },
     {
       "title": "Open to Scandinavia 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-06-17",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/open-scandinavia-2026",
       "description": ""
     },
     {
+      "title": "Connect Spain 2026 – Virtual Consultation & Matchmaking Event",
+      "source": "EEN",
+      "date": "2026-06-23",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/connect-spain-2026-virtual-consultation-matchmaking-event",
+      "description": ""
+    },
+    {
       "title": "EEN Matchmaking at TAIWAN EXPO in EUROPE",
       "source": "EEN",
-      "date": "",
+      "date": "2026-06-24",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/een-matchmaking-taiwan-expo-europe-0",
       "description": ""
     },
     {
-      "title": "Matchmaking@GITEX AI EUROPE 2026",
+      "title": "Filter by",
       "source": "EEN",
-      "date": "",
+      "date": "2026-07-01",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/matchmakinggitex-ai-europe-2026",
       "description": ""
     },
     {
       "title": "Bharat TEX 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-07-17",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/bharat-tex-2026",
@@ -446,7 +374,7 @@
     {
       "title": "IFAT India 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-09-11",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/ifat-india-2026",
@@ -455,7 +383,7 @@
     {
       "title": "SEMICON India 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-09-19",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/semicon-india-2026",
@@ -464,7 +392,7 @@
     {
       "title": "WindEnergy Match 2026 – SAVE THE DATE!Onsite & Online",
       "source": "EEN",
-      "date": "",
+      "date": "2026-09-24",
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/windenergy-match-2026-save-date-onsite-online",
@@ -473,16 +401,16 @@
     {
       "title": "15th Micro & Nano Event",
       "source": "EEN",
-      "date": "",
+      "date": "2026-10-02",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/15th-micro-nano-event",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Business Meetings Food Paris 2026 (SIAL)",
       "source": "EEN",
-      "date": "",
+      "date": "2026-10-20",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/business-meetings-food-paris-2026-sial",
@@ -491,7 +419,7 @@
     {
       "title": "Renewable Energy India Expo 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-10-24",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/renewable-energy-india-expo-2026",
@@ -500,7 +428,7 @@
     {
       "title": "Bengaluru Tech Summit 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-11-20",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/bengaluru-tech-summit-2026",
@@ -509,10 +437,28 @@
     {
       "title": "CPHI  India 2026",
       "source": "EEN",
-      "date": "",
+      "date": "2026-11-25",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/cphi-india-2026",
+      "description": ""
+    },
+    {
+      "title": "EDF Partner Pool",
+      "source": "EEN",
+      "date": "2026-12-01",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/edf-partner-pool",
+      "description": ""
+    },
+    {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-03-26T00%3A00%3A00%2B00%3A00%7C2026-03-26T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
       "description": ""
     },
     {
@@ -624,12 +570,66 @@
       "description": ""
     },
     {
+      "title": "Change NOW",
+      "source": "EBAN",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://ebanteam.notion.site/2e09f622973f809b9339fb4d6990ebb0?pvs=105",
+      "description": ""
+    },
+    {
+      "title": "DOERS Summit",
+      "source": "EBAN",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://doerssummit.com/",
+      "description": ""
+    },
+    {
       "title": "Vivatech: Paris, France​",
       "source": "EBAN",
       "date": "",
       "date_end": "",
       "location": "",
       "url": "https://vivatech.com/",
+      "description": ""
+    },
+    {
+      "title": "FOUNDATIONS OF SUCCESSFUL ANGEL INVESTING",
+      "source": "EBAN",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://www.eventbrite.co.uk/e/foundations-of-successful-angel-investing-online-event-tickets-689818404417?aff=PublicityPartnersD23Apr26",
+      "description": ""
+    },
+    {
+      "title": "FINANCE ACADEMY",
+      "source": "EBAN",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://www.eventbrite.co.uk/e/finance-academy-online-workshop-for-startup-founders-tickets-107676485266?aff=PublicityPartnersD27Apr26",
+      "description": ""
+    },
+    {
+      "title": "PITCH DECK CLINIC",
+      "source": "EBAN",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://www.eventbrite.co.uk/e/pitch-deck-clinic-online-workshop-for-startup-founders-tickets-84853778937?aff=PublicityPartnersD13Apr26",
+      "description": ""
+    },
+    {
+      "title": "INVESTOR READINESS SESSION",
+      "source": "EBAN",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://www.eventbrite.co.uk/e/investor-readiness-session-online-workshop-for-startup-founders-tickets-107799489174?aff=PublicityPartnersD06Apr26",
       "description": ""
     },
     {
