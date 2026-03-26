@@ -90,6 +90,30 @@
       </div>
     </fieldset>
 
+    <fieldset id="trl_fieldset" style="display:none">
+      <legend>2a) Expected TRL range <span style="font-weight:400;color:#6b7280">(for industrial research)</span></legend>
+      <label for="trl_bracket">Which TRL range is the project expected to operate in?</label>
+      <select id="trl_bracket" name="trl_bracket">
+        <option value="">Select…</option>
+        <option value="trl_1_3">TRL 1-3 (early-stage research)</option>
+        <option value="trl_4_6">TRL 4-6 (validation and prototyping)</option>
+        <option value="trl_7_9">TRL 7-9 (demonstration to deployment)</option>
+      </select>
+      <p style="margin:6px 0 0;font-size:.85rem;color:#6b7280;line-height:1.4">
+        This filter appears only for industrial research and adjusts the ranking of matching calls based on the selected TRL range.
+      </p>
+    </fieldset>
+    </fieldset>
+
+    <fieldset>
+      <legend>2b) Show results for</legend>
+      <div class="radio">
+        <label><input type="radio" name="results_scope" value="both" checked> Both</label>
+        <label><input type="radio" name="results_scope" value="calls"> Calls and programmes</label>
+        <label><input type="radio" name="results_scope" value="events"> Events only</label>
+      </div>
+    </fieldset>
+
     <fieldset>
       <legend>3) Thematic area</legend>
       <label for="thematic_cluster">Main thematic area</label>
@@ -327,6 +351,31 @@
     return (v||'').toUpperCase();
   }
 
+  function scoreBasicResearchPriority(call) {
+    const programme = (call.programme || '').toLowerCase();
+    const title     = (call.name || '').toLowerCase();
+    const url       = (call.url || '').toLowerCase();
+    let score = 0;
+
+    if (programme.includes('msca') || programme.includes('marie')) score += 45;
+    if (title.includes('fellowship') || url.includes('fellowship')) score += 35;
+    if (title.includes('open call') || title.includes('open calls') || url.includes('open-call')) score += 30;
+    return score;
+  }
+
+  function scoreIndustrialTlrPriority(call, trlBracket) {
+    const action = normalizeAction(call.action);
+    if (trlBracket === 'low') {
+      if (action === 'IA')  return 35;
+      if (action === 'RIA') return 15;
+    }
+    if (trlBracket === 'high') {
+      if (action === 'RIA') return 35;
+      if (action === 'IA')  return 15;
+    }
+    return 0;
+  }
+
   function isHorizon(p) { return String(p||'').toLowerCase().includes('horizon'); }
 
   function projectEndIso(y,q) {
@@ -347,6 +396,7 @@
     const wantedThematic = answers.thematic_cluster || '';
     const wantedOfficial = normalizeCluster(answers.official_cluster);
     const wantedNature   = answers.project_nature || '';
+    const trlBracket     = answers.trl_bracket || '';
     const projectEnd     = projectEndIso(answers.closure_year, answers.closure_quarter);
     const msTier         = MS_TIER[answers.member_state] || 'more';
 
@@ -372,11 +422,13 @@
     if (wantedNature === 'basic') {
       if (callAction === 'RIA') score += 20;
       if (callAction === 'CSA') score += 10;
+      score += scoreBasicResearchPriority(call);
     } else if (wantedNature === 'applied') {
       if (callAction === 'RIA') score += 15;
       if (callAction === 'IA')  score += 15;
     } else if (wantedNature === 'industrial') {
       if (callAction === 'IA')  score += 20;
+      score += scoreIndustrialTlrPriority(call, trlBracket);
     }
 
     // Partner × programme affinity
@@ -470,6 +522,12 @@
     const pills = [
       `Closure: ${answers.closure_year||''} ${answers.closure_quarter||''}`,
       answers.project_nature ? `Nature: ${answers.project_nature}` : 'Nature: any',
+      answers.project_nature === 'industrial' && answers.trl_bracket ? `TRL: ${({
+        trl_1_3: '1-3',
+        trl_4_6: '4-6',
+        trl_7_9: '7-9'
+      })[answers.trl_bracket] || answers.trl_bracket}` : '',
+      `Results: ${answers.results_scope || 'both'}`,
       `Area: ${answers.thematic_cluster||''}`,
       answers.official_cluster ? `Cluster: ${answers.official_cluster}` : '',
       `Partner: ${PARTNER_NAMES[answers.partner_type]||''}`,
@@ -625,6 +683,21 @@
     results.scrollIntoView({behavior:'smooth'});
   }
 
+  const trlFieldset = document.getElementById('trl_fieldset');
+  const trlSelect   = document.getElementById('trl_bracket');
+
+  function syncTlrField() {
+    const selectedNature = form.querySelector('input[name="project_nature"]:checked')?.value || '';
+    const showTlr = selectedNature === 'industrial';
+    trlFieldset.style.display = showTlr ? '' : 'none';
+    if (!showTlr) trlSelect.value = '';
+  }
+
+  form.querySelectorAll('input[name="project_nature"]').forEach(input => {
+    input.addEventListener('change', syncTlrField);
+  });
+  syncTlrField();
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const fd = new FormData(form);
@@ -636,6 +709,8 @@
       official_cluster:fd.get('official_cluster'),
       partner_type:    fd.get('partner_type'),
       member_state:    fd.get('member_state'),
+      trl_bracket:     fd.get('trl_bracket'),
+      results_scope:   fd.get('results_scope') || 'both',
     };
     renderResults(answers, filterCalls(answers));
   });
