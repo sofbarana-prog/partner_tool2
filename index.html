@@ -574,175 +574,212 @@
     const showCalls = scope === 'both' || scope === 'calls';
     const showEvents = scope === 'both' || scope === 'events';
 
+    const ms = answers.member_state;
+    const wantedT = answers.thematic_cluster || '';
+    const msProgs = (ms && ms !== 'OTHER' && SHARED.length)
+      ? SHARED.filter(p => p.country_code === ms && (!wantedT || (p.thematic_clusters || []).includes(wantedT)))
+      : [];
+
     const CALLS_STEP = 10;
+    const PROGRAMMES_STEP = 10;
     const EVENTS_STEP = 10;
+
     let visibleCalls = Math.min(30, filtered.length);
-    let visibleEvents = EVENTS_STEP;
+    let visibleProgrammes = Math.min(30, msProgs.length);
+    let visibleEvents = Math.min(EVENTS_STEP, eventsToShow.length);
 
-    function draw() {
-      let html = `<div class="box"><strong>Your answers</strong><div style="margin-top:8px">${pills}</div></div>`;
+    function renderCallCard(c) {
+      const badge = c.is_mission ? `<span class="mission-badge">Mission</span>` : '';
+      const meta  = [
+        c.programme        ? `Programme: ${c.programme}` : '',
+        c.thematic_cluster ? `Area: ${c.thematic_cluster}` : '',
+        c.action           ? `Type of action: ${c.action}` : '',
+        c.opening          ? `Opening: ${c.opening}` : '',
+        c.deadline         ? `Deadline: ${c.deadline}` : '',
+      ].filter(Boolean).join(' · ');
 
-      if (!filtered.length && !eventsToShow.length) {
-        html += `<div class="box">No results found. Try widening the filters.</div>`;
-        results.innerHTML = html;
-        return;
+      const cumulNote = getCumulationNote(c.programme);
+      const cumulHtml = cumulNote
+        ? `<div class="cumul-note">&#9432; <strong>Cumulation with Horizon Europe:</strong> ${esc(cumulNote)}</div>`
+        : '';
+
+      const msNote = getMsNote(answers.member_state, c.programme);
+      const msHtml = msNote
+        ? `<div class="ms-note">&#127981; <strong>Regional co-financing note:</strong> ${esc(msNote)}</div>`
+        : '';
+
+      return `<div class="${c.is_mission?'call mission':'call'}">
+        <h3>${esc(c.name||'(no title)')}${badge}</h3>
+        <div class="meta">${esc(meta)}</div>
+        ${cumulHtml}${msHtml}
+        ${c.url?`<div class="meta">Link: <a href="${encodeURI(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.url)}</a></div>`:''}
+      </div>`;
+    }
+
+    function renderProgrammeCard(p) {
+      const themes = (p.thematic_clusters||[]).join(', ');
+      const meta = [
+        p.fund     ? `Fund: ${p.fund}` : '',
+        p.cci      ? `CCI: ${p.cci}` : '',
+        themes     ? `Areas: ${themes}` : '',
+      ].filter(Boolean).join(' · ');
+
+      const contact = [
+        p.managing_authority ? `<strong>${esc(p.managing_authority)}</strong>` : '',
+        p.contact_name       ? esc(p.contact_name) : '',
+        p.email              ? `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : '',
+      ].filter(Boolean).join(' — ');
+
+      return `<div class="call" style="border-left:4px solid #16a34a">
+        <h3>${esc(p.programme_name||'(no name)')}</h3>
+        <div class="meta">${esc(meta)}</div>
+        <div class="meta" style="margin-top:6px">${contact}</div>
+        ${p.url ? `<div class="meta">Programme page: <a href="${encodeURI(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.url)}</a></div>` : ''}
+      </div>`;
+    }
+
+    function renderEventCard(ev) {
+      const dateStr = ev.date ? `${ev.date}${ev.date_end ? ' — ' + ev.date_end : ''}` : 'Date TBC';
+      const loc     = ev.location ? ` &nbsp;·&nbsp; ${esc(ev.location)}` : '';
+      const desc    = ev.description ? `<div class="meta" style="margin-top:4px">${esc(ev.description)}</div>` : '';
+      return `<div class="event-card">
+        <span class="event-source">${esc(ev.source)}</span>
+        <h3>${esc(ev.title||'(no title)')}</h3>
+        <div class="meta">${esc(dateStr)}${loc}</div>
+        ${desc}
+        ${ev.url ? `<div class="meta" style="margin-top:4px">
+          <a href="${encodeURI(ev.url)}" target="_blank" rel="noopener noreferrer">${esc(ev.url)}</a>
+        </div>` : ''}
+      </div>`;
+    }
+
+    let pageHtml = `<div class="box"><strong>Your answers</strong><div style="margin-top:8px">${pills}</div></div>`;
+
+    if (!filtered.length && !eventsToShow.length && !msProgs.length) {
+      pageHtml += `<div class="box">No results found. Try widening the filters.</div>`;
+      results.innerHTML = pageHtml;
+      return;
+    }
+
+    if (showCalls) {
+      pageHtml += `<section id="callsSection">
+        <h2 style="margin-top:14px">Suggested calls (${filtered.length})</h2>
+        <div id="callsList"></div>
+        <div id="callsMoreWrap" style="margin:12px 0 4px"></div>
+      </section>`;
+
+      if (msProgs.length) {
+        pageHtml += `<section id="programmesSection">
+          <h2 style="margin-top:22px">
+            &#127981; Shared management programmes in ${MS_NAMES[ms]||ms}
+            <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
+              — ERDF / ESF+ / JTF / Interreg (2021-2027)
+            </span>
+          </h2>
+          <div class="box muted" style="margin-bottom:10px">
+            These programmes are managed by national or regional authorities.
+            Contact the managing authority directly to enquire about open calls
+            and eligibility conditions.
+          </div>
+          <div id="programmesList"></div>
+          <div id="programmesMoreWrap" style="margin:12px 0 4px"></div>
+        </section>`;
       }
+    }
 
-      if (showCalls) {
-        html += `<h2 style="margin-top:14px">Suggested calls (${filtered.length})</h2>`;
-        if (!filtered.length) {
-          html += `<div class="box">No calls or programmes found. Try adjusting the filters.</div>`;
-        } else {
-          filtered.slice(0, visibleCalls).forEach(c => {
-            const badge = c.is_mission ? `<span class="mission-badge">Mission</span>` : '';
-            const meta  = [
-              c.programme        ? `Programme: ${c.programme}` : '',
-              c.thematic_cluster ? `Area: ${c.thematic_cluster}` : '',
-              c.action           ? `Type of action: ${c.action}` : '',
-              c.opening          ? `Opening: ${c.opening}` : '',
-              c.deadline         ? `Deadline: ${c.deadline}` : '',
-            ].filter(Boolean).join(' · ');
-
-            const cumulNote = getCumulationNote(c.programme);
-            const cumulHtml = cumulNote
-              ? `<div class="cumul-note">&#9432; <strong>Cumulation with Horizon Europe:</strong> ${esc(cumulNote)}</div>`
-              : '';
-
-            const msNote = getMsNote(answers.member_state, c.programme);
-            const msHtml = msNote
-              ? `<div class="ms-note">&#127981; <strong>Regional co-financing note:</strong> ${esc(msNote)}</div>`
-              : '';
-
-            html += `<div class="${c.is_mission?'call mission':'call'}">
-              <h3>${esc(c.name||'(no title)')}${badge}</h3>
-              <div class="meta">${esc(meta)}</div>
-              ${cumulHtml}${msHtml}
-              ${c.url?`<div class="meta">Link: <a href="${encodeURI(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.url)}</a></div>`:''}
-            </div>`;
-          });
-
-          if (filtered.length > visibleCalls) {
-            html += `<div style="margin:12px 0 4px"><button type="button" id="loadMoreCalls" class="secondary">Load more</button></div>`;
-          }
-        }
-
-        const ms = answers.member_state;
-        const wantedT = answers.thematic_cluster || '';
-        if (ms && ms !== 'OTHER' && SHARED.length) {
-          const msProgs = SHARED.filter(p =>
-            p.country_code === ms &&
-            (!wantedT || (p.thematic_clusters || []).includes(wantedT))
-          );
-
-          if (msProgs.length) {
-            html += `<h2 style="margin-top:22px">
-              &#127981; Shared management programmes in ${MS_NAMES[ms]||ms}
-              <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
-                — ERDF / ESF+ / JTF / Interreg (2021-2027)
-              </span>
-            </h2>`;
-            html += `<div class="box muted" style="margin-bottom:10px">
-              These programmes are managed by national or regional authorities.
-              Contact the managing authority directly to enquire about open calls
-              and eligibility conditions.
-            </div>`;
-
-            msProgs.slice(0, visibleCalls).forEach(p => {
-              const themes = (p.thematic_clusters||[]).join(', ');
-              const meta = [
-                p.fund     ? `Fund: ${p.fund}` : '',
-                p.cci      ? `CCI: ${p.cci}` : '',
-                themes     ? `Areas: ${themes}` : '',
-              ].filter(Boolean).join(' · ');
-
-              const contact = [
-                p.managing_authority ? `<strong>${esc(p.managing_authority)}</strong>` : '',
-                p.contact_name       ? esc(p.contact_name) : '',
-                p.email              ? `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : '',
-              ].filter(Boolean).join(' — ');
-
-              html += `<div class="call" style="border-left:4px solid #16a34a">
-                <h3>${esc(p.programme_name||'(no name)')}</h3>
-                <div class="meta">${esc(meta)}</div>
-                <div class="meta" style="margin-top:6px">${contact}</div>
-                ${p.url ? `<div class="meta">Programme page: <a href="${encodeURI(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.url)}</a></div>` : ''}
-              </div>`;
-            });
-
-            if (msProgs.length > visibleCalls) {
-              html += `<div style="margin:12px 0 4px"><button type="button" id="loadMoreProgrammes" class="secondary">Load more</button></div>`;
-            }
-          }
-        }
-      }
-
-      if (showEvents) {
-        html += `<h2 style="margin-top:22px">
+    if (showEvents) {
+      pageHtml += `<section id="eventsSection">
+        <h2 style="margin-top:22px">
           &#128197; Upcoming Innovation Events &amp; Opportunities
           <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
             — EEN, EIC, EBAN, BpiFrance, ESN and more
           </span>
-        </h2>`;
-        html += `<div class="box muted" style="margin-bottom:10px">
+        </h2>
+        <div class="box muted" style="margin-bottom:10px">
           Matchmaking events, investor days, info days and open opportunities from
           key European innovation networks. Sourced nightly from 8 platforms.
-        </div>`;
-
-        const slicedEvents = eventsToShow.slice(0, visibleEvents);
-        if (!slicedEvents.length) {
-          html += `<div class="box">No matching matchmaking events found.</div>`;
-        } else {
-          slicedEvents.forEach(ev => {
-            const dateStr = ev.date ? `${ev.date}${ev.date_end ? ' — ' + ev.date_end : ''}` : 'Date TBC';
-            const loc     = ev.location ? ` &nbsp;·&nbsp; ${esc(ev.location)}` : '';
-            const desc    = ev.description ? `<div class="meta" style="margin-top:4px">${esc(ev.description)}</div>` : '';
-            html += `<div class="event-card">
-              <span class="event-source">${esc(ev.source)}</span>
-              <h3>${esc(ev.title||'(no title)')}</h3>
-              <div class="meta">${esc(dateStr)}${loc}</div>
-              ${desc}
-              ${ev.url ? `<div class="meta" style="margin-top:4px">
-                <a href="${encodeURI(ev.url)}" target="_blank" rel="noopener noreferrer">${esc(ev.url)}</a>
-              </div>` : ''}
-            </div>`;
-          });
-
-          if (eventsToShow.length > visibleEvents) {
-            html += `<div style="margin:12px 0 4px"><button type="button" id="loadMoreEvents" class="secondary">Load more</button></div>`;
-          }
-        }
-      }
-
-      results.innerHTML = html;
-
-      const moreCalls = document.getElementById('loadMoreCalls');
-      if (moreCalls) {
-        moreCalls.addEventListener('click', function() {
-          visibleCalls += CALLS_STEP;
-          draw();
-        });
-      }
-
-      const moreProgrammes = document.getElementById('loadMoreProgrammes');
-      if (moreProgrammes) {
-        moreProgrammes.addEventListener('click', function() {
-          visibleCalls += CALLS_STEP;
-          draw();
-        });
-      }
-
-      const moreEvents = document.getElementById('loadMoreEvents');
-      if (moreEvents) {
-        moreEvents.addEventListener('click', function() {
-          visibleEvents += EVENTS_STEP;
-          draw();
-        });
-      }
-
-      results.scrollIntoView({behavior:'smooth'});
+        </div>
+        <div id="eventsList"></div>
+        <div id="eventsMoreWrap" style="margin:12px 0 4px"></div>
+      </section>`;
     }
 
-    draw();
+    results.innerHTML = pageHtml;
+
+    const callsList = document.getElementById('callsList');
+    const callsMoreWrap = document.getElementById('callsMoreWrap');
+    const programmesList = document.getElementById('programmesList');
+    const programmesMoreWrap = document.getElementById('programmesMoreWrap');
+    const eventsList = document.getElementById('eventsList');
+    const eventsMoreWrap = document.getElementById('eventsMoreWrap');
+
+    function refreshCallsButton() {
+      if (!callsMoreWrap) return;
+      if (filtered.length > visibleCalls) {
+        callsMoreWrap.innerHTML = `<button type="button" id="loadMoreCalls" class="secondary">Load more</button>`;
+        document.getElementById('loadMoreCalls').addEventListener('click', function() {
+          const start = visibleCalls;
+          visibleCalls = Math.min(visibleCalls + CALLS_STEP, filtered.length);
+          callsList.insertAdjacentHTML('beforeend', filtered.slice(start, visibleCalls).map(renderCallCard).join(''));
+          refreshCallsButton();
+        });
+      } else {
+        callsMoreWrap.innerHTML = '';
+      }
+    }
+
+    function refreshProgrammesButton() {
+      if (!programmesMoreWrap) return;
+      if (msProgs.length > visibleProgrammes) {
+        programmesMoreWrap.innerHTML = `<button type="button" id="loadMoreProgrammes" class="secondary">Load more</button>`;
+        document.getElementById('loadMoreProgrammes').addEventListener('click', function() {
+          const start = visibleProgrammes;
+          visibleProgrammes = Math.min(visibleProgrammes + PROGRAMMES_STEP, msProgs.length);
+          programmesList.insertAdjacentHTML('beforeend', msProgs.slice(start, visibleProgrammes).map(renderProgrammeCard).join(''));
+          refreshProgrammesButton();
+        });
+      } else {
+        programmesMoreWrap.innerHTML = '';
+      }
+    }
+
+    function refreshEventsButton() {
+      if (!eventsMoreWrap) return;
+      if (eventsToShow.length > visibleEvents) {
+        eventsMoreWrap.innerHTML = `<button type="button" id="loadMoreEvents" class="secondary">Load more</button>`;
+        document.getElementById('loadMoreEvents').addEventListener('click', function() {
+          const start = visibleEvents;
+          visibleEvents = Math.min(visibleEvents + EVENTS_STEP, eventsToShow.length);
+          eventsList.insertAdjacentHTML('beforeend', eventsToShow.slice(start, visibleEvents).map(renderEventCard).join(''));
+          refreshEventsButton();
+        });
+      } else {
+        eventsMoreWrap.innerHTML = '';
+      }
+    }
+
+    if (showCalls) {
+      if (!filtered.length) {
+        callsList.innerHTML = `<div class="box">No calls or programmes found. Try adjusting the filters.</div>`;
+      } else {
+        callsList.innerHTML = filtered.slice(0, visibleCalls).map(renderCallCard).join('');
+        refreshCallsButton();
+      }
+
+      if (msProgs.length && programmesList) {
+        programmesList.innerHTML = msProgs.slice(0, visibleProgrammes).map(renderProgrammeCard).join('');
+        refreshProgrammesButton();
+      }
+    }
+
+    if (showEvents) {
+      if (!eventsToShow.length) {
+        eventsList.innerHTML = `<div class="box">No matching matchmaking events found.</div>`;
+      } else {
+        eventsList.innerHTML = eventsToShow.slice(0, visibleEvents).map(renderEventCard).join('');
+        refreshEventsButton();
+      }
+    }
   }
 
   const trlFieldset = document.getElementById('trl_fieldset');
