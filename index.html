@@ -106,15 +106,6 @@
     </fieldset>
 
     <fieldset>
-      <legend>2b) Show results for</legend>
-      <div class="radio">
-        <label><input type="radio" name="results_scope" value="both" checked> Both</label>
-        <label><input type="radio" name="results_scope" value="calls"> Calls and programmes</label>
-        <label><input type="radio" name="results_scope" value="events"> Events only</label>
-      </div>
-    </fieldset>
-
-    <fieldset>
       <legend>3) Thematic area</legend>
       <label for="thematic_cluster">Main thematic area</label>
       <select id="thematic_cluster" name="thematic_cluster" required>
@@ -216,7 +207,18 @@
       <button type="submit">Find matching calls</button>
       <button type="button" id="resetBtn" class="secondary">Reset</button>
     </div>
-  </form>
+  
+
+    <fieldset>
+      <legend>6) What results do you want to see?</legend>
+      <div class="radio">
+        <label><input type="radio" name="results_scope" value="both" checked> Both</label>
+        <label><input type="radio" name="results_scope" value="calls"> Calls and programmes</label>
+        <label><input type="radio" name="results_scope" value="events"> Events only</label>
+      </div>
+    </fieldset>
+
+</form>
 
   <section id="results" class="results" aria-live="polite"></section>
 
