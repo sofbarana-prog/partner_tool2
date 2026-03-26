@@ -185,23 +185,25 @@ def scrape_een() -> list:
 
             link_tag = art.find("a", href=True)
             href = link_tag["href"] if link_tag else ""
-            event_url = href if href.startswith("http") else base + href
-
-            # Date: prova prima il tag <time>, poi fallback su altri elementi / testo
-            time_tag = art.find("time")
+            event_url = href if href.startswith("http") else base + href if href else ""
 
             date_text = ""
-            if time_tag is not None:
+
+            # 1. prova col tag <time>
+            time_tag = art.find("time")
+            if time_tag:
                 date_text = (
-                    time_tag.get("datetime", "") or
-                    time_tag.get_text(strip=True)
+                    (time_tag.get("datetime") or "").strip()
+                    or time_tag.get_text(" ", strip=True)
                 )
 
+            # 2. fallback su elementi con classi legate alla data
             if not date_text:
                 date_el = art.find(class_=re.compile(r"date|day|month|calendar", re.I))
                 if date_el:
                     date_text = date_el.get_text(" ", strip=True)
 
+            # 3. fallback estremo su tutto il testo
             if not date_text:
                 date_text = art.get_text(" ", strip=True)
 
@@ -209,7 +211,7 @@ def scrape_een() -> list:
 
             # Location
             loc_tag = art.find(class_=re.compile(r"location|place|city", re.I))
-            location = loc_tag.get_text(strip=True) if loc_tag else ""
+            location = loc_tag.get_text(" ", strip=True) if loc_tag else ""
 
             full_text = art.get_text(" ", strip=True).lower()
             if not location and "online" in full_text:
