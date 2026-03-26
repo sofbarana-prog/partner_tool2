@@ -155,9 +155,12 @@ def scrape_een() -> list:
     print("EEN…", flush=True)
     events = []
     base = "https://een.ec.europa.eu"
-    url  = f"{base}/events?f[0]=event_date%3Agt%7C{TODAY}T00%3A00%3A00%2B00%3A00%7C{TODAY}T00%3A00%3A00%2B00%3A00&f[1]=t%3A627"
+    url = (
+        f"{base}/events?"
+        f"f[0]=event_date%3Agt%7C{TODAY}T00%3A00%3A00%2B00%3A00%7C{TODAY}T00%3A00%3A00%2B00%3A00"
+        f"&f[1]=t%3A627"
+    )
 
-    # Paginate through results
     page = 0
     while True:
         page_url = url + (f"&page={page}" if page else "")
@@ -167,14 +170,15 @@ def scrape_een() -> list:
 
         articles = soup.find_all("article")
         if not articles:
-            # Try generic event cards
-            articles = soup.find_all(class_=re.compile(r"event|node"))
+            articles = soup.find_all(class_=re.compile(r"event|node", re.I))
 
         found = 0
+
         for art in articles:
             title_tag = art.find(["h3", "h2", "h4"]) or art.find("a")
             if not title_tag:
                 continue
+
             title = title_tag.get_text(strip=True)
             if not title:
                 continue
@@ -183,34 +187,53 @@ def scrape_een() -> list:
             href = link_tag["href"] if link_tag else ""
             event_url = href if href.startswith("http") else base + href
 
-            # Date: look for time tag or text with date patterns
+            # Date: prova prima il tag <time>, poi fallback su altri elementi / testo
             time_tag = art.find("time")
-            date_text = time_tag.get("datetime","") or (time_tag.get_text(strip=True) if time_tag else "")
+
+            date_text = ""
+            if time_tag is not None:
+                date_text = (
+                    time_tag.get("datetime", "") or
+                    time_tag.get_text(strip=True)
+                )
+
+            if not date_text:
+                date_el = art.find(class_=re.compile(r"date|day|month|calendar", re.I))
+                if date_el:
+                    date_text = date_el.get_text(" ", strip=True)
+
             if not date_text:
                 date_text = art.get_text(" ", strip=True)
 
             iso = parse_date(date_text)
 
             # Location
-            loc_tag = art.find(class_=re.compile(r"location|place|city"))
+            loc_tag = art.find(class_=re.compile(r"location|place|city", re.I))
             location = loc_tag.get_text(strip=True) if loc_tag else ""
-            if not location and "online" in art.get_text("",strip=True).lower():
+
+            full_text = art.get_text(" ", strip=True).lower()
+            if not location and "online" in full_text:
                 location = "Online"
 
             if title and is_future_or_ongoing(iso):
                 events.append({
-                    "title": title, "source": "EEN",
-                    "date": iso, "date_end": "",
+                    "title": title,
+                    "source": "EEN",
+                    "date": iso,
+                    "date_end": "",
                     "location": location,
-                    "url": event_url, "description": ""
+                    "url": event_url,
+                    "description": ""
                 })
                 found += 1
 
         if found == 0:
             break
+
         page += 1
         if page > 5:
             break
+
         time.sleep(0.3)
 
     print(f"  → {len(events)} events")
