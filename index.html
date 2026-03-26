@@ -525,6 +525,9 @@
     research:'University / Research org.',public:'Public body'};
 
   function renderResults(answers, filtered) {
+    const scope = answers.results_scope || 'both';
+    const results = document.getElementById('results');
+
     const pills = [
       `Closure: ${answers.closure_year||''} ${answers.closure_quarter||''}`,
       answers.project_nature ? `Nature: ${answers.project_nature}` : 'Nature: any',
@@ -540,153 +543,206 @@
       `Country: ${MS_NAMES[answers.member_state]||''}`
     ].filter(Boolean).map(t=>`<span class="pill">${esc(t)}</span>`).join('');
 
-    let html = `<div class="box"><strong>Your answers</strong><div style="margin-top:8px">${pills}</div></div>`;
-
     if (!CALLS.length) {
-      html += `<div class="box error">No data found. Make sure <code>calls.json</code> is present.</div>`;
-      results.innerHTML = html; return;
+      results.innerHTML = `<div class="box"><strong>Your answers</strong><div style="margin-top:8px">${pills}</div></div><div class="box error">No data found. Make sure <code>calls.json</code> is present.</div>`;
+      return;
     }
 
-    html += `<h2 style="margin-top:14px">Suggested calls (${filtered.length})</h2>`;
+    const thematic = answers.thematic_cluster || '';
+    const THEMATIC_KEYWORDS = {
+      'Health & Life Sciences':               ['health','medic','pharma','biotech','rare disease','cancer','neuro'],
+      'Digital, Industry & Space':            ['digital','ai','artificial intelligence','tech','software','space','data','cyber'],
+      'Climate, Energy & Mobility':           ['climate','energy','green','mobility','transport','hydrogen','battery','clean'],
+      'Food, Bioeconomy & Environment':       ['food','bio','agri','ocean','marine','environment','nature'],
+      'Security & Resilience':                ['security','defence','resilience','cyber','border'],
+      'Culture, Creativity & Inclusion':      ['culture','creative','education','social','inclusion','media'],
+      'SME, Entrepreneurship & Market Uptake':['startup','sme','entrepreneur','venture','invest','scale','fund'],
+      'Climate-neutral & Smart Cities':       ['city','cities','urban','smart city'],
+    };
 
-    if (!filtered.length) {
-      html += `<div class="box">No calls found. Try selecting an earlier project closure date.</div>`;
-      results.innerHTML = html; return;
+    const keywords = THEMATIC_KEYWORDS[thematic] || [];
+    let eventsToShow = EVENTS || [];
+    if (keywords.length) {
+      const relevant = eventsToShow.filter(ev => {
+        const text = ((ev.title||'') + ' ' + (ev.description||'')).toLowerCase();
+        return keywords.some(k => text.includes(k));
+      });
+      const others = eventsToShow.filter(ev => !relevant.includes(ev));
+      eventsToShow = [...relevant, ...others];
     }
 
-    filtered.forEach(c => {
-      const badge = c.is_mission ? `<span class="mission-badge">Mission</span>` : '';
-      const meta  = [
-        c.programme        ? `Programme: ${c.programme}` : '',
-        c.thematic_cluster ? `Area: ${c.thematic_cluster}` : '',
-        c.action           ? `Type of action: ${c.action}` : '',
-        c.opening          ? `Opening: ${c.opening}` : '',
-        c.deadline         ? `Deadline: ${c.deadline}` : '',
-      ].filter(Boolean).join(' · ');
+    const showCalls = scope === 'both' || scope === 'calls';
+    const showEvents = scope === 'both' || scope === 'events';
 
-      const cumulNote = getCumulationNote(c.programme);
-      const cumulHtml = cumulNote
-        ? `<div class="cumul-note">&#9432; <strong>Cumulation with Horizon Europe:</strong> ${esc(cumulNote)}</div>`
-        : '';
+    const CALLS_STEP = 10;
+    const EVENTS_STEP = 10;
+    let visibleCalls = CALLS_STEP;
+    let visibleEvents = EVENTS_STEP;
 
-      const msNote = getMsNote(answers.member_state, c.programme);
-      const msHtml = msNote
-        ? `<div class="ms-note">&#127981; <strong>Regional co-financing note:</strong> ${esc(msNote)}</div>`
-        : '';
+    function draw() {
+      let html = `<div class="box"><strong>Your answers</strong><div style="margin-top:8px">${pills}</div></div>`;
 
-      html += `<div class="${c.is_mission?'call mission':'call'}">
-        <h3>${esc(c.name||'(no title)')}${badge}</h3>
-        <div class="meta">${esc(meta)}</div>
-        ${cumulHtml}${msHtml}
-        ${c.url?`<div class="meta">Link: <a href="${encodeURI(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.url)}</a></div>`:''}
-      </div>`;
-    });
+      if (!filtered.length && !eventsToShow.length) {
+        html += `<div class="box">No results found. Try widening the filters.</div>`;
+        results.innerHTML = html;
+        return;
+      }
 
-    // ── Shared management programmes for selected country ──────────────────
-    const ms = answers.member_state;
-    const wantedT = answers.thematic_cluster || '';
-    if (ms && ms !== 'OTHER' && SHARED.length) {
-      const msProgs = SHARED.filter(p =>
-        p.country_code === ms &&
-        (!wantedT || (p.thematic_clusters || []).includes(wantedT))
-      );
+      if (showCalls) {
+        html += `<h2 style="margin-top:14px">Suggested calls (${filtered.length})</h2>`;
+        if (!filtered.length) {
+          html += `<div class="box">No calls or programmes found. Try adjusting the filters.</div>`;
+        } else {
+          filtered.slice(0, visibleCalls).forEach(c => {
+            const badge = c.is_mission ? `<span class="mission-badge">Mission</span>` : '';
+            const meta  = [
+              c.programme        ? `Programme: ${c.programme}` : '',
+              c.thematic_cluster ? `Area: ${c.thematic_cluster}` : '',
+              c.action           ? `Type of action: ${c.action}` : '',
+              c.opening          ? `Opening: ${c.opening}` : '',
+              c.deadline         ? `Deadline: ${c.deadline}` : '',
+            ].filter(Boolean).join(' · ');
 
-      if (msProgs.length) {
+            const cumulNote = getCumulationNote(c.programme);
+            const cumulHtml = cumulNote
+              ? `<div class="cumul-note">&#9432; <strong>Cumulation with Horizon Europe:</strong> ${esc(cumulNote)}</div>`
+              : '';
+
+            const msNote = getMsNote(answers.member_state, c.programme);
+            const msHtml = msNote
+              ? `<div class="ms-note">&#127981; <strong>Regional co-financing note:</strong> ${esc(msNote)}</div>`
+              : '';
+
+            html += `<div class="${c.is_mission?'call mission':'call'}">
+              <h3>${esc(c.name||'(no title)')}${badge}</h3>
+              <div class="meta">${esc(meta)}</div>
+              ${cumulHtml}${msHtml}
+              ${c.url?`<div class="meta">Link: <a href="${encodeURI(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.url)}</a></div>`:''}
+            </div>`;
+          });
+
+          if (filtered.length > visibleCalls) {
+            html += `<div style="margin:12px 0 4px"><button type="button" id="loadMoreCalls" class="secondary">Carica altre</button></div>`;
+          }
+        }
+
+        const ms = answers.member_state;
+        const wantedT = answers.thematic_cluster || '';
+        if (ms && ms !== 'OTHER' && SHARED.length) {
+          const msProgs = SHARED.filter(p =>
+            p.country_code === ms &&
+            (!wantedT || (p.thematic_clusters || []).includes(wantedT))
+          );
+
+          if (msProgs.length) {
+            html += `<h2 style="margin-top:22px">
+              &#127981; Shared management programmes in ${MS_NAMES[ms]||ms}
+              <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
+                — ERDF / ESF+ / JTF / Interreg (2021-2027)
+              </span>
+            </h2>`;
+            html += `<div class="box muted" style="margin-bottom:10px">
+              These programmes are managed by national or regional authorities.
+              Contact the managing authority directly to enquire about open calls
+              and eligibility conditions.
+            </div>`;
+
+            msProgs.slice(0, visibleCalls).forEach(p => {
+              const themes = (p.thematic_clusters||[]).join(', ');
+              const meta = [
+                p.fund     ? `Fund: ${p.fund}` : '',
+                p.cci      ? `CCI: ${p.cci}` : '',
+                themes     ? `Areas: ${themes}` : '',
+              ].filter(Boolean).join(' · ');
+
+              const contact = [
+                p.managing_authority ? `<strong>${esc(p.managing_authority)}</strong>` : '',
+                p.contact_name       ? esc(p.contact_name) : '',
+                p.email              ? `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : '',
+              ].filter(Boolean).join(' — ');
+
+              html += `<div class="call" style="border-left:4px solid #16a34a">
+                <h3>${esc(p.programme_name||'(no name)')}</h3>
+                <div class="meta">${esc(meta)}</div>
+                <div class="meta" style="margin-top:6px">${contact}</div>
+                ${p.url ? `<div class="meta">Programme page: <a href="${encodeURI(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.url)}</a></div>` : ''}
+              </div>`;
+            });
+
+            if (msProgs.length > visibleCalls) {
+              html += `<div style="margin:12px 0 4px"><button type="button" id="loadMoreProgrammes" class="secondary">Carica altre</button></div>`;
+            }
+          }
+        }
+      }
+
+      if (showEvents) {
         html += `<h2 style="margin-top:22px">
-          &#127981; Shared management programmes in ${MS_NAMES[ms]||ms}
+          &#128197; Upcoming Innovation Events &amp; Opportunities
           <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
-            — ERDF / ESF+ / JTF / Interreg (2021-2027)
+            — EEN, EIC, EBAN, BpiFrance, ESN and more
           </span>
         </h2>`;
         html += `<div class="box muted" style="margin-bottom:10px">
-          These programmes are managed by national or regional authorities.
-          Contact the managing authority directly to enquire about open calls
-          and eligibility conditions.
+          Matchmaking events, investor days, info days and open opportunities from
+          key European innovation networks. Sourced nightly from 8 platforms.
         </div>`;
 
-        msProgs.forEach(p => {
-          const themes = (p.thematic_clusters||[]).join(', ');
-          const meta = [
-            p.fund     ? `Fund: ${p.fund}` : '',
-            p.cci      ? `CCI: ${p.cci}` : '',
-            themes     ? `Areas: ${themes}` : '',
-          ].filter(Boolean).join(' · ');
+        const slicedEvents = eventsToShow.slice(0, visibleEvents);
+        if (!slicedEvents.length) {
+          html += `<div class="box">No matching matchmaking events found.</div>`;
+        } else {
+          slicedEvents.forEach(ev => {
+            const dateStr = ev.date ? `${ev.date}${ev.date_end ? ' — ' + ev.date_end : ''}` : 'Date TBC';
+            const loc     = ev.location ? ` &nbsp;·&nbsp; ${esc(ev.location)}` : '';
+            const desc    = ev.description ? `<div class="meta" style="margin-top:4px">${esc(ev.description)}</div>` : '';
+            html += `<div class="event-card">
+              <span class="event-source">${esc(ev.source)}</span>
+              <h3>${esc(ev.title||'(no title)')}</h3>
+              <div class="meta">${esc(dateStr)}${loc}</div>
+              ${desc}
+              ${ev.url ? `<div class="meta" style="margin-top:4px">
+                <a href="${encodeURI(ev.url)}" target="_blank" rel="noopener noreferrer">${esc(ev.url)}</a>
+              </div>` : ''}
+            </div>`;
+          });
 
-          const contact = [
-            p.managing_authority ? `<strong>${esc(p.managing_authority)}</strong>` : '',
-            p.contact_name       ? esc(p.contact_name) : '',
-            p.email              ? `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : '',
-          ].filter(Boolean).join(' — ');
-
-          html += `<div class="call" style="border-left:4px solid #16a34a">
-            <h3>${esc(p.programme_name||'(no name)')}</h3>
-            <div class="meta">${esc(meta)}</div>
-            <div class="meta" style="margin-top:6px">${contact}</div>
-            ${p.url ? `<div class="meta">Programme page: <a href="${encodeURI(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.url)}</a></div>` : ''}
-          </div>`;
-        });
-      }
-    }
-
-    // ── Innovation events section ────────────────────────────────────────────
-    if (EVENTS.length) {
-      html += `<h2 style="margin-top:22px">
-        &#128197; Upcoming Innovation Events &amp; Opportunities
-        <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
-          — EEN, EIC, EBAN, BpiFrance, ESN and more
-        </span>
-      </h2>`;
-      html += `<div class="box muted" style="margin-bottom:10px">
-        Matchmaking events, investor days, info days and open opportunities from
-        key European innovation networks. Sourced nightly from 8 platforms.
-      </div>`;
-
-      // Optional: filter by keyword from thematic area
-      const thematic = answers.thematic_cluster || '';
-      const THEMATIC_KEYWORDS = {
-        'Health & Life Sciences':               ['health','medic','pharma','biotech','rare disease','cancer','neuro'],
-        'Digital, Industry & Space':            ['digital','ai','artificial intelligence','tech','software','space','data','cyber'],
-        'Climate, Energy & Mobility':           ['climate','energy','green','mobility','transport','hydrogen','battery','clean'],
-        'Food, Bioeconomy & Environment':       ['food','bio','agri','ocean','marine','environment','nature'],
-        'Security & Resilience':                ['security','defence','resilience','cyber','border'],
-        'Culture, Creativity & Inclusion':      ['culture','creative','education','social','inclusion','media'],
-        'SME, Entrepreneurship & Market Uptake':['startup','sme','entrepreneur','venture','invest','scale','fund'],
-        'Climate-neutral & Smart Cities':       ['city','cities','urban','smart city'],
-      };
-
-      const keywords = THEMATIC_KEYWORDS[thematic] || [];
-
-      let eventsToShow = EVENTS;
-      if (keywords.length) {
-        const relevant = EVENTS.filter(ev => {
-          const text = ((ev.title||'') + ' ' + (ev.description||'')).toLowerCase();
-          return keywords.some(k => text.includes(k));
-        });
-        // Show relevant first, then others
-        const others = EVENTS.filter(ev => !relevant.includes(ev));
-        eventsToShow = [...relevant, ...others].slice(0, 20);
-      } else {
-        eventsToShow = EVENTS.slice(0, 20);
+          if (eventsToShow.length > visibleEvents) {
+            html += `<div style="margin:12px 0 4px"><button type="button" id="loadMoreEvents" class="secondary">Carica altre</button></div>`;
+          }
+        }
       }
 
-      eventsToShow.forEach(ev => {
-        const dateStr = ev.date ? `${ev.date}${ev.date_end ? ' — ' + ev.date_end : ''}` : 'Date TBC';
-        const loc     = ev.location ? ` &nbsp;·&nbsp; ${esc(ev.location)}` : '';
-        const desc    = ev.description ? `<div class="meta" style="margin-top:4px">${esc(ev.description)}</div>` : '';
-        html += `<div class="event-card">
-          <span class="event-source">${esc(ev.source)}</span>
-          <h3>${esc(ev.title||'(no title)')}</h3>
-          <div class="meta">${esc(dateStr)}${loc}</div>
-          ${desc}
-          ${ev.url ? `<div class="meta" style="margin-top:4px">
-            <a href="${encodeURI(ev.url)}" target="_blank" rel="noopener noreferrer">${esc(ev.url)}</a>
-          </div>` : ''}
-        </div>`;
-      });
+      results.innerHTML = html;
+
+      const moreCalls = document.getElementById('loadMoreCalls');
+      if (moreCalls) {
+        moreCalls.addEventListener('click', function() {
+          visibleCalls += CALLS_STEP;
+          draw();
+        });
+      }
+
+      const moreProgrammes = document.getElementById('loadMoreProgrammes');
+      if (moreProgrammes) {
+        moreProgrammes.addEventListener('click', function() {
+          visibleCalls += CALLS_STEP;
+          draw();
+        });
+      }
+
+      const moreEvents = document.getElementById('loadMoreEvents');
+      if (moreEvents) {
+        moreEvents.addEventListener('click', function() {
+          visibleEvents += EVENTS_STEP;
+          draw();
+        });
+      }
+
+      results.scrollIntoView({behavior:'smooth'});
     }
 
-    results.innerHTML = html;
-    results.scrollIntoView({behavior:'smooth'});
+    draw();
   }
 
   const trlFieldset = document.getElementById('trl_fieldset');
@@ -703,6 +759,21 @@
     input.addEventListener('change', syncTlrField);
   });
   syncTlrField();
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  function syncSubmitLabel() {
+    const scope = form.querySelector('input[name="results_scope"]:checked')?.value || 'both';
+    if (!submitBtn) return;
+    if (scope === 'calls') submitBtn.textContent = 'Find matching calls';
+    else if (scope === 'events') submitBtn.textContent = 'Find matchmaking events';
+    else submitBtn.textContent = 'Find calls and events';
+  }
+
+  form.querySelectorAll('input[name="results_scope"]').forEach(input => {
+    input.addEventListener('change', syncSubmitLabel);
+  });
+  syncSubmitLabel();
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -721,7 +792,12 @@
     renderResults(answers, filterCalls(answers));
   });
 
-  resetBtn.addEventListener('click', function() { form.reset(); results.innerHTML = ''; });
+  resetBtn.addEventListener('click', function() {
+    form.reset();
+    syncTlrField();
+    syncSubmitLabel();
+    results.innerHTML = '';
+  });
 })();
 </script>
 </body>
