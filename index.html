@@ -484,7 +484,7 @@
     return out
       .filter(c => c._score >= 20)
       .sort((a,b) => b._score !== a._score ? b._score-a._score : (a._deadline||'').localeCompare(b._deadline||''))
-      .slice(0,30);
+      ;
   }
 
   // ── Cumulation notes ──────────────────────────────────────────────────────
@@ -576,7 +576,7 @@
 
     const CALLS_STEP = 10;
     const EVENTS_STEP = 10;
-    let visibleCalls = CALLS_STEP;
+    let visibleCalls = Math.min(30, filtered.length);
     let visibleEvents = EVENTS_STEP;
 
     function draw() {
