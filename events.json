@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-27T06:22:48.638252+00:00",
-  "count": 81,
+  "generated": "2026-03-28T06:40:01.608199+00:00",
+  "count": 84,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -71,7 +71,7 @@
       "date": "2026-03-31",
       "date_end": "",
       "location": "",
-      "url": "https://een.ec.europa.eu/events/women-entrepreneurship-e-catalogue-pitch-networking-enterprise-europe-network",
+      "url": "https://een.ec.europa.eu/events/women-entrepreneurship-e-catalogue-pitch-networking-hybrid-event-een-portugal",
       "description": ""
     },
     {
@@ -99,6 +99,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/connect2slovenia-2026-metalplastic",
+      "description": ""
+    },
+    {
+      "title": "International business meetings at the 27th International Business Fair Mostar 2026",
+      "source": "EEN",
+      "date": "2026-04-16",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/international-business-meetings-27th-international-business-fair-mostar-2026",
       "description": ""
     },
     {
@@ -158,6 +167,24 @@
     {
       "title": "Filter by",
       "source": "EEN",
+      "date": "2026-04-29",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/textiles-age-ai-smart-manufacturing-and-digital-innovation",
+      "description": ""
+    },
+    {
+      "title": "Networking event at the Plastic Recycling Show Europe - PRSE",
+      "source": "EEN",
+      "date": "2026-05-05",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/networking-event-plastic-recycling-show-europe-prse",
+      "description": ""
+    },
+    {
+      "title": "Business Forum: Istrian Region – Montenegro",
+      "source": "EEN",
       "date": "2026-05-05",
       "date_end": "",
       "location": "",
@@ -171,15 +198,6 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/matchmaking-eastern-finland-energy-days-2026",
-      "description": ""
-    },
-    {
-      "title": "Networking event at the Plastic Recycling Show Europe - PRSE",
-      "source": "EEN",
-      "date": "2026-05-06",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/networking-event-plastic-recycling-show-europe-prse",
       "description": ""
     },
     {
@@ -219,12 +237,12 @@
       "description": ""
     },
     {
-      "title": "B2B @ Waste Management Europe 2026",
+      "title": "B2B Meetings about Çanakkale Tourism",
       "source": "EEN",
-      "date": "2026-05-21",
+      "date": "2026-05-07",
       "date_end": "",
       "location": "",
-      "url": "https://een.ec.europa.eu/events/b2b-waste-management-europe-2026",
+      "url": "https://een.ec.europa.eu/events/b2b-meetings-about-canakkale-tourism-0",
       "description": ""
     },
     {
@@ -237,11 +255,11 @@
       "description": ""
     },
     {
-      "title": "chii 2026 - Conference & Matchmaking Event for Hyperspectral Imaging in Industry 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-21",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/chii-2026-conference-matchmaking-event-hyperspectral-imaging-industry-2026",
       "description": ""
     },
@@ -255,11 +273,20 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Textile Connect 2026",
+      "source": "EEN",
+      "date": "2026-05-27",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/textile-connect-2026",
+      "description": ""
+    },
+    {
+      "title": "OPD2026 Matchmaking",
       "source": "EEN",
       "date": "2026-05-28",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/opd2026-matchmaking",
       "description": ""
     },
@@ -327,11 +354,11 @@
       "description": ""
     },
     {
-      "title": "EEN Matchmaking at TAIWAN EXPO in EUROPE",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-24",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/een-matchmaking-taiwan-expo-europe-0",
       "description": ""
     },
@@ -345,6 +372,15 @@
       "description": ""
     },
     {
+      "title": "B2B TORINO FASHION MATCH 2026",
+      "source": "EEN",
+      "date": "2026-07-02",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
+      "description": ""
+    },
+    {
       "title": "Bharat TEX 2026",
       "source": "EEN",
       "date": "2026-07-17",
@@ -354,11 +390,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "IFAT India 2026",
       "source": "EEN",
       "date": "2026-09-11",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/ifat-india-2026",
       "description": ""
     },
@@ -408,7 +444,7 @@
       "description": ""
     },
     {
-      "title": "Bengaluru Tech Summit 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-11-20",
       "date_end": "",
@@ -432,15 +468,6 @@
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/edf-partner-pool",
-      "description": ""
-    },
-    {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-03-27T00%3A00%3A00%2B00%3A00%7C2026-03-27T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
       "description": ""
     },
     {
