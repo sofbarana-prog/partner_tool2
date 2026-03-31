@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-31T07:19:43.718515+00:00",
-  "count": 81,
+  "generated": "2026-03-31T09:56:32.585329+00:00",
+  "count": 82,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -327,6 +327,15 @@
       "description": ""
     },
     {
+      "title": "Open de l'International 2026",
+      "source": "EEN",
+      "date": "2026-06-29",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/open-de-linternational-2026",
+      "description": ""
+    },
+    {
       "title": "Matchmaking@GITEX AI EUROPE 2026",
       "source": "EEN",
       "date": "2026-07-01",
@@ -345,20 +354,20 @@
       "description": ""
     },
     {
-      "title": "Bharat TEX 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-17",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/bharat-tex-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "IFAT India 2026",
       "source": "EEN",
       "date": "2026-09-11",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/ifat-india-2026",
       "description": ""
     },
