@@ -120,42 +120,138 @@ URL_RULES = [
     ("MISS","SOIL",  "6",     "Food, Bioeconomy, Natural Resources, Agriculture and Environment","Food, Bioeconomy & Environment"),
     ("MISS","CROSS", "",      "",                                              "Cross-cutting / Other"),
     ("HLTH",    None,"1",     "Health",                                        "Health & Life Sciences"),
-    ("EIC",     None,"",      "",                                              "SME, Entrepreneurship & Market Uptake"),
-    ("EIE",     None,"",      "",                                              "SME, Entrepreneurship & Market Uptake"),
-    ("EIT",     None,"",      "",                                              "SME, Entrepreneurship & Market Uptake"),
-    ("CID",     None,"5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
-    ("EURATOM", None,"5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
-    ("EUROHPC", None,"4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
-    ("JU-CLEAN-AVIATION",None,"","",                                           "Clean Aviation"),
-    ("JU-",     None,"",      "",                                              "Climate, Energy & Mobility"),
-    ("MSCA",    None,"",      "",                                              "Cross-cutting / Other"),
-    ("NEB",     None,"",      "",                                              "Climate-neutral & Smart Cities"),
-    ("RAISE",   None,"",      "",                                              "Cross-cutting / Other"),
-    ("WIDERA",  None,"",      "",                                              "Cross-cutting / Other"),
-    ("INFRA",   None,"",      "",                                              "Cross-cutting / Other"),
-    ("AGRIP",   None,"6",     "Food, Bioeconomy, Natural Resources, Agriculture and Environment","Food, Bioeconomy & Environment"),
-    ("EUAF",    None,"",      "",                                              "Cross-cutting / Other"),
-    ("DIGITAL", None,"4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
-    ("UCPM",    None,"",      "",                                              "Cross-cutting / Other"),
-    ("RFCS",    None,"5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
-    ("EUBA",    None,"",      "",                                              "External Action & International Cooperation"),
-    ("PPPA","CHIPS","4",      "Digital, Industry and Space",                   "Digital, Industry & Space"),
-    ("PPPA","MEDIA","",       "",                                              "Culture, Creativity & Inclusion"),
-    ("PPPA",    None,"4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
-    ("RENEWFM", None,"5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
-    ("SOCPL",   None,"",      "",                                              "Culture, Creativity & Inclusion"),
-    ("ERC",     None,"",      "",                                              "Cross-cutting / Other"),
-    ("EMFAF",   None,"6",     "Food, Bioeconomy, Natural Resources, Agriculture and Environment","Food, Bioeconomy & Environment"),
-    ("JUST",    None,"",      "",                                              "Culture, Creativity & Inclusion"),
-    ("I3",      None,"",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+    ("EIC",      None,  "",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+    ("EIE",      None,  "",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+    # EIT: EITUM-BP is Cities mission; other EIT → SME
+    ("EITUM-BP", None,  "M-CIT", "Climate-neutral & Smart Cities",               "Climate-neutral & Smart Cities"),
+    ("EIT",      None,  "",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+    ("CID",      None,  "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("EURATOM",  None,  "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("EUROHPC",  None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("JU-CLEAN-AVIATION",None,"","",                                              "Clean Aviation"),
+    ("JU-",      None,  "",      "",                                              "Climate, Energy & Mobility"),
+    ("MSCA",     None,  "",      "",                                              "Cross-cutting / Other"),
+    ("NEB",      None,  "",      "",                                              "Climate-neutral & Smart Cities"),
+    # RAISE → Digital/AI in Science
+    ("RAISE",    None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("WIDERA",   None,  "",      "",                                              "Cross-cutting / Other"),
+    # INFRA subcodes
+    ("CL3","INFRA",    "3",     "Civil Security for Society",                    "Security & Resilience"),
+    ("INFRA","TECH",   "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("INFRA","SERV",   "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("INFRA","DEV",    "",      "",                                              "Cross-cutting / Other"),
+    ("INFRA","EOSC",   "",      "",                                              "Cross-cutting / Other"),
+    ("INFRA",    None,  "",      "",                                              "Cross-cutting / Other"),
+    ("AGRIP",    None,  "6",     "Food, Bioeconomy, Natural Resources, Agriculture and Environment","Food, Bioeconomy & Environment"),
+    # EUAF → Digital
+    ("EUAF",     None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("DIGITAL",  None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("UCPM",     None,  "",      "",                                              "Cross-cutting / Other"),
+    ("RFCS",     None,  "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("EUBA",     None,  "",      "",                                              "External Action & International Cooperation"),
+    ("PPPA","CHIPS",   "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("PPPA","MEDIA",   "",      "",                                              "Culture, Creativity & Inclusion"),
+    ("PPPA",     None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("RENEWFM",  None,  "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("SOCPL",    None,  "",      "",                                              "Culture, Creativity & Inclusion"),
+    ("ERC",      None,  "",      "",                                              "Cross-cutting / Other"),
+    ("EMFAF",    None,  "6",     "Food, Bioeconomy, Natural Resources, Agriculture and Environment","Food, Bioeconomy & Environment"),
+    ("JUST",     None,  "",      "",                                              "Culture, Creativity & Inclusion"),
+    ("I3",       None,  "",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+]
+
+# Numeric-ID call classification by known acronym in name
+NUMERIC_ID_NAME_RULES = [
+    ("OHAMR",       "Health & Life Sciences"),
+    ("ERA4HEALTH",  "Health & Life Sciences"),
+    ("ERA4 HEALTH", "Health & Life Sciences"),
+    ("BRAINHEALTH", "Health & Life Sciences"),
+    ("EP BRAINHEALTH","Health & Life Sciences"),
+    ("ERDERA",      "Health & Life Sciences"),
+    ("BE READY",    "Health & Life Sciences"),
+    ("OVERWEIGHT",  "Health & Life Sciences"),
+    ("OBESITY",     "Health & Life Sciences"),
+    ("CARDIOVASC",  "Health & Life Sciences"),
+    ("CLINICAL TRIAL","Health & Life Sciences"),
+    ("NEUROSCI",    "Health & Life Sciences"),
+    ("RARE DISEASE","Health & Life Sciences"),
+    ("EITUM",       "Climate-neutral & Smart Cities"),
+    ("URBAN MOBILITY","Climate-neutral & Smart Cities"),
+    ("DRIVING URBAN","Climate-neutral & Smart Cities"),
+    ("EIC AWARDEE", "SME, Entrepreneurship & Market Uptake"),
+    ("INNOMATCH",   "SME, Entrepreneurship & Market Uptake"),
+    ("STARTUP",     "SME, Entrepreneurship & Market Uptake"),
+    ("FOOD SUSTAINABILITY","Food, Bioeconomy & Environment"),
+    ("MARINE BIODIVERSITY","Food, Bioeconomy & Environment"),
+    ("BLUEACTION",  "Food, Bioeconomy & Environment"),
+    ("TASC-RESTOREMED","Food, Bioeconomy & Environment"),
+    ("RESTORE",     "Food, Bioeconomy & Environment"),
+    ("FERMENTED",   "Food, Bioeconomy & Environment"),
 ]
 
 URL_BENEFICIARY_OVERRIDE = {
     "MSCA":  ["Research organisation"],
     "INFRA": ["Research organisation"],
-    "EUAF":  ["Research organisation"],
     "EUBA":  ["Public body"],
 }
+
+SPECIAL_BASIC_RESEARCH_CATEGORY = "Internships, fellowships & scholarships"
+SPECIAL_TITLE_KEYWORDS = ["internship","internships","fellowship","fellowships","msca","scholarship","scholarships"]
+TOPIC_KEYWORDS = {
+    "Health & Life Sciences": ["health","biotech","biotechnology","pharma","pharmaceutical","therapeutic","medical","diagnostic","genomic","genomics","public health","clinical"],
+    "Culture, Creativity & Inclusion": ["culture","creative","heritage","museum","archive","inclusion","social inclusion","democracy","education","skills"],
+    "Security & Resilience": ["security","cybersecurity","cyber security","disaster resilience","emergency","critical infrastructure","civil protection","border security"],
+    "Digital, Industry & Space": ["digital","artificial intelligence","machine learning","generative ai","data space","data sharing","cloud","edge","software","semiconductor","microelectronics","quantum","robotics","space","satellite"],
+    "Climate, Energy & Mobility": ["climate","adaptation","mitigation","energy","electricity","power system","grid","hydrogen","battery","batteries","mobility","transport","renewable","solar","photovoltaic","wind","storage","smart grid","building renovation","built environment","city","cities"],
+    "Food, Bioeconomy & Environment": ["agriculture","farming","crop","food system","bioeconomy","biodiversity","forestry","soil","water resources","environment","ecosystem","marine"],
+    "Defence": ["defence","defense","dual-use","dual use","military"],
+    "SME, Entrepreneurship & Market Uptake": ["sme","startup","entrepreneurship","venture","scale-up","market uptake","innovation uptake"],
+    "External Action & International Cooperation": ["international cooperation","development cooperation","global south","partner countries","external action"],
+    "Climate-neutral & Smart Cities": ["smart city","smart cities","climate-neutral city","urban transition","city mission"],
+    "Healthy Oceans, Seas, Coastal & Inland Waters": ["ocean","oceans","sea","seas","coastal","inland waters","marine","blue economy"],
+    "Clean Aviation": ["aviation","aircraft","aeronautics","sustainable aviation"],
+    "Cross-cutting / Other": ["interdisciplinary","cross-cutting","widening","research infrastructure","eosc"],
+}
+
+def escape_rx(s: str) -> str:
+    return re.escape(s or "")
+
+def text_has_keyword(text: str, keyword: str) -> bool:
+    return bool(re.search(rf"(?<![A-Za-z]){escape_rx(keyword.lower())}(?![A-Za-z])", (text or "").lower()))
+
+def keyword_hits_for_thematic(text: str, thematic: str):
+    hits = []
+    for kw in TOPIC_KEYWORDS.get(thematic, []):
+        if text_has_keyword(text, kw):
+            hits.append(kw)
+    return list(dict.fromkeys(hits))
+
+def title_is_special_basic_research(title: str) -> bool:
+    tl = (title or "").lower()
+    return any(text_has_keyword(tl, kw) for kw in SPECIAL_TITLE_KEYWORDS)
+
+def classify_multitopic(name: str, full_text: str, thematic: str):
+    text = re.sub(r"\s+", " ", (full_text or "")).strip().lower()
+    keyword_hits = {}
+    multi_thematic = []
+    for area in TOPIC_KEYWORDS:
+        hits = keyword_hits_for_thematic(text, area)
+        if hits:
+            keyword_hits[area] = hits
+            multi_thematic.append(area)
+
+    special = title_is_special_basic_research(name)
+    if special:
+        keyword_hits[SPECIAL_BASIC_RESEARCH_CATEGORY] = [kw for kw in SPECIAL_TITLE_KEYWORDS if text_has_keyword((name or "").lower(), kw)]
+        if SPECIAL_BASIC_RESEARCH_CATEGORY not in multi_thematic:
+            multi_thematic.append(SPECIAL_BASIC_RESEARCH_CATEGORY)
+
+    return {
+        "full_text": text,
+        "keyword_hits": keyword_hits,
+        "multi_thematic": multi_thematic,
+        "is_special_basic_research": special,
+    }
 
 # ── Classificazione ───────────────────────────────────────────────────────────
 
@@ -173,11 +269,20 @@ def url_classify(url: str):
         if prefix not in tid:
             continue
         if subcode is not None:
-            if f"-{subcode}-" not in tid and not tid.endswith(f"-{subcode}"):
+            # subcode can appear anywhere in the topic id
+            if subcode not in tid:
                 continue
         benef = URL_BENEFICIARY_OVERRIDE.get(prefix, None)
         return c_num, c_label, thematic, benef
     return "", "", "", None
+
+def name_classify(name: str) -> str:
+    """Fallback classification for numeric-ID calls based on known name keywords."""
+    name_up = (name or "").upper()
+    for keyword, thematic in NUMERIC_ID_NAME_RULES:
+        if keyword.upper() in name_up:
+            return thematic
+    return ""
 
 def prog_thematic(prog: str) -> str:
     pl = (prog or "").lower()
@@ -346,6 +451,73 @@ def extract_links(page):
 
 # ── Parsing card dalla lista ──────────────────────────────────────────────────
 
+# ── Budget extraction dal dettaglio topic ─────────────────────────────────────
+
+def topic_id_from_url(url: str) -> str:
+    s = (url or "").split("?")[0]
+    for marker in ["/topic-details/", "/competitive-calls-cs/"]:
+        i = s.lower().find(marker)
+        if i >= 0:
+            return s[i + len(marker):]
+    return s.rsplit("/", 1)[-1] if s else ""
+
+def extract_budget_per_project(page, topic_id: str) -> str | None:
+    """
+    Estrae il budget per progetto dalla sezione 'Topic conditions and documents'.
+    """
+    if not topic_id:
+        return None
+
+    parts = topic_id.split("?")[0].split("-")
+    target_match = "-".join(parts[-2:]) if len(parts) > 1 else parts[-1]
+
+    try:
+        section_btn = page.locator("button:has-text('Topic conditions and documents')").first
+        if section_btn.count() > 0:
+            section_btn.scroll_into_view_if_needed()
+            expanded = section_btn.get_attribute("aria-expanded")
+            if expanded == "false":
+                section_btn.click(force=True)
+                page.wait_for_timeout(3000)
+
+        row_locator = page.locator(f"tr:has-text('{target_match}'), .wt-table-row:has-text('{target_match}')").first
+        if row_locator.count() > 0:
+            row_locator.scroll_into_view_if_needed()
+            page.wait_for_timeout(1000)
+
+        budget = page.evaluate(
+            """
+            (shortId) => {
+                const allElements = Array.from(document.querySelectorAll('tr, .wt-table-row'));
+                const targetRow = allElements.find(el => (el.innerText || '').includes(shortId));
+                if (!targetRow) return null;
+                const cells = Array.from(targetRow.querySelectorAll('td, .wt-table-cell'))
+                    .map(c => (c.innerText || '').trim())
+                    .filter(Boolean);
+                const candidates = cells.filter(txt => {
+                    const hasMoney =
+                        txt.includes('€') ||
+                        /\beur\b/i.test(txt) ||
+                        /\bmillion\b/i.test(txt) ||
+                        /\bmeur\b/i.test(txt);
+                    const isDate = /202[0-9]/.test(txt) && txt.length < 20;
+                    return hasMoney && !isDate;
+                });
+                if (!candidates.length) return null;
+                const specific = candidates.find(b => /around|to|between/i.test(b));
+                return specific || candidates[candidates.length - 1];
+            }
+            """,
+            target_match,
+        )
+
+        if budget:
+            return re.sub(r"\s+", " ", str(budget)).strip()
+        return None
+
+    except Exception:
+        return None
+
 def parse_card(page, full_url: str) -> dict:
     path = full_url.replace("https://ec.europa.eu","").split("?")[0]
     a = page.locator(f'a[href*="{path}"]').first
@@ -386,8 +558,7 @@ def _first(meta, *keys):
     return ""
 
 def _enrich_one(page, row: dict) -> bool:
-    """Apre una pagina di dettaglio e cattura i campi mancanti via XHR.
-    Restituisce True se almeno un campo è stato recuperato."""
+    """Apre una pagina di dettaglio, cattura i campi mancanti via XHR e salva anche il testo completo della call."""
     url      = row["url"]
     captured = {}
 
@@ -413,6 +584,19 @@ def _enrich_one(page, row: dict) -> bool:
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=30_000)
         page.wait_for_timeout(2500)
+        try:
+            body_text = page.locator("body").inner_text(timeout=5000)
+        except Exception:
+            body_text = ""
+        row["full_text"] = clean(body_text) or ""
+
+        try:
+            topic_id = topic_id_from_url(url)
+            budget = extract_budget_per_project(page, topic_id)
+            if budget:
+                row["budget"] = budget
+        except Exception:
+            pass
     except Exception as e:
         print(f"    [ERR goto] {e}", flush=True)
     finally:
@@ -425,7 +609,7 @@ def _enrich_one(page, row: dict) -> bool:
     if captured.get("call_id") and not row.get("call_id"):
         row["call_id"] = captured["call_id"]
 
-    return bool(captured)
+    return bool(captured) or bool(row.get("full_text"))
 
 
 def enrich(ctx, rows: list):
@@ -496,12 +680,15 @@ def to_call(row: dict) -> dict:
         cluster_num = u_cnum
 
     cluster_label = u_clabel or THEMATIC_MAP.get(cluster_num, "")
-    thematic      = u_thematic or resolve_thematic(cluster_num, prog_raw)
+    thematic      = u_thematic or resolve_thematic(cluster_num, prog_raw) or name_classify(row.get("name",""))
     action        = normalize_action(action_raw)
     is_mission    = bool("/HORIZON-MISS" in url.upper())
 
     opening_raw  = row.get("opening_raw") or ""
     deadline_raw = row.get("deadline_raw") or ""
+
+    full_text = row.get("full_text") or ""
+    multi = classify_multitopic(row.get("name") or "", full_text, thematic)
 
     return {
         "name":             row.get("name") or "",
@@ -511,6 +698,7 @@ def to_call(row: dict) -> dict:
         "cluster_label":    cluster_label,
         "thematic_cluster": thematic,
         "action":           action,
+        "budget":           row.get("budget") or "",
         "opening":          opening_raw,
         "opening_iso":      parse_date_iso(opening_raw),
         "deadline":         deadline_raw,
@@ -518,6 +706,10 @@ def to_call(row: dict) -> dict:
         "url":              url,
         "is_mission":       is_mission,
         "beneficiary_hint": beneficiary_hint(action, prog_raw, u_benef),
+        "full_text":        multi["full_text"],
+        "keyword_hits":     multi["keyword_hits"],
+        "multi_thematic":   multi["multi_thematic"],
+        "is_special_basic_research": multi["is_special_basic_research"],
     }
 
 # ── Changelog ────────────────────────────────────────────────────────────────
