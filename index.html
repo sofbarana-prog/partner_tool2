@@ -1,841 +1,941 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>EU Funding Call Matcher — Partners</title>
-  <style>
-    :root {
-      --max-width:1120px;--gap:12px;--bg:#fafafa;--card:#fff;
-      --border:#e6e6e6;--text:#1f2937;--muted:#6b7280;
-      --primary:#2563eb;--secondary:#6b7280;
-      font-family:system-ui,Arial,sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{margin:24px;display:flex;justify-content:center;background:var(--bg);color:var(--text)}
-    .page{width:100%;max-width:var(--max-width)}
-    h1{margin:0 0 10px;font-size:1.8rem}
-    .intro{color:var(--muted);margin:0 0 18px;line-height:1.45}
-    fieldset{border:1px solid var(--border);padding:16px;border-radius:12px;margin-bottom:14px;background:var(--card)}
-    legend{font-weight:700;padding:0 8px}
-    label{display:block;margin-top:8px;font-weight:600}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
-    select{width:100%;padding:10px 12px;border:1px solid #cfcfcf;border-radius:10px;background:white;font-size:.97rem}
-    .radio{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
-    .radio label{font-weight:500;margin:0;display:flex;gap:6px;align-items:center}
-    .actions{display:flex;gap:12px;margin-top:10px;align-items:center;flex-wrap:wrap}
-    button{padding:10px 14px;border-radius:10px;border:0;background:var(--primary);color:#fff;font-weight:700;cursor:pointer;font-size:.95rem}
-    .secondary{background:var(--secondary)}
-    .box{background:#f7f7f7;padding:12px;border-radius:10px;border:1px solid #e9e9e9;margin-bottom:12px}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #ddd;margin:0 8px 6px 0;font-size:.9rem;background:#fff}
-    .results{margin-top:18px}
-    .call{border:1px solid #ececec;border-radius:12px;padding:14px;margin-bottom:12px;background:#fff}
-    .call.mission{border-left:4px solid #f59e0b;background:#fffbeb}
-    .call h3{margin:0 0 8px;font-size:1.02rem;line-height:1.35}
-    .mission-badge{display:inline-block;background:#f59e0b;color:#fff;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle}
-    .meta{color:#555;font-size:.94rem;margin-top:6px;word-break:break-word;line-height:1.45}
-    .muted{color:var(--muted);font-size:.9rem}
-    .error{color:#b30000}
-    footer{margin-top:20px;color:var(--muted);font-size:.9rem}
-    .cumul-note{margin-top:8px;padding:7px 10px;background:#f0f7ff;border-left:3px solid #2563eb;border-radius:0 6px 6px 0;font-size:.87rem;color:#1e3a5f;line-height:1.45}
-    .cumul-note strong,.ms-note strong{font-weight:600}
-    .ms-note{margin-top:8px;padding:7px 10px;background:#f0fdf4;border-left:3px solid #16a34a;border-radius:0 6px 6px 0;font-size:.87rem;color:#14532d;line-height:1.45}
-    .event-card{border:1px solid #ececec;border-radius:12px;padding:14px;margin-bottom:10px;background:#fff}
-    .event-card h3{margin:0 0 6px;font-size:1rem;line-height:1.35}
-    .event-source{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.78rem;font-weight:700;background:#e0f2fe;color:#0369a1;margin-bottom:6px}
-    @media(max-width:760px){.row{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-<div class="page">
-  <h1>EU Funding Call Matcher — Partners</h1>
-  <p class="intro">
-    This tool suggests EU funding calls compatible with your project profile.
-    It assumes your project is currently funded by Horizon Europe and helps identify
-    complementary or follow-on funding opportunities.
-  </p>
+"""
+scrape_to_json.py
+─────────────────
+Scrapa il portale EU Funding & Tenders con Playwright e produce calls.json
+direttamente, senza passare per Excel.
+Incorpora tutta la logica di classificazione di make_calls_json.py.
 
-  <div id="lastUpdated" class="box muted" style="display:none;margin-bottom:14px"></div>
+Uso:
+    python scrape_to_json.py              # scrive calls.json nella cartella corrente
+    python scrape_to_json.py --out /path  # percorso custom
+"""
 
-  <form id="survey">
+import re
+import math
+import time
+import json
+import argparse
+from datetime import datetime, timezone
+from pathlib import Path
 
-    <fieldset>
-      <legend>1) Project closure timeframe</legend>
-      <div class="row">
-        <div>
-          <label for="closure_year">Closing year</label>
-          <select id="closure_year" name="closure_year" required>
-            <option value="" selected disabled>Select…</option>
-            <option>2026</option><option>2027</option><option>2028</option>
-            <option>2029</option><option>2030</option>
-          </select>
-        </div>
-        <div>
-          <label for="closure_quarter">Quarter</label>
-          <select id="closure_quarter" name="closure_quarter" required>
-            <option value="" selected disabled>Select…</option>
-            <option>Q1</option><option>Q2</option><option>Q3</option><option>Q4</option>
-          </select>
-        </div>
-      </div>
-    </fieldset>
+from playwright.sync_api import sync_playwright
 
-    <fieldset>
-      <legend>2) Research nature <span style="font-weight:400;color:#6b7280">(optional)</span></legend>
-      <div class="radio">
-        <label><input type="radio" name="project_nature" value="" checked> Any</label>
-        <label><input type="radio" name="project_nature" value="basic"> Basic research</label>
-        <label><input type="radio" name="project_nature" value="applied"> Applied research</label>
-        <label><input type="radio" name="project_nature" value="industrial"> Industrial research</label>
-      </div>
-    </fieldset>
+# ── Parametri ─────────────────────────────────────────────────────────────────
 
-    <fieldset id="trl_fieldset" style="display:none">
-      <legend>2a) Expected TRL range <span style="font-weight:400;color:#6b7280">(for industrial research)</span></legend>
-      <label for="trl_bracket">Which TRL range is the project expected to operate in?</label>
-      <select id="trl_bracket" name="trl_bracket">
-        <option value="">Select…</option>
-        <option value="trl_1_3">TRL 1-3 (early-stage research)</option>
-        <option value="trl_4_6">TRL 4-6 (validation and prototyping)</option>
-        <option value="trl_7_9">TRL 7-9 (demonstration to deployment)</option>
-      </select>
-      <p style="margin:6px 0 0;font-size:.85rem;color:#6b7280;line-height:1.4">
-        This filter appears only for industrial research and adjusts the ranking of matching calls based on the selected TRL range.
-      </p>
-    </fieldset>
-    </fieldset>
+PAGE_SIZE = 50
 
-    <fieldset>
-      <legend>3) Thematic area</legend>
-      <label for="thematic_cluster">Main thematic area</label>
-      <select id="thematic_cluster" name="thematic_cluster" required>
-        <option value="" selected disabled>Select…</option>
-        <option value="Health &amp; Life Sciences">Health &amp; Life Sciences</option>
-        <option value="Culture, Creativity &amp; Inclusion">Culture, Creativity &amp; Inclusion</option>
-        <option value="Security &amp; Resilience">Security &amp; Resilience</option>
-        <option value="Digital, Industry &amp; Space">Digital, Industry &amp; Space</option>
-        <option value="Climate, Energy &amp; Mobility">Climate, Energy &amp; Mobility</option>
-        <option value="Food, Bioeconomy &amp; Environment">Food, Bioeconomy &amp; Environment</option>
-        <option value="Defence">Defence</option>
-        <option value="SME, Entrepreneurship &amp; Market Uptake">SME, Entrepreneurship &amp; Market Uptake</option>
-        <option value="External Action &amp; International Cooperation">External Action &amp; International Cooperation</option>
-        <option value="Climate-neutral &amp; Smart Cities">Climate-neutral &amp; Smart Cities</option>
-        <option value="Healthy Oceans, Seas, Coastal &amp; Inland Waters">Healthy Oceans, Seas, Coastal &amp; Inland Waters</option>
-        <option value="Clean Aviation">Clean Aviation</option>
-        <option value="Regional Development &amp; Territorial Cooperation">Regional Development &amp; Territorial Cooperation</option>
-        <option value="Cross-cutting / Other">Cross-cutting / Other</option>
-      </select>
+LIST_URL = (
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen"
+    "/opportunities/calls-for-proposals"
+    "?order=DESC&pageNumber={page}&pageSize={ps}&sortBy=startDate"
+    "&isExactMatch=true&status=31094501,31094502&programmePeriod=2021%20-%202027"
+)
 
-      <label for="official_cluster" style="margin-top:14px">Horizon Europe cluster (optional)</label>
-      <p style="margin:4px 0 6px;font-size:.85rem;color:#6b7280;line-height:1.4">
-        &#9432; Selecting a specific cluster filters results to <strong>Horizon Europe calls only</strong>.
-        Leave blank to include all programmes.
-      </p>
-      <select id="official_cluster" name="official_cluster">
-        <option value="">Any / not applicable</option>
-        <optgroup label="Clusters">
-          <option value="1">Cluster 1: Health</option>
-          <option value="2">Cluster 2: Culture, Creativity and Inclusive Society</option>
-          <option value="3">Cluster 3: Civil Security for Society</option>
-          <option value="4">Cluster 4: Digital, Industry and Space</option>
-          <option value="5">Cluster 5: Climate, Energy and Mobility</option>
-          <option value="6">Cluster 6: Food, Bioeconomy, Natural Resources, Agriculture and Environment</option>
-        </optgroup>
-      </select>
-    </fieldset>
+SEARCH_API  = "search-api/prod/rest/search"
+COOKIE_TEXT = "This site uses cookies"
 
-    <fieldset>
-      <legend>4) Partner type</legend>
-      <label for="partner_type">Your organisation type</label>
-      <select id="partner_type" name="partner_type" required>
-        <option value="" selected disabled>Select…</option>
-        <option value="ngo">NGO / Non-profit organisation</option>
-        <option value="sme">SME (Small or Medium Enterprise)</option>
-        <option value="large">Large enterprise</option>
-        <option value="research">University / Research organisation</option>
-        <option value="public">Public body / Government authority</option>
-      </select>
-    </fieldset>
+LINK_SELECTOR = (
+    'a[href*="/topic-details/"], '
+    'a[href*="/competitive-calls-cs/"], '
+    'a[href*="/prospect-details/"]'
+)
 
-    <fieldset>
-      <legend>5) Member State</legend>
-      <label for="member_state">Which EU Member State are you from?</label>
-      <select id="member_state" name="member_state" required>
-        <option value="" selected disabled>Select…</option>
-        <option value="AT">Austria</option>
-        <option value="BE">Belgium</option>
-        <option value="BG">Bulgaria</option>
-        <option value="HR">Croatia</option>
-        <option value="CY">Cyprus</option>
-        <option value="CZ">Czech Republic</option>
-        <option value="DK">Denmark</option>
-        <option value="EE">Estonia</option>
-        <option value="FI">Finland</option>
-        <option value="FR">France</option>
-        <option value="DE">Germany</option>
-        <option value="GR">Greece</option>
-        <option value="HU">Hungary</option>
-        <option value="IE">Ireland</option>
-        <option value="IT">Italy</option>
-        <option value="LV">Latvia</option>
-        <option value="LT">Lithuania</option>
-        <option value="LU">Luxembourg</option>
-        <option value="MT">Malta</option>
-        <option value="NL">Netherlands</option>
-        <option value="PL">Poland</option>
-        <option value="PT">Portugal</option>
-        <option value="RO">Romania</option>
-        <option value="SK">Slovakia</option>
-        <option value="SI">Slovenia</option>
-        <option value="ES">Spain</option>
-        <option value="SE">Sweden</option>
-        <option value="OTHER">Non-EU / Associated country</option>
-      </select>
-    </fieldset>
+RE_TOTAL     = re.compile(r"(\d+)\s*item\s*\(s\)\s*found", re.IGNORECASE)
+RE_OPEN      = re.compile(r"Opening date:\s*([^\|\n\r]+)",          re.IGNORECASE)
+RE_DEAD      = re.compile(r"Deadline date:\s*([^\|\n\r]+)",         re.IGNORECASE)
+RE_NEXT_DEAD = re.compile(r"Next deadline:\s*([^\|\n\r]+)",         re.IGNORECASE)
+RE_PROG      = re.compile(r"Programme:\s*([^\|\n\r]+)",             re.IGNORECASE)
+RE_ACTION    = re.compile(r"Type of action:\s*([^\|\n\r]+)",        re.IGNORECASE)
+RE_CLUSTER   = re.compile(r"HORIZON-CL([1-6])",                     re.IGNORECASE)
+RE_CALL_ID   = re.compile(r"callIdentifier[=:\s]+([^\s&\|\n\r]+)",  re.IGNORECASE)
 
-    <fieldset style="background:#fff8ed;border-color:#f59e0b">
-      <legend style="color:#92400e">&#9432; Note on co-financing</legend>
-      <p style="margin:4px 0;font-size:.93rem;line-height:1.5;color:#1f2937">
-        Suggested calls may be used as co-financing or sequential funding sources,
-        subject to the rule that <em>the same cost items cannot be covered twice</em>
-        by different programmes (Art. 15, Reg. EU 2021/695).
-        Each suggested call includes a note on its cumulation relationship with Horizon Europe.
-      </p>
-    </fieldset>
+MONTHS = {
+    "january":1,"february":2,"march":3,"april":4,"may":5,"june":6,
+    "july":7,"august":8,"september":9,"october":10,"november":11,"december":12,
+}
 
-      <fieldset class="final-question">
-      <legend>6) What results do you want to see?</legend>
-      <div class="radio">
-        <label><input type="radio" name="results_scope" value="both" checked> Both</label>
-        <label><input type="radio" name="results_scope" value="calls"> Calls and programmes</label>
-        <label><input type="radio" name="results_scope" value="events"> Events only</label>
-      </div>
-    </fieldset>
+# ── Tabelle di classificazione (da make_calls_json.py) ────────────────────────
 
+PROGRAMME_MAP = {
+    "43108390":"Horizon Europe","43108391":"Horizon Europe",
+    "43152860":"Digital Europe Programme","111111":"EU External Action-Prospect",
+    "44181033":"European Defence Fund","43353764":"Erasmus+",
+    "43251589":"CERV","43251814":"Creative Europe (CREA)",
+    "43252476":"Single Market Programme (SMP)","43298664":"AGRIP",
+    "43251842":"EUAF","43298916":"Euratom",
+    "43089234":"Innovation Fund (INNOVFUND)","43637601":"PPPA",
+    "44416173":"I3","45532249":"EUBA",
+    "43252368":"Internal Security Fund (ISF)","43252449":"RFCS",
+    "43298203":"UCPM","43254037":"European Solidarity Corps (ESC)",
+    "44773066":"Just Transition Mechanism (JTM)",
+    "43251567":"Connecting Europe Facility (CEF)",
+    "43252386":"JUST","43252433":"Pericles IV","43252517":"SOCPL",
+    "43253967":"RENEWFM","43254019":"European Social Fund+ (ESF+)",
+    "43392145":"EMFAF",
+}
 
+THEMATIC_MAP = {
+    "1":"Health & Life Sciences","2":"Culture, Creativity & Inclusion",
+    "3":"Security & Resilience","4":"Digital, Industry & Space",
+    "5":"Climate, Energy & Mobility","6":"Food, Bioeconomy & Environment",
+    "M-CIT":"Climate-neutral & Smart Cities",
+    "M-OCEAN":"Healthy Oceans, Seas, Coastal & Inland Waters",
+}
 
-    <div class="actions">
-<button type="submit">Find matching calls</button>
-      <button type="button" id="resetBtn" class="secondary">Reset</button>
-    </div>
-  
+PROGRAMME_THEMATIC_MAP = [
+    ("European Defence Fund",           "Defence"),
+    ("EDF",                             "Defence"),
+    ("EU External Action",              "External Action & International Cooperation"),
+    ("EU External Action-Prospect",     "External Action & International Cooperation"),
+    ("Single Market Programme",         "SME, Entrepreneurship & Market Uptake"),
+    ("CERV",                            "Culture, Creativity & Inclusion"),
+    ("Creative Europe",                 "Culture, Creativity & Inclusion"),
+    ("Erasmus+",                        "Culture, Creativity & Inclusion"),
+    ("European Social Fund+",           "Culture, Creativity & Inclusion"),
+    ("Just Transition",                 "Climate, Energy & Mobility"),
+    ("Innovation Fund",                 "Climate, Energy & Mobility"),
+    ("EMFAF",                           "Food, Bioeconomy & Environment"),
+    ("LIFE",                            "Food, Bioeconomy & Environment"),
+    ("Euratom",                         "Climate, Energy & Mobility"),
+    ("Connecting Europe",               "Climate, Energy & Mobility"),
+    ("Internal Security Fund",          "Security & Resilience"),
+    ("European Solidarity Corps",       "Culture, Creativity & Inclusion"),
+    ("Digital Europe",                  "Digital, Industry & Space"),
+    ("RENEWFM",                         "Climate, Energy & Mobility"),
+    ("SOCPL",                           "Culture, Creativity & Inclusion"),
+    ("JUST",                            "Culture, Creativity & Inclusion"),
+    ("Pericles IV",                     "Culture, Creativity & Inclusion"),
+    ("I3",                              "SME, Entrepreneurship & Market Uptake"),
+    ("ERC",                             "Cross-cutting / Other"),
+    ("43392145",                        "Food, Bioeconomy & Environment"),
+    ("Horizon Europe",                  "Cross-cutting / Other"),
+]
 
-    
+# (prefix, subcode_or_None, cluster_num, cluster_label, thematic)
+URL_RULES = [
+    ("MISS","CIT",   "M-CIT", "Climate-neutral & Smart Cities",               "Climate-neutral & Smart Cities"),
+    ("MISS","OCEAN", "M-OCEAN","Healthy Oceans, Seas, Coastal & Inland Waters","Healthy Oceans, Seas, Coastal & Inland Waters"),
+    ("MISS","CLIMA", "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("MISS","CANCER","1",     "Health",                                        "Health & Life Sciences"),
+    ("MISS","SOIL",  "6",     "Food, Bioeconomy, Natural Resources, Agriculture and Environment","Food, Bioeconomy & Environment"),
+    ("MISS","CROSS", "",      "",                                              "Cross-cutting / Other"),
+    ("HLTH",    None,"1",     "Health",                                        "Health & Life Sciences"),
+    ("EIC",      None,  "",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+    ("EIE",      None,  "",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+    # EIT: EITUM-BP is Cities mission; other EIT → SME
+    ("EITUM-BP", None,  "M-CIT", "Climate-neutral & Smart Cities",               "Climate-neutral & Smart Cities"),
+    ("EIT",      None,  "",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+    ("CID",      None,  "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("EURATOM",  None,  "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("EUROHPC",  None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("JU-CLEAN-AVIATION",None,"","",                                              "Clean Aviation"),
+    ("JU-",      None,  "",      "",                                              "Climate, Energy & Mobility"),
+    ("MSCA",     None,  "",      "",                                              "Cross-cutting / Other"),
+    ("NEB",      None,  "",      "",                                              "Climate-neutral & Smart Cities"),
+    # RAISE → Digital/AI in Science
+    ("RAISE",    None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("WIDERA",   None,  "",      "",                                              "Cross-cutting / Other"),
+    # INFRA subcodes
+    ("CL3","INFRA",    "3",     "Civil Security for Society",                    "Security & Resilience"),
+    ("INFRA","TECH",   "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("INFRA","SERV",   "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("INFRA","DEV",    "",      "",                                              "Cross-cutting / Other"),
+    ("INFRA","EOSC",   "",      "",                                              "Cross-cutting / Other"),
+    ("INFRA",    None,  "",      "",                                              "Cross-cutting / Other"),
+    ("AGRIP",    None,  "6",     "Food, Bioeconomy, Natural Resources, Agriculture and Environment","Food, Bioeconomy & Environment"),
+    # EUAF → Digital
+    ("EUAF",     None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("DIGITAL",  None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("UCPM",     None,  "",      "",                                              "Cross-cutting / Other"),
+    ("RFCS",     None,  "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("EUBA",     None,  "",      "",                                              "External Action & International Cooperation"),
+    ("PPPA","CHIPS",   "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("PPPA","MEDIA",   "",      "",                                              "Culture, Creativity & Inclusion"),
+    ("PPPA",     None,  "4",     "Digital, Industry and Space",                   "Digital, Industry & Space"),
+    ("RENEWFM",  None,  "5",     "Climate, Energy and Mobility",                  "Climate, Energy & Mobility"),
+    ("SOCPL",    None,  "",      "",                                              "Culture, Creativity & Inclusion"),
+    ("ERC",      None,  "",      "",                                              "Cross-cutting / Other"),
+    ("EMFAF",    None,  "6",     "Food, Bioeconomy, Natural Resources, Agriculture and Environment","Food, Bioeconomy & Environment"),
+    ("JUST",     None,  "",      "",                                              "Culture, Creativity & Inclusion"),
+    ("I3",       None,  "",      "",                                              "SME, Entrepreneurship & Market Uptake"),
+]
 
-</form>
+# Numeric-ID call classification by known acronym in name
+NUMERIC_ID_NAME_RULES = [
+    ("OHAMR",       "Health & Life Sciences"),
+    ("ERA4HEALTH",  "Health & Life Sciences"),
+    ("ERA4 HEALTH", "Health & Life Sciences"),
+    ("BRAINHEALTH", "Health & Life Sciences"),
+    ("EP BRAINHEALTH","Health & Life Sciences"),
+    ("ERDERA",      "Health & Life Sciences"),
+    ("BE READY",    "Health & Life Sciences"),
+    ("OVERWEIGHT",  "Health & Life Sciences"),
+    ("OBESITY",     "Health & Life Sciences"),
+    ("CARDIOVASC",  "Health & Life Sciences"),
+    ("CLINICAL TRIAL","Health & Life Sciences"),
+    ("NEUROSCI",    "Health & Life Sciences"),
+    ("RARE DISEASE","Health & Life Sciences"),
+    ("EITUM",       "Climate-neutral & Smart Cities"),
+    ("URBAN MOBILITY","Climate-neutral & Smart Cities"),
+    ("DRIVING URBAN","Climate-neutral & Smart Cities"),
+    ("EIC AWARDEE", "SME, Entrepreneurship & Market Uptake"),
+    ("INNOMATCH",   "SME, Entrepreneurship & Market Uptake"),
+    ("STARTUP",     "SME, Entrepreneurship & Market Uptake"),
+    ("FOOD SUSTAINABILITY","Food, Bioeconomy & Environment"),
+    ("MARINE BIODIVERSITY","Food, Bioeconomy & Environment"),
+    ("BLUEACTION",  "Food, Bioeconomy & Environment"),
+    ("TASC-RESTOREMED","Food, Bioeconomy & Environment"),
+    ("RESTORE",     "Food, Bioeconomy & Environment"),
+    ("FERMENTED",   "Food, Bioeconomy & Environment"),
+]
 
-  <section id="results" class="results" aria-live="polite"></section>
+URL_BENEFICIARY_OVERRIDE = {
+    "MSCA":  ["Research organisation"],
+    "INFRA": ["Research organisation"],
+    "EUBA":  ["Public body"],
+}
 
-  <footer>
-    Data sourced from the <a href="https://ec.europa.eu/info/funding-tenders" target="_blank">EU Funding &amp; Tenders Portal</a>.
-    Powered by <code>calls.json</code>.
-  </footer>
-</div>
+SPECIAL_BASIC_RESEARCH_CATEGORY = "Internships, fellowships & scholarships"
+SPECIAL_TITLE_KEYWORDS = ["internship","internships","fellowship","fellowships","msca","scholarship","scholarships"]
+TOPIC_KEYWORDS = {
+    "Health & Life Sciences": ["health","biotech","biotechnology","pharma","pharmaceutical","therapeutic","medical","diagnostic","genomic","genomics","public health","clinical"],
+    "Culture, Creativity & Inclusion": ["culture","creative","heritage","museum","archive","inclusion","social inclusion","democracy","education","skills"],
+    "Security & Resilience": ["security","cybersecurity","cyber security","disaster resilience","emergency","critical infrastructure","civil protection","border security"],
+    "Digital, Industry & Space": ["digital","artificial intelligence","machine learning","generative ai","data space","data sharing","cloud","edge","software","semiconductor","microelectronics","quantum","robotics","space","satellite"],
+    "Climate, Energy & Mobility": ["climate","adaptation","mitigation","energy","electricity","power system","grid","hydrogen","battery","batteries","mobility","transport","renewable","solar","photovoltaic","wind","storage","smart grid","building renovation","built environment","city","cities"],
+    "Food, Bioeconomy & Environment": ["agriculture","farming","crop","food system","bioeconomy","biodiversity","forestry","soil","water resources","environment","ecosystem","marine"],
+    "Defence": ["defence","defense","dual-use","dual use","military"],
+    "SME, Entrepreneurship & Market Uptake": ["sme","startup","entrepreneurship","venture","scale-up","market uptake","innovation uptake"],
+    "External Action & International Cooperation": ["international cooperation","development cooperation","global south","partner countries","external action"],
+    "Climate-neutral & Smart Cities": ["smart city","smart cities","climate-neutral city","urban transition","city mission"],
+    "Healthy Oceans, Seas, Coastal & Inland Waters": ["ocean","oceans","sea","seas","coastal","inland waters","marine","blue economy"],
+    "Clean Aviation": ["aviation","aircraft","aeronautics","sustainable aviation"],
+    "Cross-cutting / Other": ["interdisciplinary","cross-cutting","widening","research infrastructure","eosc"],
+}
 
-<script>
-(async function () {
-  const form    = document.getElementById('survey');
-  const results = document.getElementById('results');
-  const resetBtn= document.getElementById('resetBtn');
-  let CALLS = [];
+def escape_rx(s: str) -> str:
+    return re.escape(s or "")
 
-  // ── MS development tier (CPR 2021/1060 Art. 108) ─────────────────────────
-  const MS_TIER = {
-    BG:'less',HR:'less',GR:'less',HU:'less',LV:'less',LT:'less',
-    PL:'less',RO:'less',SK:'less',EE:'transition',CY:'transition',
-    CZ:'transition',MT:'transition',PT:'transition',SI:'transition',
-    AT:'more',BE:'more',DK:'more',FI:'more',FR:'more',DE:'more',
-    IE:'more',IT:'more',LU:'more',NL:'more',ES:'more',SE:'more',OTHER:'more'
-  };
+def text_has_keyword(text: str, keyword: str) -> bool:
+    return bool(re.search(rf"(?<![A-Za-z]){escape_rx(keyword.lower())}(?![A-Za-z])", (text or "").lower()))
 
-  // ── Partner × programme affinity ─────────────────────────────────────────
-  // Since beneficiary_hint is mostly empty in the dataset, we score
-  // based on known programme–partner affinities instead.
-  function partnerProgrammeScore(partnerType, programme, action) {
-    const p = (programme || '').toLowerCase();
-    const a = (action || '').toUpperCase();
-    let score = 0;
+def keyword_hits_for_thematic(text: str, thematic: str):
+    hits = []
+    for kw in TOPIC_KEYWORDS.get(thematic, []):
+        if text_has_keyword(text, kw):
+            hits.append(kw)
+    return list(dict.fromkeys(hits))
 
-    if (partnerType === 'ngo') {
-      if (p.includes('cerv'))            score += 25;
-      if (p.includes('external action')) score += 25;
-      if (p.includes('euba'))            score += 20;
-      if (p.includes('solidarity'))      score += 20;
-      if (p.includes('erasmus'))         score += 10;
-      if (a === 'CSA')                   score += 10;
-    } else if (partnerType === 'sme') {
-      if (p.includes('single market'))   score += 25;
-      if (p.includes('innovation fund')) score += 20;
-      if (p.includes('digital europe'))  score += 15;
-      if (a === 'IA')                    score += 15;
-      if (p.includes('eic'))             score += 20;
-    } else if (partnerType === 'large') {
-      if (p.includes('digital europe'))  score += 20;
-      if (p.includes('defence'))         score += 20;
-      if (p.includes('cef') || p.includes('connecting europe')) score += 15;
-      if (a === 'IA')                    score += 10;
-    } else if (partnerType === 'research') {
-      if (p.includes('horizon'))         score += 15;
-      if (a === 'RIA')                   score += 15;
-      if (a === 'CSA')                   score += 10;
-      if (p.includes('msca') || p.includes('marie')) score += 20;
-      if (p.includes('euratom'))         score += 15;
-      if (p.includes('infrast') || p.includes('infra')) score += 15;
-    } else if (partnerType === 'public') {
-      if (p.includes('cohesion') || p.includes('erdf') || p.includes('esf')) score += 25;
-      if (p.includes('cef') || p.includes('connecting europe')) score += 20;
-      if (p.includes('life'))            score += 15;
-      if (p.includes('ucpm'))            score += 20;
-      if (p.includes('isf') || p.includes('security fund')) score += 20;
-      if (a === 'CSA')                   score += 10;
-    }
-    return score;
-  }
+def title_is_special_basic_research(title: str) -> bool:
+    tl = (title or "").lower()
+    return any(text_has_keyword(tl, kw) for kw in SPECIAL_TITLE_KEYWORDS)
 
-  let SHARED = [];   // shared-management programmes by country
+def classify_multitopic(name: str, full_text: str, thematic: str):
+    text = re.sub(r"\s+", " ", (full_text or "")).strip().lower()
+    keyword_hits = {}
+    multi_thematic = []
+    for area in TOPIC_KEYWORDS:
+        hits = keyword_hits_for_thematic(text, area)
+        if hits:
+            keyword_hits[area] = hits
+            multi_thematic.append(area)
 
-  async function loadCalls() {
-    if (Array.isArray(window.CALLS_DATA)) return window.CALLS_DATA;
-    try {
-      const res  = await fetch('./calls.json', { cache: 'no-store' });
-      const data = await res.json();
-      if (data.generated) {
-        const d   = new Date(data.generated);
-        const fmt = d.toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit',year:'numeric'})
-                  + ' ' + d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
-        const el  = document.getElementById('lastUpdated');
-        if (el) { el.textContent = `Data last updated: ${fmt} UTC`; el.style.display='block'; }
-      }
-      return Array.isArray(data.calls) ? data.calls : [];
-    } catch(e) { console.error(e); return []; }
-  }
+    special = title_is_special_basic_research(name)
+    if special:
+        keyword_hits[SPECIAL_BASIC_RESEARCH_CATEGORY] = [kw for kw in SPECIAL_TITLE_KEYWORDS if text_has_keyword((name or "").lower(), kw)]
+        if SPECIAL_BASIC_RESEARCH_CATEGORY not in multi_thematic:
+            multi_thematic.append(SPECIAL_BASIC_RESEARCH_CATEGORY)
 
-  async function loadShared() {
-    try {
-      const res  = await fetch('./shared_programmes.json', { cache: 'no-store' });
-      const data = await res.json();
-      return Array.isArray(data.programmes) ? data.programmes : [];
-    } catch(e) { return []; }
-  }
-
-  let EVENTS = [];
-
-  async function loadEvents() {
-    try {
-      const res  = await fetch('./events.json', { cache: 'no-store' });
-      const data = await res.json();
-      return Array.isArray(data.events) ? data.events : [];
-    } catch(e) { return []; }
-  }
-
-  CALLS  = await loadCalls();
-  SHARED = await loadShared();
-  EVENTS = await loadEvents();
-
-  const MISSION_TO_CLUSTER = {CANCER:'1',CLIMA:'5',SOIL:'6'};
-
-  function esc(s) {
-    if (!s) return '';
-    return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  }
-
-  function normalizeCluster(v) {
-    const s = String(v||'').trim();
-    if (/^M-/.test(s)||MISSION_TO_CLUSTER[s]) return s;
-    const m = s.match(/(\d+)/);
-    return m ? m[1] : '';
-  }
-
-  function resolveCluster(id) { return MISSION_TO_CLUSTER[id]||id; }
-
-  function normalizeAction(v) {
-    const s = (v||'').toLowerCase();
-    if (s.includes('research and innovation')) return 'RIA';
-    if (s.includes('innovation action'))       return 'IA';
-    if (s.includes('coordination'))            return 'CSA';
-    if (s.includes('cofund'))                  return 'COFUND';
-    return (v||'').toUpperCase();
-  }
-
-  function scoreBasicResearchPriority(call) {
-    const programme = (call.programme || '').toLowerCase();
-    const title     = (call.name || '').toLowerCase();
-    const url       = (call.url || '').toLowerCase();
-    let score = 0;
-
-    if (programme.includes('msca') || programme.includes('marie')) score += 45;
-    if (title.includes('fellowship') || url.includes('fellowship')) score += 35;
-    if (title.includes('open call') || title.includes('open calls') || url.includes('open-call')) score += 30;
-    return score;
-  }
-
-  function scoreIndustrialTlrPriority(call, trlBracket) {
-    const action = normalizeAction(call.action);
-    if (trlBracket === 'low') {
-      if (action === 'IA')  return 35;
-      if (action === 'RIA') return 15;
-    }
-    if (trlBracket === 'high') {
-      if (action === 'RIA') return 35;
-      if (action === 'IA')  return 15;
-    }
-    return 0;
-  }
-
-  function isHorizon(p) { return String(p||'').toLowerCase().includes('horizon'); }
-
-  function projectEndIso(y,q) {
-    if (!y||!q) return '';
-    return {Q1:`${y}-03-31`,Q2:`${y}-06-30`,Q3:`${y}-09-30`,Q4:`${y}-12-31`}[q]||'';
-  }
-
-  function fallbackIso(d) {
-    if (!d) return '';
-    const dt = new Date(d);
-    if (!isNaN(dt))
-      return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
-    return '';
-  }
-
-  function scoreCall(call, answers) {
-    let score = 0;
-    const wantedThematic = answers.thematic_cluster || '';
-    const wantedOfficial = normalizeCluster(answers.official_cluster);
-    const wantedNature   = answers.project_nature || '';
-    const trlBracket     = answers.trl_bracket || '';
-    const projectEnd     = projectEndIso(answers.closure_year, answers.closure_quarter);
-    const msTier         = MS_TIER[answers.member_state] || 'more';
-
-    const callThematic = String(call.thematic_cluster||'').trim();
-    const callOfficial = normalizeCluster(call.cluster_num);
-    const callAction   = normalizeAction(call.action);
-    const deadlineIso  = call.deadline_iso || fallbackIso(call.deadline);
-
-    // Thematic match
-    if (wantedThematic && callThematic === wantedThematic) score += 60;
-
-    // Cluster match
-    if (wantedOfficial) {
-      const rw = resolveCluster(wantedOfficial);
-      const rc = resolveCluster(callOfficial);
-      if (rc === rw) {
-        score += 25;
-        if (wantedThematic && callThematic === wantedThematic) score += 25;
-      }
+    return {
+        "full_text": text,
+        "keyword_hits": keyword_hits,
+        "multi_thematic": multi_thematic,
+        "is_special_basic_research": special,
     }
 
-    // Research nature × action affinity
-    if (wantedNature === 'basic') {
-      if (callAction === 'RIA') score += 20;
-      if (callAction === 'CSA') score += 10;
-      score += scoreBasicResearchPriority(call);
-    } else if (wantedNature === 'applied') {
-      if (callAction === 'RIA') score += 15;
-      if (callAction === 'IA')  score += 15;
-    } else if (wantedNature === 'industrial') {
-      if (callAction === 'IA')  score += 20;
-      score += scoreIndustrialTlrPriority(call, trlBracket);
-    }
+# ── Classificazione ───────────────────────────────────────────────────────────
 
-    // Partner × programme affinity
-    score += partnerProgrammeScore(answers.partner_type, call.programme, call.action);
+def _topic_id(url: str) -> str:
+    s = (url or "").upper().split("?")[0]
+    for m in ["/TOPIC-DETAILS/", "/COMPETITIVE-CALLS-CS/"]:
+        i = s.find(m)
+        if i >= 0:
+            return s[i + len(m):]
+    return s
 
-    // MS tier bonus for shared management funds
-    if (msTier === 'less' || msTier === 'transition') {
-      const p = (call.programme||'').toLowerCase();
-      const isShared = p.includes('erdf')||p.includes('cohesion')||p.includes('esf')||
-                       p.includes('eafrd')||p.includes('emfaf')||p.includes('just transition');
-      if (isShared) score += (msTier === 'less' ? 15 : 8);
-    }
+def url_classify(url: str):
+    tid = _topic_id(url)
+    for prefix, subcode, c_num, c_label, thematic in URL_RULES:
+        if prefix not in tid:
+            continue
+        if subcode is not None:
+            # subcode can appear anywhere in the topic id
+            if subcode not in tid:
+                continue
+        benef = URL_BENEFICIARY_OVERRIDE.get(prefix, None)
+        return c_num, c_label, thematic, benef
+    return "", "", "", None
 
-    // Deadline after project closure
-    if (projectEnd && deadlineIso && deadlineIso > projectEnd) score += 15;
+def name_classify(name: str) -> str:
+    """Fallback classification for numeric-ID calls based on known name keywords."""
+    name_up = (name or "").upper()
+    for keyword, thematic in NUMERIC_ID_NAME_RULES:
+        if keyword.upper() in name_up:
+            return thematic
+    return ""
 
-    // Mission bonus
-    if (call.is_mission) score += 10;
+def prog_thematic(prog: str) -> str:
+    pl = (prog or "").lower()
+    for key, label in PROGRAMME_THEMATIC_MAP:
+        if key.lower() in pl:
+            return label
+    return ""
 
-    return score;
-  }
+def resolve_thematic(cluster_num: str, prog: str) -> str:
+    if cluster_num and THEMATIC_MAP.get(cluster_num):
+        return THEMATIC_MAP[cluster_num]
+    return prog_thematic(prog)
 
-  function filterCalls(answers) {
-    const wantedThematic = answers.thematic_cluster || '';
-    const wantedOfficial = normalizeCluster(answers.official_cluster);
-    const projectEnd     = projectEndIso(answers.closure_year, answers.closure_quarter);
+def normalize_action(v: str) -> str:
+    s = (v or "").lower()
+    if "research and innovation action" in s: return "RIA"
+    if "innovation action" in s:              return "IA"
+    if "coordination and support" in s:       return "CSA"
+    if "cofund" in s:                         return "COFUND"
+    return v or ""
 
-    let out = CALLS.map(c => ({
-      ...c,
-      _thematic: String(c.thematic_cluster||'').trim(),
-      _official: normalizeCluster(c.cluster_num),
-      _deadline: c.deadline_iso || fallbackIso(c.deadline),
-      _score:    scoreCall(c, answers)
-    }));
+def beneficiary_hint(action: str, prog: str, url_benef):
+    if url_benef is not None:
+        return url_benef
+    a = (action or "").upper()
+    p = (prog or "").lower()
+    hints = []
+    if a == "IA":   hints.extend(["SME","Large enterprise","Research organisation"])
+    if a == "RIA":  hints.extend(["Research organisation","SME","Large enterprise"])
+    if a == "CSA":  hints.extend(["Research organisation","Public body","NGO","SME"])
+    if "external action" in p: hints.extend(["NGO","Public body","Research organisation"])
+    return list(dict.fromkeys(hints))
 
-    if (wantedThematic)
-      out = out.filter(c => c._thematic === wantedThematic);
+# ── Parsing date ──────────────────────────────────────────────────────────────
 
-    if (wantedOfficial) {
-      const rw = resolveCluster(wantedOfficial);
-      out = out.filter(c => resolveCluster(c._official) === rw);
-    }
+def parse_date_iso(s: str) -> str:
+    s = re.sub(r"\s+", " ", str(s or "")).strip()
+    if not s:
+        return ""
+    m = re.search(r"\b(\d{4})-(\d{2})-(\d{2})\b", s)
+    if m:
+        return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    m = re.search(r"\b(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})\b", s)
+    if m:
+        try:
+            return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1))).strftime("%Y-%m-%d")
+        except ValueError:
+            pass
+    m = re.search(r"\b(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})\b", s)
+    if m:
+        mo = MONTHS.get(m.group(2).lower())
+        if mo:
+            try:
+                return datetime(int(m.group(3)), mo, int(m.group(1))).strftime("%Y-%m-%d")
+            except ValueError:
+                pass
+    return ""
 
-    if (projectEnd)
-      out = out.filter(c => c._deadline && c._deadline > projectEnd);
+# ── Utilità Playwright ────────────────────────────────────────────────────────
 
+def clean(s):
+    if not s:
+        return None
+    s = re.sub(r"\s+", " ", str(s)).strip()
+    return s or None
+
+def pick(rx, text):
+    m = rx.search(text or "")
+    return clean(m.group(1)) if m else None
+
+def accept_cookies(page):
+    for label in ["Accept all","Accept All","Accept","I accept","Agree","OK"]:
+        for scope in [page] + list(page.frames):
+            try:
+                btn = scope.get_by_role("button", name=re.compile(label, re.IGNORECASE))
+                if btn.count():
+                    btn.first.click(timeout=2000)
+                    page.wait_for_timeout(800)
+                    return
+            except Exception:
+                pass
+
+def wait_cookie_gone(page, max_ms=12000):
+    t0 = time.time()
+    while (time.time() - t0) * 1000 < max_ms:
+        try:
+            body = page.locator("body").inner_text()
+        except Exception:
+            body = ""
+        if COOKIE_TEXT.lower() not in (body or "").lower():
+            return
+        page.wait_for_timeout(600)
+
+def count_links(page):
+    return page.locator(LINK_SELECTOR).count()
+
+def read_total(page):
+    txt = page.locator("body").inner_text()
+    m = RE_TOTAL.search(txt or "")
+    return int(m.group(1)) if m else None
+
+def scroll_until(page, expected, max_ms=50000):
+    start = time.time()
+    last = -1
+    stable_since = time.time()
+    while count_links(page) == 0 and (time.time()-start)*1000 < 10000:
+        accept_cookies(page)
+        wait_cookie_gone(page, 3000)
+        page.wait_for_timeout(700)
+    container = page.evaluate_handle(f"""() => {{
+        const sel = `{LINK_SELECTOR}`;
+        const links = document.querySelectorAll(sel);
+        if (!links.length) return null;
+        let el = links[0];
+        for (let i=0; i<20; i++) {{
+            if (!el) break;
+            const st = window.getComputedStyle(el);
+            const oy = st.overflowY;
+            if ((oy==='auto'||oy==='scroll') && el.scrollHeight>el.clientHeight+5) return el;
+            el = el.parentElement;
+        }}
+        return null;
+    }}""")
+    while (time.time()-start)*1000 < max_ms:
+        accept_cookies(page)
+        wait_cookie_gone(page, 3000)
+        c = count_links(page)
+        if c >= expected:
+            return c
+        if c != last:
+            last = c
+            stable_since = time.time()
+        try:
+            if container:
+                page.evaluate("(el)=>{ el.scrollTop = el.scrollTop + el.clientHeight*0.9; }", container)
+            else:
+                page.mouse.wheel(0, 1800)
+        except Exception:
+            pass
+        page.wait_for_timeout(600)
+        if time.time()-stable_since > 5:
+            try:
+                if container:
+                    page.evaluate("(el)=>{ el.scrollTop = el.scrollHeight; }", container)
+                else:
+                    page.mouse.wheel(0, 5000)
+            except Exception:
+                pass
+            page.wait_for_timeout(600)
+    return count_links(page)
+
+def extract_links(page):
+    hrefs = page.evaluate(f"""
+        () => Array.from(document.querySelectorAll('{LINK_SELECTOR}'))
+                  .map(a => a.getAttribute('href'))
+    """)
+    out, seen = [], set()
+    for h in hrefs or []:
+        if not h:
+            continue
+        full = "https://ec.europa.eu" + h if h.startswith("/") else h
+        if full not in seen:
+            seen.add(full)
+            out.append(full)
     return out
-      .filter(c => c._score >= 20)
-      .sort((a,b) => b._score !== a._score ? b._score-a._score : (a._deadline||'').localeCompare(b._deadline||''))
-      ;
-  }
 
-  // ── Cumulation notes ──────────────────────────────────────────────────────
-  const CUMULATION_NOTES = {
-    "European Defence Fund": "⚠️ Operates under a separate legal framework (EDF Reg. 2021/697). Cumulation with civilian programmes is permitted only for the non-defence components of dual-use projects. Civilian-only rule under review for FP10.",
-    "default": "Co-financing with Horizon Europe is permitted provided no cost overlap (Art. 15, Reg. EU 2021/695). Contributions may be calculated on a pro-rata basis. Cumulative funding cannot exceed total eligible costs.",
-  };
+# ── Parsing card dalla lista ──────────────────────────────────────────────────
 
-  function getCumulationNote(programme) {
-    if (!programme || isHorizon(programme)) return null;
-    const p = programme.toLowerCase();
-    for (const [key,note] of Object.entries(CUMULATION_NOTES)) {
-      if (key === 'default') continue;
-      if (p.includes(key.toLowerCase())) return note;
-    }
-    return CUMULATION_NOTES['default'];
-  }
+# ── Budget extraction dal dettaglio topic ─────────────────────────────────────
 
-  function getMsNote(ms, programme) {
-    const tier = MS_TIER[ms]||'more';
-    if (tier === 'more') return null;
-    const p = (programme||'').toLowerCase();
-    const isShared = p.includes('erdf')||p.includes('cohesion')||p.includes('esf')||
-                     p.includes('eafrd')||p.includes('emfaf')||p.includes('just transition');
-    if (!isShared) return null;
-    return tier === 'less'
-      ? "Your country is classified as a less-developed region (CPR 2021/1060 Art. 108) — ERDF/ESF+ co-financing rates up to 85% may apply."
-      : "Your country is classified as a transition region (CPR 2021/1060 Art. 108) — ERDF/ESF+ co-financing rates up to 70% may apply.";
-  }
+def topic_id_from_url(url: str) -> str:
+    s = (url or "").split("?")[0]
+    for marker in ["/topic-details/", "/competitive-calls-cs/"]:
+        i = s.lower().find(marker)
+        if i >= 0:
+            return s[i + len(marker):]
+    return s.rsplit("/", 1)[-1] if s else ""
 
-  // ── Render ────────────────────────────────────────────────────────────────
-  const MS_NAMES = {AT:'Austria',BE:'Belgium',BG:'Bulgaria',HR:'Croatia',CY:'Cyprus',
-    CZ:'Czech Republic',DK:'Denmark',EE:'Estonia',FI:'Finland',FR:'France',DE:'Germany',
-    GR:'Greece',HU:'Hungary',IE:'Ireland',IT:'Italy',LV:'Latvia',LT:'Lithuania',
-    LU:'Luxembourg',MT:'Malta',NL:'Netherlands',PL:'Poland',PT:'Portugal',RO:'Romania',
-    SK:'Slovakia',SI:'Slovenia',ES:'Spain',SE:'Sweden',OTHER:'Non-EU / Associated country'};
-  const PARTNER_NAMES = {ngo:'NGO / Non-profit',sme:'SME',large:'Large enterprise',
-    research:'University / Research org.',public:'Public body'};
+def extract_budget_per_project(page, topic_id: str) -> str | None:
+    """
+    Estrae il budget per progetto dalla sezione 'Topic conditions and documents'.
+    """
+    if not topic_id:
+        return None
 
-  function renderResults(answers, filtered) {
-    const scope = answers.results_scope || 'both';
-    const results = document.getElementById('results');
+    parts = topic_id.split("?")[0].split("-")
+    target_match = "-".join(parts[-2:]) if len(parts) > 1 else parts[-1]
 
-    const pills = [
-      `Closure: ${answers.closure_year||''} ${answers.closure_quarter||''}`,
-      answers.project_nature ? `Nature: ${answers.project_nature}` : 'Nature: any',
-      answers.project_nature === 'industrial' && answers.trl_bracket ? `TRL: ${({
-        trl_1_3: '1-3',
-        trl_4_6: '4-6',
-        trl_7_9: '7-9'
-      })[answers.trl_bracket] || answers.trl_bracket}` : '',
-      `Results: ${answers.results_scope || 'both'}`,
-      `Area: ${answers.thematic_cluster||''}`,
-      answers.official_cluster ? `Cluster: ${answers.official_cluster}` : '',
-      `Partner: ${PARTNER_NAMES[answers.partner_type]||''}`,
-      `Country: ${MS_NAMES[answers.member_state]||''}`
-    ].filter(Boolean).map(t=>`<span class="pill">${esc(t)}</span>`).join('');
+    try:
+        section_btn = page.locator("button:has-text('Topic conditions and documents')").first
+        if section_btn.count() > 0:
+            section_btn.scroll_into_view_if_needed()
+            expanded = section_btn.get_attribute("aria-expanded")
+            if expanded == "false":
+                section_btn.click(force=True)
+                page.wait_for_timeout(3000)
 
-    if (!CALLS.length) {
-      results.innerHTML = `<div class="box"><strong>Your answers</strong><div style="margin-top:8px">${pills}</div></div><div class="box error">No data found. Make sure <code>calls.json</code> is present.</div>`;
-      return;
-    }
+        row_locator = page.locator(f"tr:has-text('{target_match}'), .wt-table-row:has-text('{target_match}')").first
+        if row_locator.count() > 0:
+            row_locator.scroll_into_view_if_needed()
+            page.wait_for_timeout(1000)
 
-    const thematic = answers.thematic_cluster || '';
-    const THEMATIC_KEYWORDS = {
-      'Health & Life Sciences':               ['health','medic','pharma','biotech','rare disease','cancer','neuro'],
-      'Digital, Industry & Space':            ['digital','ai','artificial intelligence','tech','software','space','data','cyber'],
-      'Climate, Energy & Mobility':           ['climate','energy','green','mobility','transport','hydrogen','battery','clean'],
-      'Food, Bioeconomy & Environment':       ['food','bio','agri','ocean','marine','environment','nature'],
-      'Security & Resilience':                ['security','defence','resilience','cyber','border'],
-      'Culture, Creativity & Inclusion':      ['culture','creative','education','social','inclusion','media'],
-      'SME, Entrepreneurship & Market Uptake':['startup','sme','entrepreneur','venture','invest','scale','fund'],
-      'Climate-neutral & Smart Cities':       ['city','cities','urban','smart city'],
-    };
+        budget = page.evaluate(
+            """
+            (shortId) => {
+                const allElements = Array.from(document.querySelectorAll('tr, .wt-table-row'));
+                const targetRow = allElements.find(el => (el.innerText || '').includes(shortId));
+                if (!targetRow) return null;
+                const cells = Array.from(targetRow.querySelectorAll('td, .wt-table-cell'))
+                    .map(c => (c.innerText || '').trim())
+                    .filter(Boolean);
+                const candidates = cells.filter(txt => {
+                    const hasMoney =
+                        txt.includes('€') ||
+                        /\beur\b/i.test(txt) ||
+                        /\bmillion\b/i.test(txt) ||
+                        /\bmeur\b/i.test(txt);
+                    const isDate = /202[0-9]/.test(txt) && txt.length < 20;
+                    return hasMoney && !isDate;
+                });
+                if (!candidates.length) return null;
+                const specific = candidates.find(b => /around|to|between/i.test(b));
+                return specific || candidates[candidates.length - 1];
+            }
+            """,
+            target_match,
+        )
 
-    const keywords = THEMATIC_KEYWORDS[thematic] || [];
-    let eventsToShow = EVENTS || [];
-    if (keywords.length) {
-      const relevant = eventsToShow.filter(ev => {
-        const text = ((ev.title||'') + ' ' + (ev.description||'')).toLowerCase();
-        return keywords.some(k => text.includes(k));
-      });
-      const others = eventsToShow.filter(ev => !relevant.includes(ev));
-      eventsToShow = [...relevant, ...others];
-    }
+        if budget:
+            return re.sub(r"\s+", " ", str(budget)).strip()
+        return None
 
-    const showCalls = scope === 'both' || scope === 'calls';
-    const showEvents = scope === 'both' || scope === 'events';
+    except Exception:
+        return None
 
-    const ms = answers.member_state;
-    const wantedT = answers.thematic_cluster || '';
-    const msProgs = (ms && ms !== 'OTHER' && SHARED.length)
-      ? SHARED.filter(p => p.country_code === ms && (!wantedT || (p.thematic_clusters || []).includes(wantedT)))
-      : [];
+def parse_card(page, full_url: str) -> dict:
+    path = full_url.replace("https://ec.europa.eu","").split("?")[0]
+    a = page.locator(f'a[href*="{path}"]').first
+    title = clean(a.inner_text()) if a.count() else path.split("/")[-1]
 
-    const CALLS_STEP = 10;
-    const PROGRAMMES_STEP = 10;
-    const EVENTS_STEP = 10;
+    card = a.locator(
+        "xpath=ancestor::*[contains(.,'Programme:') or contains(.,'Opening date:') or "
+        "contains(.,'Deadline date:') or contains(.,'Type of action:')][1]"
+    ).first
+    text = (card.inner_text() if card.count()
+            else (a.locator("xpath=ancestor::*[1]").inner_text() if a.count() else ""))
 
-    let visibleCalls = Math.min(30, filtered.length);
-    let visibleProgrammes = Math.min(30, msProgs.length);
-    let visibleEvents = Math.min(EVENTS_STEP, eventsToShow.length);
+    dead = pick(RE_DEAD, text) or pick(RE_NEXT_DEAD, text)
+    call_id = pick(RE_CALL_ID, full_url) or pick(RE_CALL_ID, text)
+    cluster_raw = pick(RE_CLUSTER, text) or pick(RE_CLUSTER, full_url) or pick(RE_CLUSTER, call_id or "")
 
-    function renderCallCard(c) {
-      const badge = c.is_mission ? `<span class="mission-badge">Mission</span>` : '';
-      const meta  = [
-        c.programme        ? `Programme: ${c.programme}` : '',
-        c.thematic_cluster ? `Area: ${c.thematic_cluster}` : '',
-        c.action           ? `Type of action: ${c.action}` : '',
-        c.opening          ? `Opening: ${c.opening}` : '',
-        c.deadline         ? `Deadline: ${c.deadline}` : '',
-      ].filter(Boolean).join(' · ');
-
-      const cumulNote = getCumulationNote(c.programme);
-      const cumulHtml = cumulNote
-        ? `<div class="cumul-note">&#9432; <strong>Cumulation with Horizon Europe:</strong> ${esc(cumulNote)}</div>`
-        : '';
-
-      const msNote = getMsNote(answers.member_state, c.programme);
-      const msHtml = msNote
-        ? `<div class="ms-note">&#127981; <strong>Regional co-financing note:</strong> ${esc(msNote)}</div>`
-        : '';
-
-      return `<div class="${c.is_mission?'call mission':'call'}">
-        <h3>${esc(c.name||'(no title)')}${badge}</h3>
-        <div class="meta">${esc(meta)}</div>
-        ${cumulHtml}${msHtml}
-        ${c.url?`<div class="meta">Link: <a href="${encodeURI(c.url)}" target="_blank" rel="noopener noreferrer">${esc(c.url)}</a></div>`:''}
-      </div>`;
+    return {
+        "name":           title,
+        "call_id":        call_id,
+        "programme_raw":  pick(RE_PROG, text),
+        "action_raw":     pick(RE_ACTION, text),
+        "cluster_raw":    cluster_raw,
+        "opening_raw":    pick(RE_OPEN, text),
+        "deadline_raw":   dead,
+        "url":            full_url,
+        "_needs_enrich":  False,
     }
 
-    function renderProgrammeCard(p) {
-      const themes = (p.thematic_clusters||[]).join(', ');
-      const meta = [
-        p.fund     ? `Fund: ${p.fund}` : '',
-        p.cci      ? `CCI: ${p.cci}` : '',
-        themes     ? `Areas: ${themes}` : '',
-      ].filter(Boolean).join(' · ');
+# ── Arricchimento via XHR ────────────────────────────────────────────────────
 
-      const contact = [
-        p.managing_authority ? `<strong>${esc(p.managing_authority)}</strong>` : '',
-        p.contact_name       ? esc(p.contact_name) : '',
-        p.email              ? `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>` : '',
-      ].filter(Boolean).join(' — ');
+def _first(meta, *keys):
+    for k in keys:
+        v = meta.get(k)
+        if isinstance(v, list) and v:
+            return re.sub(r"\s+", " ", str(v[0])).strip()
+        if v and isinstance(v, str):
+            return v.strip()
+    return ""
 
-      return `<div class="call" style="border-left:4px solid #16a34a">
-        <h3>${esc(p.programme_name||'(no name)')}</h3>
-        <div class="meta">${esc(meta)}</div>
-        <div class="meta" style="margin-top:6px">${contact}</div>
-        ${p.url ? `<div class="meta">Programme page: <a href="${encodeURI(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.url)}</a></div>` : ''}
-      </div>`;
+def _enrich_one(page, row: dict) -> bool:
+    """Apre una pagina di dettaglio, cattura i campi mancanti via XHR e salva anche il testo completo della call."""
+    url      = row["url"]
+    captured = {}
+
+    def handle(response, _c=captured):
+        if SEARCH_API in response.url and response.status == 200:
+            try:
+                body = response.json()
+                for item in body.get("results", [body]):
+                    meta    = item.get("metadata", {}) or {}
+                    prog_id = _first(meta, "frameworkProgramme", "programme")
+                    action  = _first(meta, "typesOfAction","typeOfAction","fundingScheme")
+                    cid     = _first(meta, "callIdentifier","identifier")
+                    if prog_id and not _c.get("prog"):
+                        _c["prog"] = PROGRAMME_MAP.get(prog_id, prog_id)
+                    if action and not _c.get("action"):
+                        _c["action"] = action
+                    if cid and not _c.get("call_id"):
+                        _c["call_id"] = cid
+            except Exception:
+                pass
+
+    page.on("response", handle)
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=30_000)
+        page.wait_for_timeout(2500)
+        try:
+            body_text = page.locator("body").inner_text(timeout=5000)
+        except Exception:
+            body_text = ""
+        row["full_text"] = clean(body_text) or ""
+
+        try:
+            topic_id = topic_id_from_url(url)
+            budget = extract_budget_per_project(page, topic_id)
+            if budget:
+                row["budget"] = budget
+        except Exception:
+            pass
+    except Exception as e:
+        print(f"    [ERR goto] {e}", flush=True)
+    finally:
+        page.remove_listener("response", handle)
+
+    if captured.get("prog") and not row.get("programme_raw"):
+        row["programme_raw"] = captured["prog"]
+    if captured.get("action") and not row.get("action_raw"):
+        row["action_raw"] = captured["action"]
+    if captured.get("call_id") and not row.get("call_id"):
+        row["call_id"] = captured["call_id"]
+
+    return bool(captured) or bool(row.get("full_text"))
+
+
+def enrich(ctx, rows: list):
+    to_fix = [r for r in rows
+              if (not r.get("programme_raw") or not r.get("action_raw") or not r.get("call_id"))
+              and r.get("url")]
+    if not to_fix:
+        print("  Tutti i campi già presenti ✓", flush=True)
+        return
+
+    print(f"  {len(to_fix)} call da arricchire…", flush=True)
+    page = ctx.new_page()
+    skipped = 0
+
+    for idx, row in enumerate(to_fix, 1):
+        print(f"  [{idx:>4}/{len(to_fix)}] {(row['name'] or '')[:60]}", flush=True)
+
+        ok = False
+        for attempt in range(1, 3):   # max 2 tentativi per call
+            try:
+                ok = _enrich_one(page, row)
+                break
+            except Exception as e:
+                print(f"    [tentativo {attempt} fallito] {e}", flush=True)
+                # Ricrea la pagina se crashata
+                try:
+                    page.close()
+                except Exception:
+                    pass
+                page = ctx.new_page()
+                time.sleep(2)
+
+        if not ok:
+            skipped += 1
+            print(f"    [SKIP] nessun dato recuperato", flush=True)
+
+        # Salvataggio intermedio ogni 100 call (sicurezza in caso di crash)
+        if idx % 100 == 0:
+            print(f"  [checkpoint] salvate {idx} call finora…", flush=True)
+
+        time.sleep(0.3)
+
+    try:
+        page.close()
+    except Exception:
+        pass
+    print(f"  Arricchimento completato. Saltate: {skipped}/{len(to_fix)}", flush=True)
+
+# ── Trasforma riga grezza → oggetto call classificato ─────────────────────────
+
+def to_call(row: dict) -> dict:
+    url        = row.get("url", "")
+    prog_raw   = row.get("programme_raw") or ""
+    call_id    = row.get("call_id") or ""
+    action_raw = row.get("action_raw") or ""
+
+    # Cluster: da call_id > cluster_raw > url
+    cluster_num = ""
+    for src in [call_id, row.get("cluster_raw",""), url]:
+        m = RE_CLUSTER.search(src or "")
+        if m:
+            cluster_num = m.group(1)
+            break
+
+    # URL overrides
+    u_cnum, u_clabel, u_thematic, u_benef = url_classify(url)
+    if u_cnum:
+        cluster_num = u_cnum
+
+    cluster_label = u_clabel or THEMATIC_MAP.get(cluster_num, "")
+    thematic      = u_thematic or resolve_thematic(cluster_num, prog_raw) or name_classify(row.get("name",""))
+    action        = normalize_action(action_raw)
+    is_mission    = bool("/HORIZON-MISS" in url.upper())
+
+    opening_raw  = row.get("opening_raw") or ""
+    deadline_raw = row.get("deadline_raw") or ""
+
+    full_text = row.get("full_text") or ""
+    multi = classify_multitopic(row.get("name") or "", full_text, thematic)
+
+    return {
+        "name":             row.get("name") or "",
+        "call_id":          call_id,
+        "programme":        prog_raw,
+        "cluster_num":      cluster_num,
+        "cluster_label":    cluster_label,
+        "thematic_cluster": thematic,
+        "action":           action,
+        "budget":           row.get("budget") or "",
+        "opening":          opening_raw,
+        "opening_iso":      parse_date_iso(opening_raw),
+        "deadline":         deadline_raw,
+        "deadline_iso":     parse_date_iso(deadline_raw),
+        "url":              url,
+        "is_mission":       is_mission,
+        "beneficiary_hint": beneficiary_hint(action, prog_raw, u_benef),
+        "full_text":        multi["full_text"],
+        "keyword_hits":     multi["keyword_hits"],
+        "multi_thematic":   multi["multi_thematic"],
+        "is_special_basic_research": multi["is_special_basic_research"],
     }
 
-    function renderEventCard(ev) {
-      const dateStr = ev.date ? `${ev.date}${ev.date_end ? ' — ' + ev.date_end : ''}` : 'Date TBC';
-      const loc     = ev.location ? ` &nbsp;·&nbsp; ${esc(ev.location)}` : '';
-      const desc    = ev.description ? `<div class="meta" style="margin-top:4px">${esc(ev.description)}</div>` : '';
-      return `<div class="event-card">
-        <span class="event-source">${esc(ev.source)}</span>
-        <h3>${esc(ev.title||'(no title)')}</h3>
-        <div class="meta">${esc(dateStr)}${loc}</div>
-        ${desc}
-        ${ev.url ? `<div class="meta" style="margin-top:4px">
-          <a href="${encodeURI(ev.url)}" target="_blank" rel="noopener noreferrer">${esc(ev.url)}</a>
-        </div>` : ''}
-      </div>`;
+# ── Changelog ────────────────────────────────────────────────────────────────
+
+def write_changelog(old_calls: list, new_calls: list, changelog_path: Path, generated: str):
+    """
+    Confronta old_calls e new_calls per URL.
+    Scrive changelog.md con call aggiunte, rimosse e statistiche.
+    Aggiunge una riga anche a changelog_history.md (log cumulativo).
+    """
+    old_by_url = {c["url"]: c for c in old_calls}
+    new_by_url = {c["url"]: c for c in new_calls}
+
+    old_urls = set(old_by_url)
+    new_urls = set(new_by_url)
+
+    added   = [new_by_url[u] for u in sorted(new_urls - old_urls)]
+    removed = [old_by_url[u] for u in sorted(old_urls - new_urls)]
+
+    # Conta per area tematica
+    def thematic_counts(calls):
+        tc = {}
+        for c in calls:
+            k = c.get("thematic_cluster") or "(non classificato)"
+            tc[k] = tc.get(k, 0) + 1
+        return tc
+
+    date_str = generated[:10]  # YYYY-MM-DD
+
+    lines = []
+    lines.append(f"# Changelog calls.json")
+    lines.append(f"")
+    lines.append(f"**Ultimo aggiornamento:** {generated.replace('T',' ').replace('+00:00',' UTC')[:22]}")
+    lines.append(f"")
+    lines.append(f"## Riepilogo")
+    lines.append(f"")
+    lines.append(f"| | Numero |")
+    lines.append(f"|---|---|")
+    lines.append(f"| Call totali (nuovo) | {len(new_calls)} |")
+    lines.append(f"| Call totali (precedente) | {len(old_calls)} |")
+    lines.append(f"| **Nuove call aggiunte** | **{len(added)}** |")
+    lines.append(f"| Call rimosse (scadute/chiuse) | {len(removed)} |")
+    lines.append(f"")
+
+    if added:
+        lines.append(f"## Call aggiunte ({len(added)})")
+        lines.append(f"")
+        # Group by thematic
+        by_thematic = {}
+        for c in added:
+            t = c.get("thematic_cluster") or "(non classificato)"
+            by_thematic.setdefault(t, []).append(c)
+        for thematic, calls in sorted(by_thematic.items()):
+            lines.append(f"### {thematic} ({len(calls)})")
+            lines.append(f"")
+            for c in calls:
+                name    = c.get("name") or "(senza nome)"
+                prog    = c.get("programme") or ""
+                action  = c.get("action") or ""
+                dead    = c.get("deadline") or ""
+                url     = c.get("url") or ""
+                meta = " · ".join(filter(None, [prog, action, f"Scadenza: {dead}" if dead else ""]))
+                lines.append(f"- **{name}**")
+                if meta:
+                    lines.append(f"  {meta}")
+                if url:
+                    lines.append(f"  {url}")
+                lines.append(f"")
+    else:
+        lines.append(f"## Call aggiunte")
+        lines.append(f"")
+        lines.append(f"Nessuna nuova call rispetto alla rilevazione precedente.")
+        lines.append(f"")
+
+    if removed:
+        lines.append(f"## Call rimosse ({len(removed)})")
+        lines.append(f"")
+        for c in removed:
+            name = c.get("name") or "(senza nome)"
+            prog = c.get("programme") or ""
+            dead = c.get("deadline") or ""
+            meta = " · ".join(filter(None, [prog, f"Scadenza: {dead}" if dead else ""]))
+            lines.append(f"- **{name}**{(' — ' + meta) if meta else ''}")
+        lines.append(f"")
+
+    lines.append(f"## Distribuzione per area tematica (nuovo dataset)")
+    lines.append(f"")
+    lines.append(f"| Area tematica | Call |")
+    lines.append(f"|---|---|")
+    for k, v in sorted(thematic_counts(new_calls).items(), key=lambda x: -x[1]):
+        lines.append(f"| {k} | {v} |")
+    lines.append(f"")
+
+    changelog_path.write_text("\n".join(lines), encoding="utf-8")
+    print(f"\n📋 Changelog scritto: {changelog_path} (+{len(added)} aggiunte, -{len(removed)} rimosse)")
+
+    # Aggiorna history cumulativa
+    history_path = changelog_path.parent / "changelog_history.md"
+    history_line = (
+        f"| {date_str} | {len(new_calls)} | +{len(added)} | -{len(removed)} |"
+    )
+    if history_path.exists():
+        hist = history_path.read_text(encoding="utf-8")
+        # Aggiunge riga dopo l'header della tabella
+        if history_line not in hist:
+            hist = hist.rstrip() + "\n" + history_line + "\n"
+            history_path.write_text(hist, encoding="utf-8")
+    else:
+        header = (
+            "# Storico aggiornamenti calls.json\n\n"
+            "| Data | Call totali | Aggiunte | Rimosse |\n"
+            "|---|---|---|---|\n"
+            + history_line + "\n"
+        )
+        history_path.write_text(header, encoding="utf-8")
+    print(f"📋 History aggiornata: {history_path}")
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+def main(out_path: Path):
+    rows      = []
+    seen_urls = set()
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        ctx = browser.new_context(
+            locale="en-US",
+            viewport={"width": 1920, "height": 1080},
+            user_agent=(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+        )
+        page = ctx.new_page()
+
+        # ── Passo 1: lista ────────────────────────────────────────────────────
+        page.goto(LIST_URL.format(page=1, ps=PAGE_SIZE),
+                  wait_until="domcontentloaded", timeout=90000)
+        page.wait_for_timeout(1500)
+        accept_cookies(page)
+        wait_cookie_gone(page)
+
+        total = read_total(page)
+        if total is None:
+            print("❌ Non riesco a leggere 'item(s) found'.")
+            browser.close()
+            return
+        max_pages = math.ceil(total / PAGE_SIZE)
+        print(f"Totale: {total} call | pagine: {max_pages}")
+
+        for pnum in range(1, max_pages + 1):
+            remaining = total - (pnum - 1) * PAGE_SIZE
+            expected  = min(PAGE_SIZE, remaining)
+            url = LIST_URL.format(page=pnum, ps=PAGE_SIZE)
+            print(f"\n[p{pnum}/{max_pages}] attese ~{expected}", end="", flush=True)
+            page.goto(url, wait_until="domcontentloaded", timeout=90000)
+            page.wait_for_timeout(1200)
+            accept_cookies(page)
+            wait_cookie_gone(page)
+
+            scroll_until(page, expected=expected)
+            links     = extract_links(page)
+            new_links = [u for u in links if u not in seen_urls]
+            print(f" → trovati {len(new_links)} nuovi", flush=True)
+
+            for u in new_links:
+                seen_urls.add(u)
+                rows.append(parse_card(page, u))
+            time.sleep(0.1)
+
+        # ── Passo 2: arricchimento ────────────────────────────────────────────
+        needs = [r for r in rows if not r.get("programme_raw") or not r.get("action_raw") or not r.get("call_id")]
+        print(f"\n═══ Passo 2: arricchimento {len(needs)} call su {len(rows)} totali ═══", flush=True)
+        enrich(ctx, rows)
+        browser.close()
+
+    # ── Classificazione e output ──────────────────────────────────────────────
+    calls = []
+    seen  = set()
+    for row in rows:
+        call = to_call(row)
+        if call["url"] and call["url"] not in seen:
+            seen.add(call["url"])
+            calls.append(call)
+
+    # Statistiche
+    tc = {}
+    for c in calls:
+        k = c["thematic_cluster"] or "(non classificato)"
+        tc[k] = tc.get(k, 0) + 1
+    print(f"\nClassificazione ({len(calls)} call totali):")
+    for k, v in sorted(tc.items(), key=lambda x: -x[1]):
+        print(f"  {v:5d}  {k}")
+    print(f"\nNon classificati: {tc.get('(non classificato)', 0)}")
+
+    generated = datetime.now(timezone.utc).isoformat()
+
+    # ── Changelog: confronta con il dataset precedente ────────────────────────
+    old_calls = []
+    if out_path.exists():
+        try:
+            old_data = json.loads(out_path.read_text(encoding="utf-8"))
+            old_calls = old_data.get("calls", [])
+            print(f"\nDataset precedente: {len(old_calls)} call")
+        except Exception:
+            print("\nNessun dataset precedente trovato.")
+
+    changelog_path = out_path.parent / "changelog.md"
+    write_changelog(old_calls, calls, changelog_path, generated)
+
+    # ── Salva nuovo dataset ───────────────────────────────────────────────────
+    payload = {
+        "generated": generated,
+        "calls": calls,
     }
+    out_path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    print(f"\n Scritto {out_path} con {len(calls)} call")
 
-    let pageHtml = `<div class="box"><strong>Your answers</strong><div style="margin-top:8px">${pills}</div></div>`;
 
-    if (!filtered.length && !eventsToShow.length && !msProgs.length) {
-      pageHtml += `<div class="box">No results found. Try widening the filters.</div>`;
-      results.innerHTML = pageHtml;
-      return;
-    }
-
-    if (showCalls) {
-      pageHtml += `<section id="callsSection">
-        <h2 style="margin-top:14px">Suggested calls (${filtered.length})</h2>
-        <div id="callsList"></div>
-        <div id="callsMoreWrap" style="margin:12px 0 4px"></div>
-      </section>`;
-
-      if (msProgs.length) {
-        pageHtml += `<section id="programmesSection">
-          <h2 style="margin-top:22px">
-            &#127981; Shared management programmes in ${MS_NAMES[ms]||ms}
-            <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
-              — ERDF / ESF+ / JTF / Interreg (2021-2027)
-            </span>
-          </h2>
-          <div class="box muted" style="margin-bottom:10px">
-            These programmes are managed by national or regional authorities.
-            Contact the managing authority directly to enquire about open calls
-            and eligibility conditions.
-          </div>
-          <div id="programmesList"></div>
-          <div id="programmesMoreWrap" style="margin:12px 0 4px"></div>
-        </section>`;
-      }
-    }
-
-    if (showEvents) {
-      pageHtml += `<section id="eventsSection">
-        <h2 style="margin-top:22px">
-          &#128197; Upcoming Innovation Events &amp; Opportunities
-          <span style="font-size:.85rem;font-weight:400;color:#6b7280;">
-            — EEN, EIC, EBAN, BpiFrance, ESN and more
-          </span>
-        </h2>
-        <div class="box muted" style="margin-bottom:10px">
-          Matchmaking events, investor days, info days and open opportunities from
-          key European innovation networks. Sourced nightly from 8 platforms.
-        </div>
-        <div id="eventsList"></div>
-        <div id="eventsMoreWrap" style="margin:12px 0 4px"></div>
-      </section>`;
-    }
-
-    results.innerHTML = pageHtml;
-
-    const callsList = document.getElementById('callsList');
-    const callsMoreWrap = document.getElementById('callsMoreWrap');
-    const programmesList = document.getElementById('programmesList');
-    const programmesMoreWrap = document.getElementById('programmesMoreWrap');
-    const eventsList = document.getElementById('eventsList');
-    const eventsMoreWrap = document.getElementById('eventsMoreWrap');
-
-    function refreshCallsButton() {
-      if (!callsMoreWrap) return;
-      if (filtered.length > visibleCalls) {
-        callsMoreWrap.innerHTML = `<button type="button" id="loadMoreCalls" class="secondary">Load more</button>`;
-        document.getElementById('loadMoreCalls').addEventListener('click', function() {
-          const start = visibleCalls;
-          visibleCalls = Math.min(visibleCalls + CALLS_STEP, filtered.length);
-          callsList.insertAdjacentHTML('beforeend', filtered.slice(start, visibleCalls).map(renderCallCard).join(''));
-          refreshCallsButton();
-        });
-      } else {
-        callsMoreWrap.innerHTML = '';
-      }
-    }
-
-    function refreshProgrammesButton() {
-      if (!programmesMoreWrap) return;
-      if (msProgs.length > visibleProgrammes) {
-        programmesMoreWrap.innerHTML = `<button type="button" id="loadMoreProgrammes" class="secondary">Load more</button>`;
-        document.getElementById('loadMoreProgrammes').addEventListener('click', function() {
-          const start = visibleProgrammes;
-          visibleProgrammes = Math.min(visibleProgrammes + PROGRAMMES_STEP, msProgs.length);
-          programmesList.insertAdjacentHTML('beforeend', msProgs.slice(start, visibleProgrammes).map(renderProgrammeCard).join(''));
-          refreshProgrammesButton();
-        });
-      } else {
-        programmesMoreWrap.innerHTML = '';
-      }
-    }
-
-    function refreshEventsButton() {
-      if (!eventsMoreWrap) return;
-      if (eventsToShow.length > visibleEvents) {
-        eventsMoreWrap.innerHTML = `<button type="button" id="loadMoreEvents" class="secondary">Load more</button>`;
-        document.getElementById('loadMoreEvents').addEventListener('click', function() {
-          const start = visibleEvents;
-          visibleEvents = Math.min(visibleEvents + EVENTS_STEP, eventsToShow.length);
-          eventsList.insertAdjacentHTML('beforeend', eventsToShow.slice(start, visibleEvents).map(renderEventCard).join(''));
-          refreshEventsButton();
-        });
-      } else {
-        eventsMoreWrap.innerHTML = '';
-      }
-    }
-
-    if (showCalls) {
-      if (!filtered.length) {
-        callsList.innerHTML = `<div class="box">No calls or programmes found. Try adjusting the filters.</div>`;
-      } else {
-        callsList.innerHTML = filtered.slice(0, visibleCalls).map(renderCallCard).join('');
-        refreshCallsButton();
-      }
-
-      if (msProgs.length && programmesList) {
-        programmesList.innerHTML = msProgs.slice(0, visibleProgrammes).map(renderProgrammeCard).join('');
-        refreshProgrammesButton();
-      }
-    }
-
-    if (showEvents) {
-      if (!eventsToShow.length) {
-        eventsList.innerHTML = `<div class="box">No matching matchmaking events found.</div>`;
-      } else {
-        eventsList.innerHTML = eventsToShow.slice(0, visibleEvents).map(renderEventCard).join('');
-        refreshEventsButton();
-      }
-    }
-  }
-
-  const trlFieldset = document.getElementById('trl_fieldset');
-  const trlSelect   = document.getElementById('trl_bracket');
-
-  function syncTlrField() {
-    const selectedNature = form.querySelector('input[name="project_nature"]:checked')?.value || '';
-    const showTlr = selectedNature === 'industrial';
-    trlFieldset.style.display = showTlr ? '' : 'none';
-    if (!showTlr) trlSelect.value = '';
-  }
-
-  form.querySelectorAll('input[name="project_nature"]').forEach(input => {
-    input.addEventListener('change', syncTlrField);
-  });
-  syncTlrField();
-
-  const submitBtn = form.querySelector('button[type="submit"]');
-
-  function syncSubmitLabel() {
-    const scope = form.querySelector('input[name="results_scope"]:checked')?.value || 'both';
-    if (!submitBtn) return;
-    if (scope === 'calls') submitBtn.textContent = 'Find matching calls';
-    else if (scope === 'events') submitBtn.textContent = 'Find matchmaking events';
-    else submitBtn.textContent = 'Find calls and events';
-  }
-
-  form.querySelectorAll('input[name="results_scope"]').forEach(input => {
-    input.addEventListener('change', syncSubmitLabel);
-  });
-  syncSubmitLabel();
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const fd = new FormData(form);
-    const answers = {
-      closure_year:    fd.get('closure_year'),
-      closure_quarter: fd.get('closure_quarter'),
-      project_nature:  fd.get('project_nature'),
-      thematic_cluster:fd.get('thematic_cluster'),
-      official_cluster:fd.get('official_cluster'),
-      partner_type:    fd.get('partner_type'),
-      member_state:    fd.get('member_state'),
-      trl_bracket:     fd.get('trl_bracket'),
-      results_scope:   fd.get('results_scope') || 'both',
-    };
-    renderResults(answers, filterCalls(answers));
-  });
-
-  resetBtn.addEventListener('click', function() {
-    form.reset();
-    syncTlrField();
-    syncSubmitLabel();
-    results.innerHTML = '';
-  });
-})();
-</script>
-</body>
-</html>
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", default="calls.json", help="Percorso output JSON")
+    args = parser.parse_args()
+    main(Path(args.out))
