@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-30T08:10:22.004839+00:00",
-  "count": 83,
+  "generated": "2026-03-31T06:54:45.480043+00:00",
+  "count": 81,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -19,42 +19,6 @@
       "location": "",
       "url": "https://europeanstartupnetwork.eu/european-startup-and-investment-ecosystems-stand-united-in-call-for-a-true-28th-regime/",
       "description": "One Newsletter, Endless Startup Opportunities Across Europe. – Sign up now!"
-    },
-    {
-      "title": "Tous nos évènements",
-      "source": "BpiFrance",
-      "date": "2026-03-30",
-      "date_end": "",
-      "location": "",
-      "url": "https://evenements.bpifrance.fr/events/9b0cb426-cd13-f111-a69a-000d3a39bd37/global-industrie-2026",
-      "description": ""
-    },
-    {
-      "title": "X International Forum on Dual-Use Technologies 2026",
-      "source": "EEN",
-      "date": "2026-03-31",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/x-international-forum-dual-use-technologies-2026",
-      "description": ""
-    },
-    {
-      "title": "NL-UA Business Forum 2026",
-      "source": "EEN",
-      "date": "2026-03-31",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/nl-ua-business-forum-2026",
-      "description": ""
-    },
-    {
-      "title": "Women Entrepreneurship: e-Catalogue Pitch & Networking Hybrid Event – EEN Portugal",
-      "source": "EEN",
-      "date": "2026-03-31",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/women-entrepreneurship-e-catalogue-pitch-networking-hybrid-event-een-portugal",
-      "description": ""
     },
     {
       "title": "Alimentaria Open Innovation Challenge 2026",
@@ -84,11 +48,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "International business meetings at the 27th International Business Fair Mostar 2026",
       "source": "EEN",
       "date": "2026-04-16",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/international-business-meetings-27th-international-business-fair-mostar-2026",
       "description": ""
     },
@@ -111,11 +75,11 @@
       "description": ""
     },
     {
-      "title": "Technology & Business Cooperation Days @ HANNOVER MESSE 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-04-23",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/technology-business-cooperation-days-hannover-messe-2026",
       "description": ""
     },
@@ -156,7 +120,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Networking event at the Plastic Recycling Show Europe - PRSE",
       "source": "EEN",
       "date": "2026-05-05",
       "date_end": "",
@@ -210,11 +174,11 @@
       "description": ""
     },
     {
-      "title": "EEN Cooperation Days - \"Viking Days\" 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-07",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/een-cooperation-days-viking-days-2026",
       "description": ""
     },
@@ -255,7 +219,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Textile Connect 2026",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
@@ -291,11 +255,11 @@
       "description": ""
     },
     {
-      "title": "World Sauna Forum 2026 Matchmaking",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
       "description": ""
     },
@@ -315,6 +279,24 @@
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/ai-abel-2026-artificial-intelligence-applications-business-and-everyday-life",
+      "description": ""
+    },
+    {
+      "title": "MIRABILIA TOURISM 2026",
+      "source": "EEN",
+      "date": "2026-06-17",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/mirabilia-tourism-2026",
+      "description": ""
+    },
+    {
+      "title": "MIRABILIA FOOD 2026",
+      "source": "EEN",
+      "date": "2026-06-17",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/mirabilia-food-2026",
       "description": ""
     },
     {
@@ -354,11 +336,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "B2B TORINO FASHION MATCH 2026",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
@@ -372,11 +354,11 @@
       "description": ""
     },
     {
-      "title": "IFAT India 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-09-11",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/ifat-india-2026",
       "description": ""
     },
@@ -458,7 +440,7 @@
       "date": "",
       "date_end": "",
       "location": "",
-      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-03-30T00%3A00%3A00%2B00%3A00%7C2026-03-30T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
+      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-03-31T00%3A00%3A00%2B00%3A00%7C2026-03-31T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
       "description": ""
     },
     {
