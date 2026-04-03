@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-02T07:16:20.437756+00:00",
-  "count": 82,
+  "generated": "2026-04-03T07:16:07.060582+00:00",
+  "count": 83,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -84,6 +84,15 @@
       "description": ""
     },
     {
+      "title": "EU-Ukraine Business Summit matchmaking platform",
+      "source": "EEN",
+      "date": "2026-04-24",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/eu-ukraine-business-summit-matchmaking-platform",
+      "description": ""
+    },
+    {
       "title": "Women Entrepreneurs: Be Prepared to Be Resilient",
       "source": "EEN",
       "date": "2026-04-24",
@@ -129,11 +138,11 @@
       "description": ""
     },
     {
-      "title": "Matchmaking at Eastern Finland Energy Days 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/matchmaking-eastern-finland-energy-days-2026",
       "description": ""
     },
@@ -165,11 +174,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "EEN Cooperation Days - \"Viking Days\" 2026",
       "source": "EEN",
       "date": "2026-05-07",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/een-cooperation-days-viking-days-2026",
       "description": ""
     },
@@ -180,6 +189,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-meetings-about-canakkale-tourism-0",
+      "description": ""
+    },
+    {
+      "title": "South East Europe Automotive Conference- Connect & Supply 2026",
+      "source": "EEN",
+      "date": "2026-05-13",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/south-east-europe-automotive-conference-connect-supply-2026",
       "description": ""
     },
     {
@@ -237,20 +255,20 @@
       "description": ""
     },
     {
-      "title": "Startup Pitching Session at the EBAN Congress 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-02",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/startup-pitching-session-eban-congress-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "World Sauna Forum 2026 Matchmaking",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
       "description": ""
     },
@@ -327,11 +345,11 @@
       "description": ""
     },
     {
-      "title": "Open de l'International 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-29",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/open-de-linternational-2026",
       "description": ""
     },
@@ -345,11 +363,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "B2B TORINO FASHION MATCH 2026",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
@@ -417,7 +435,7 @@
       "description": ""
     },
     {
-      "title": "Bengaluru Tech Summit 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-11-20",
       "date_end": "",
@@ -441,15 +459,6 @@
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/edf-partner-pool",
-      "description": ""
-    },
-    {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-04-02T00%3A00%3A00%2B00%3A00%7C2026-04-02T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
       "description": ""
     },
     {
