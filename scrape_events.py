@@ -556,7 +556,7 @@ def main():
 
     out = Path("events.json")
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n✅ Saved {out} with {len(all_sorted)} events/opportunities")
+    print(f"\n Saved {out} with {len(all_sorted)} events/opportunities")
 
     # Summary by source
     by_src = {}
