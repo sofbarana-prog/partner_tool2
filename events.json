@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-08T07:57:12.122836+00:00",
-  "count": 83,
+  "generated": "2026-04-09T07:59:36.794088+00:00",
+  "count": 84,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -57,20 +57,20 @@
       "description": ""
     },
     {
-      "title": "11th International Cooperation Exchange Barleben",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-04-22",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/11th-international-cooperation-exchange-barleben",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Technology & Business Cooperation Days @ HANNOVER MESSE 2026",
       "source": "EEN",
       "date": "2026-04-23",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/technology-business-cooperation-days-hannover-messe-2026",
       "description": ""
     },
@@ -120,15 +120,6 @@
       "description": ""
     },
     {
-      "title": "Networking event at the Plastic Recycling Show Europe - PRSE",
-      "source": "EEN",
-      "date": "2026-05-05",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/networking-event-plastic-recycling-show-europe-prse",
-      "description": ""
-    },
-    {
       "title": "Business Forum: Istrian Region – Montenegro",
       "source": "EEN",
       "date": "2026-05-05",
@@ -138,20 +129,29 @@
       "description": ""
     },
     {
+      "title": "Networking event at the Plastic Recycling Show Europe - PRSE",
+      "source": "EEN",
+      "date": "2026-05-05",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/networking-event-plastic-recycling-show-europe-prse",
+      "description": ""
+    },
+    {
+      "title": "Matchmaking at Eastern Finland Energy Days 2026",
+      "source": "EEN",
+      "date": "2026-05-06",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/matchmaking-eastern-finland-energy-days-2026",
+      "description": ""
+    },
+    {
       "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
       "location": "Online",
-      "url": "https://een.ec.europa.eu/events/matchmaking-eastern-finland-energy-days-2026",
-      "description": ""
-    },
-    {
-      "title": "Eureka Global Innovation Summit 2026",
-      "source": "EEN",
-      "date": "2026-05-06",
-      "date_end": "",
-      "location": "",
       "url": "https://een.ec.europa.eu/events/eureka-global-innovation-summit-2026",
       "description": ""
     },
@@ -255,11 +255,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Startup Pitching Session at the EBAN Congress 2026",
       "source": "EEN",
       "date": "2026-06-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/startup-pitching-session-eban-congress-2026",
       "description": ""
     },
@@ -282,7 +282,7 @@
       "description": ""
     },
     {
-      "title": "AI ABEL 2026 Artificial Intelligence Applications in Business and Everyday Life",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-12",
       "date_end": "",
@@ -345,20 +345,20 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Open de l'International 2026",
       "source": "EEN",
       "date": "2026-06-29",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/open-de-linternational-2026",
       "description": ""
     },
     {
-      "title": "Matchmaking@GITEX AI EUROPE 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-01",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/matchmakinggitex-ai-europe-2026",
       "description": ""
     },
@@ -414,6 +414,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/15th-micro-nano-event",
+      "description": ""
+    },
+    {
+      "title": "ENVIRONTEC powered by ÖKOINDUSTRIA 2026 B2B Event",
+      "source": "EEN",
+      "date": "2026-10-09",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/environtec-powered-okoindustria-2026-b2b-event",
       "description": ""
     },
     {
