@@ -222,7 +222,6 @@ def parse_page(html: str, country_code: str, country_name: str) -> list:
                 "fund": "",
                 "thematic_clusters": [],
             }
-          #if MA was already present, ssaves it in the list "programmes"
       """creates an empty list with all the fields, starts filling country code (AT, BE, ...), 
       name, and managing authority. the remaining fields will be filled later""" 
 
