@@ -186,8 +186,8 @@ def parse_page(html: str, country_code: str, country_name: str) -> list:
 
     for tag in soup.find_all(["h4", "h3", "dt", "dd"]):
         text = tag.get_text(strip=True)
-      #retrieves all HTML elements in the page that are headings or definition pairs (dt/dd) 
-      # and extracts clean text
+      """ retrieves all HTML elements in the page that are sub-headings (h3, h4) or definition pairs (dt/dd) 
+      and extracts clean text"""
 
         # Detect section markers
         if tag.name == "h4":
@@ -224,7 +224,7 @@ def parse_page(html: str, country_code: str, country_name: str) -> list:
             }
           #if MA was already present, ssaves it in the list "programmes"
       """creates an empty list with all the fields, starts filling country code (AT, BE, ...), 
-      name, and managing authority. the remaining fields will be filled later
+      name, and managing authority. the remaining fields will be filled later""" 
 
         elif tag.name == "dt":
             label = text.lower()
