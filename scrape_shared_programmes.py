@@ -182,9 +182,12 @@ def parse_page(html: str, country_code: str, country_name: str) -> list:
     # Find the 2021-2027 section — it's after an h4 containing "2021"
     in_section = False
     current_ma = {}
+  # creates an empty dictionary to store data of a managing authority
 
     for tag in soup.find_all(["h4", "h3", "dt", "dd"]):
         text = tag.get_text(strip=True)
+      #retrieves all HTML elements in the page that are headings or definition pairs (dt/dd) 
+      # and extracts clean text
 
         # Detect section markers
         if tag.name == "h4":
@@ -201,8 +204,9 @@ def parse_page(html: str, country_code: str, country_name: str) -> list:
 
         if not in_section:
             continue
+          #ensures only headings containing 2021-2027 are considered
 
-        # Each MA block is an h3 (managing authority name)
+        # Each MA block is an h3 (subsection with managing authority name) 
         if tag.name == "h3":
             if current_ma.get("programme_name"):
                 programmes.append(current_ma)
@@ -218,6 +222,9 @@ def parse_page(html: str, country_code: str, country_name: str) -> list:
                 "fund": "",
                 "thematic_clusters": [],
             }
+          #if MA was already present, ssaves it in the list "programmes"
+      """creates an empty list with all the fields, starts filling country code (AT, BE, ...), 
+      name, and managing authority. the remaining fields will be filled later
 
         elif tag.name == "dt":
             label = text.lower()
