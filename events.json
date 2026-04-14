@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-13T10:12:00.280960+00:00",
+  "generated": "2026-04-14T08:10:05.255273+00:00",
   "count": 84,
   "events": [
     {
@@ -21,21 +21,21 @@
       "description": "One Newsletter, Endless Startup Opportunities Across Europe. – Sign up now!"
     },
     {
-      "title": "Drone Seminar 2026 Matchmaking",
-      "source": "EEN",
-      "date": "2026-04-14",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/drone-seminar-2026-matchmaking",
-      "description": ""
-    },
-    {
       "title": "Connect2Slovenia 2026: Metal&Plastic",
       "source": "EEN",
       "date": "2026-04-15",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/connect2slovenia-2026-metalplastic",
+      "description": ""
+    },
+    {
+      "title": "AgriFood Digital & Automation Matchmaking",
+      "source": "EEN",
+      "date": "2026-04-15",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/agrifood-digital-automation-matchmaking",
       "description": ""
     },
     {
