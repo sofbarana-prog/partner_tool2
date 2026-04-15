@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-14T08:10:05.255273+00:00",
-  "count": 84,
+  "generated": "2026-04-15T08:09:10.938143+00:00",
+  "count": 73,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -19,24 +19,6 @@
       "location": "",
       "url": "https://europeanstartupnetwork.eu/european-startup-and-investment-ecosystems-stand-united-in-call-for-a-true-28th-regime/",
       "description": "One Newsletter, Endless Startup Opportunities Across Europe. – Sign up now!"
-    },
-    {
-      "title": "Connect2Slovenia 2026: Metal&Plastic",
-      "source": "EEN",
-      "date": "2026-04-15",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/connect2slovenia-2026-metalplastic",
-      "description": ""
-    },
-    {
-      "title": "AgriFood Digital & Automation Matchmaking",
-      "source": "EEN",
-      "date": "2026-04-15",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/agrifood-digital-automation-matchmaking",
-      "description": ""
     },
     {
       "title": "International business meetings at the 27th International Business Fair Mostar 2026",
@@ -66,12 +48,21 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Technology & Business Cooperation Days @ HANNOVER MESSE 2026",
       "source": "EEN",
       "date": "2026-04-23",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/technology-business-cooperation-days-hannover-messe-2026",
+      "description": ""
+    },
+    {
+      "title": "EU Series: Food & Hospitality B2B Event",
+      "source": "EEN",
+      "date": "2026-04-23",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/eu-series-food-hospitality-b2b-event-0",
       "description": ""
     },
     {
@@ -84,11 +75,11 @@
       "description": ""
     },
     {
-      "title": "EU-Ukraine Business Summit matchmaking platform",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-04-24",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/eu-ukraine-business-summit-matchmaking-platform",
       "description": ""
     },
@@ -147,11 +138,11 @@
       "description": ""
     },
     {
-      "title": "Eureka Global Innovation Summit 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/eureka-global-innovation-summit-2026",
       "description": ""
     },
@@ -174,11 +165,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "EEN Cooperation Days - \"Viking Days\" 2026",
       "source": "EEN",
       "date": "2026-05-07",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/een-cooperation-days-viking-days-2026",
       "description": ""
     },
@@ -198,6 +189,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/south-east-europe-automotive-conference-connect-supply-2026",
+      "description": ""
+    },
+    {
+      "title": "Ambelia Food&Drink",
+      "source": "EEN",
+      "date": "2026-05-17",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/ambelia-fooddrink",
       "description": ""
     },
     {
@@ -401,7 +401,7 @@
     {
       "title": "WindEnergy Match 2026 – SAVE THE DATE!Onsite & Online",
       "source": "EEN",
-      "date": "2026-09-24",
+      "date": "2026-09-29",
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/windenergy-match-2026-save-date-onsite-online",
@@ -469,105 +469,6 @@
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/edf-partner-pool",
       "description": ""
-    },
-    {
-      "title": "Unlocking Innovation Potential: IP Essentials for Future EIC Applicants",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/unlocking-innovation-potential-ip-essentials-for-future-eic-applicants/",
-      "description": "Are you considering applying to the European Innovation Council? Join the webinars organized by the European IP Helpdesk to gain practical insights i..."
-    },
-    {
-      "title": "Relive the EIC Online Info Day – Work Programme 2026",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/relive-the-eic-online-info-day-work-programme-2026-2/",
-      "description": "Did you miss the EIC Online Info Day on the European Innovation Council Work Programme 2026? Or maybe you want to revisit the key insights and pres..."
-    },
-    {
-      "title": "Online Info Session: European Startup and Scaleup Hubs – Pilot Call (HORIZON-EIE-2026-02-CONNECT-01)",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/online-info-session-european-startup-and-scaleup-hubs-pilot-call-horizon-eie-2026-02-connect-01/",
-      "description": "The European Commission, through EISMEA and DG RTD, is organizing an online information session to present the pilot call “European Startup and Scal..."
-    },
-    {
-      "title": "Next Generation Innovation Talents Scheme Info Day 18/09",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/next-generation-innovation-talents-scheme-info-day-18-09/",
-      "description": "Access2EIC network would like to inform you about the Next Generation Innovation Talents Scheme Info Day that will take place on Monday 18/09 from 1..."
-    },
-    {
-      "title": "EIC T2M Entrepreneurship & Venture Building Programme Info Session - 12 September",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/eic-t2m-entrepreneurship-venture-building-programme-info-session-12-september/",
-      "description": "The European Innovation Council (EIC) invites the EIC Pathfinder and EIC Transition beneficiaries to participate in the EIC Tech to Market (T2M) En..."
-    },
-    {
-      "title": "EIC Corporate Day with AB inBev - 26/27 June, Leuven",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/eic-corporate-day-with-ab-inbev/",
-      "description": "Open Call – EIC Corporate Day with AB inBev: Meet, pitch and cheers with a global drink and brewing company! The European Innovation Council (EIC..."
-    },
-    {
-      "title": "EIC Infoday 2023 - 13th June in Šibenik, Croatia",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/eic-infoday-2023-13th-june-in-sibenik-croatia/",
-      "description": "The Croatian Agency for SMEs, Innovation and Investments (HAMAG-BICRO) and European Innovation Council and SMEs Executive Agency (EISMEA) are pleased ..."
-    },
-    {
-      "title": "The European Capital of Innovation Awards (iCapital)",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/the-european-capital-of-innovation-awards-icapital/",
-      "description": "On 28th March, the European Innovation Council and SMEs Executive Agency (EISMEA) is organizing an informative webinar to learn more about the 9th e..."
-    },
-    {
-      "title": "EIC Infoday in Sophia",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/eic-infoday-in-sophia/",
-      "description": "The European Innovation Council (EIC) is Europe's most ambitious innovation flagship initiative, with € 10.1 billion earmarked to help Europe's mo..."
-    },
-    {
-      "title": "EIC Challenges Information Days",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/eic-challenges-information-days/",
-      "description": "EIC invite you for a series of information days on EIC Challenges, organised by the EIC Programme Managers.To know more about the EIC Challenges Infor..."
-    },
-    {
-      "title": "Infoday Webinar EIC Pilot: How to succeed in the EIC Pathfinder and Accelerator 2020 calls",
-      "source": "Access2EIC",
-      "date": "",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://access2eic.eu/event/infoday-webinar-eic-pilot-how-to-succeed-in-the-eic-pathfinder-and-accelerator-2020-calls/",
-      "description": "We are inviting you to join an infoday webinar on the topic “European Innovation Council Pilot: How to succeed in the EIC Pathfinder and Accelerator..."
     },
     {
       "title": "EBAN Congress 2026",
@@ -642,12 +543,12 @@
       "description": ""
     },
     {
-      "title": "EBAN Gender Expert Group",
+      "title": "How early is too early? To bring in a fundraiser",
       "source": "EBAN",
       "date": "",
       "date_end": "",
       "location": "",
-      "url": "https://www.eban.org/news/eban-gender-expert-group/",
+      "url": "https://www.eban.org/news/how-early-is-too-early-to-bring-in-a-fundraiser/",
       "description": ""
     },
     {
