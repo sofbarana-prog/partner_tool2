@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-15T08:09:10.938143+00:00",
-  "count": 73,
+  "generated": "2026-04-16T08:06:42.949927+00:00",
+  "count": 85,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -21,39 +21,12 @@
       "description": "One Newsletter, Endless Startup Opportunities Across Europe. – Sign up now!"
     },
     {
-      "title": "International business meetings at the 27th International Business Fair Mostar 2026",
-      "source": "EEN",
-      "date": "2026-04-16",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/international-business-meetings-27th-international-business-fair-mostar-2026",
-      "description": ""
-    },
-    {
-      "title": "Baltic Sea Business Day",
-      "source": "EEN",
-      "date": "2026-04-16",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/baltic-sea-business-day",
-      "description": ""
-    },
-    {
       "title": "11th International Cooperation Exchange Barleben",
       "source": "EEN",
       "date": "2026-04-22",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/11th-international-cooperation-exchange-barleben",
-      "description": ""
-    },
-    {
-      "title": "Technology & Business Cooperation Days @ HANNOVER MESSE 2026",
-      "source": "EEN",
-      "date": "2026-04-23",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/technology-business-cooperation-days-hannover-messe-2026",
       "description": ""
     },
     {
@@ -66,6 +39,15 @@
       "description": ""
     },
     {
+      "title": "Technology & Business Cooperation Days @ HANNOVER MESSE 2026",
+      "source": "EEN",
+      "date": "2026-04-23",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/technology-business-cooperation-days-hannover-messe-2026",
+      "description": ""
+    },
+    {
       "title": "DMEA Business Meetings 2026",
       "source": "EEN",
       "date": "2026-04-24",
@@ -75,11 +57,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "EU-Ukraine Business Summit matchmaking platform",
       "source": "EEN",
       "date": "2026-04-24",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/eu-ukraine-business-summit-matchmaking-platform",
       "description": ""
     },
@@ -93,11 +75,11 @@
       "description": ""
     },
     {
-      "title": "BUILD'N GREEN 2026 - Circularity in Action",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-04-29",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/buildn-green-2026-circularity-action",
       "description": ""
     },
@@ -138,11 +120,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Eureka Global Innovation Summit 2026",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/eureka-global-innovation-summit-2026",
       "description": ""
     },
@@ -183,11 +165,11 @@
       "description": ""
     },
     {
-      "title": "South East Europe Automotive Conference- Connect & Supply 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-13",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/south-east-europe-automotive-conference-connect-supply-2026",
       "description": ""
     },
@@ -237,6 +219,24 @@
       "description": ""
     },
     {
+      "title": "Speed-Match 2026",
+      "source": "EEN",
+      "date": "2026-05-27",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/speed-match-2026",
+      "description": ""
+    },
+    {
+      "title": "Health Revolution Open Innovation Challenge 2026",
+      "source": "EEN",
+      "date": "2026-05-27",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/health-revolution-open-innovation-challenge-2026",
+      "description": ""
+    },
+    {
       "title": "OPD2026 Matchmaking",
       "source": "EEN",
       "date": "2026-05-28",
@@ -270,6 +270,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
+      "description": ""
+    },
+    {
+      "title": "DES2026 Business Meetings",
+      "source": "EEN",
+      "date": "2026-06-11",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
       "description": ""
     },
     {
@@ -345,20 +354,20 @@
       "description": ""
     },
     {
-      "title": "Open de l'International 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-29",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/open-de-linternational-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Matchmaking@GITEX AI EUROPE 2026",
       "source": "EEN",
       "date": "2026-07-01",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/matchmakinggitex-ai-europe-2026",
       "description": ""
     },
@@ -399,6 +408,15 @@
       "description": ""
     },
     {
+      "title": "Matchmaking at IceFish 2026",
+      "source": "EEN",
+      "date": "2026-09-23",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/matchmaking-icefish-2026",
+      "description": ""
+    },
+    {
       "title": "WindEnergy Match 2026 – SAVE THE DATE!Onsite & Online",
       "source": "EEN",
       "date": "2026-09-29",
@@ -426,7 +444,7 @@
       "description": ""
     },
     {
-      "title": "Business Meetings Food Paris 2026 (SIAL)",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-20",
       "date_end": "",
@@ -444,7 +462,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Bengaluru Tech Summit 2026",
       "source": "EEN",
       "date": "2026-11-20",
       "date_end": "",
@@ -462,6 +480,15 @@
       "description": ""
     },
     {
+      "title": "MEDICA Healthcare Brokerage Event 2026",
+      "source": "EEN",
+      "date": "2026-11-29",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/medica-healthcare-brokerage-event-2026",
+      "description": ""
+    },
+    {
       "title": "EDF Partner Pool",
       "source": "EEN",
       "date": "2026-12-01",
@@ -471,12 +498,111 @@
       "description": ""
     },
     {
+      "title": "Unlocking Innovation Potential: IP Essentials for Future EIC Applicants",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/unlocking-innovation-potential-ip-essentials-for-future-eic-applicants/",
+      "description": "Are you considering applying to the European Innovation Council? Join the webinars organized by the European IP Helpdesk to gain practical insights i..."
+    },
+    {
+      "title": "Relive the EIC Online Info Day – Work Programme 2026",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/relive-the-eic-online-info-day-work-programme-2026-2/",
+      "description": "Did you miss the EIC Online Info Day on the European Innovation Council Work Programme 2026? Or maybe you want to revisit the key insights and pres..."
+    },
+    {
+      "title": "Online Info Session: European Startup and Scaleup Hubs – Pilot Call (HORIZON-EIE-2026-02-CONNECT-01)",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/online-info-session-european-startup-and-scaleup-hubs-pilot-call-horizon-eie-2026-02-connect-01/",
+      "description": "The European Commission, through EISMEA and DG RTD, is organizing an online information session to present the pilot call “European Startup and Scal..."
+    },
+    {
+      "title": "Next Generation Innovation Talents Scheme Info Day 18/09",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/next-generation-innovation-talents-scheme-info-day-18-09/",
+      "description": "Access2EIC network would like to inform you about the Next Generation Innovation Talents Scheme Info Day that will take place on Monday 18/09 from 1..."
+    },
+    {
+      "title": "EIC T2M Entrepreneurship & Venture Building Programme Info Session - 12 September",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/eic-t2m-entrepreneurship-venture-building-programme-info-session-12-september/",
+      "description": "The European Innovation Council (EIC) invites the EIC Pathfinder and EIC Transition beneficiaries to participate in the EIC Tech to Market (T2M) En..."
+    },
+    {
+      "title": "EIC Corporate Day with AB inBev - 26/27 June, Leuven",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/eic-corporate-day-with-ab-inbev/",
+      "description": "Open Call – EIC Corporate Day with AB inBev: Meet, pitch and cheers with a global drink and brewing company! The European Innovation Council (EIC..."
+    },
+    {
+      "title": "EIC Infoday 2023 - 13th June in Šibenik, Croatia",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/eic-infoday-2023-13th-june-in-sibenik-croatia/",
+      "description": "The Croatian Agency for SMEs, Innovation and Investments (HAMAG-BICRO) and European Innovation Council and SMEs Executive Agency (EISMEA) are pleased ..."
+    },
+    {
+      "title": "The European Capital of Innovation Awards (iCapital)",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/the-european-capital-of-innovation-awards-icapital/",
+      "description": "On 28th March, the European Innovation Council and SMEs Executive Agency (EISMEA) is organizing an informative webinar to learn more about the 9th e..."
+    },
+    {
+      "title": "EIC Infoday in Sophia",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/eic-infoday-in-sophia/",
+      "description": "The European Innovation Council (EIC) is Europe's most ambitious innovation flagship initiative, with € 10.1 billion earmarked to help Europe's mo..."
+    },
+    {
+      "title": "EIC Challenges Information Days",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/eic-challenges-information-days/",
+      "description": "EIC invite you for a series of information days on EIC Challenges, organised by the EIC Programme Managers.To know more about the EIC Challenges Infor..."
+    },
+    {
+      "title": "Infoday Webinar EIC Pilot: How to succeed in the EIC Pathfinder and Accelerator 2020 calls",
+      "source": "Access2EIC",
+      "date": "",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://access2eic.eu/event/infoday-webinar-eic-pilot-how-to-succeed-in-the-eic-pathfinder-and-accelerator-2020-calls/",
+      "description": "We are inviting you to join an infoday webinar on the topic “European Innovation Council Pilot: How to succeed in the EIC Pathfinder and Accelerator..."
+    },
+    {
       "title": "EBAN Congress 2026",
       "source": "EBAN",
       "date": "",
       "date_end": "",
       "location": "",
-      "url": "https://www.ebancongress.com/",
+      "url": "https://fienta.com/eban2026",
       "description": ""
     },
     {
@@ -485,25 +611,7 @@
       "date": "",
       "date_end": "",
       "location": "",
-      "url": "https://ebanteam.notion.site/2e09f622973f809b9339fb4d6990ebb0?pvs=105",
-      "description": ""
-    },
-    {
-      "title": "DOERS Summit",
-      "source": "EBAN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://doerssummit.com/",
-      "description": ""
-    },
-    {
-      "title": "Vivatech: Paris, France​",
-      "source": "EBAN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://vivatech.com/",
+      "url": "https://ebanteam.notion.site/3439f622973f8049adf8e1c7b3f922fe?pvs=105",
       "description": ""
     },
     {
