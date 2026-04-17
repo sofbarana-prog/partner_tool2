@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-16T08:06:42.949927+00:00",
-  "count": 85,
+  "generated": "2026-04-17T08:00:24.353981+00:00",
+  "count": 81,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -21,21 +21,12 @@
       "description": "One Newsletter, Endless Startup Opportunities Across Europe. – Sign up now!"
     },
     {
-      "title": "11th International Cooperation Exchange Barleben",
-      "source": "EEN",
-      "date": "2026-04-22",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/11th-international-cooperation-exchange-barleben",
-      "description": ""
-    },
-    {
       "title": "EU Series: Food & Hospitality B2B Event",
       "source": "EEN",
       "date": "2026-04-23",
       "date_end": "",
       "location": "",
-      "url": "https://een.ec.europa.eu/events/eu-series-food-hospitality-b2b-event-0",
+      "url": "https://een.ec.europa.eu/events/eu-series-food-hospitality-b2b-event",
       "description": ""
     },
     {
@@ -75,21 +66,12 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "BUILD'N GREEN 2026 - Circularity in Action",
       "source": "EEN",
       "date": "2026-04-29",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/buildn-green-2026-circularity-action",
-      "description": ""
-    },
-    {
-      "title": "Textiles in the Age of AI: Smart Manufacturing and Digital Innovation",
-      "source": "EEN",
-      "date": "2026-04-29",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/textiles-age-ai-smart-manufacturing-and-digital-innovation",
       "description": ""
     },
     {
@@ -129,16 +111,7 @@
       "description": ""
     },
     {
-      "title": "IFAT 2026 Business Matchmaking",
-      "source": "EEN",
-      "date": "2026-05-07",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/ifat-2026-business-matchmaking",
-      "description": ""
-    },
-    {
-      "title": "India Energy Storage Week (IESW) 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-07",
       "date_end": "",
@@ -147,29 +120,11 @@
       "description": ""
     },
     {
-      "title": "EEN Cooperation Days - \"Viking Days\" 2026",
-      "source": "EEN",
-      "date": "2026-05-07",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/een-cooperation-days-viking-days-2026",
-      "description": ""
-    },
-    {
-      "title": "B2B Meetings about Çanakkale Tourism",
-      "source": "EEN",
-      "date": "2026-05-07",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/b2b-meetings-about-canakkale-tourism-0",
-      "description": ""
-    },
-    {
-      "title": "Filter by",
+      "title": "South East Europe Automotive Conference- Connect & Supply 2026",
       "source": "EEN",
       "date": "2026-05-13",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/south-east-europe-automotive-conference-connect-supply-2026",
       "description": ""
     },
@@ -210,21 +165,21 @@
       "description": ""
     },
     {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "2026-05-27",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/speed-match-2026",
+      "description": ""
+    },
+    {
       "title": "Textile Connect 2026",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/textile-connect-2026",
-      "description": ""
-    },
-    {
-      "title": "Speed-Match 2026",
-      "source": "EEN",
-      "date": "2026-05-27",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/speed-match-2026",
       "description": ""
     },
     {
@@ -264,21 +219,21 @@
       "description": ""
     },
     {
-      "title": "World Sauna Forum 2026 Matchmaking",
-      "source": "EEN",
-      "date": "2026-06-11",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
-      "description": ""
-    },
-    {
       "title": "DES2026 Business Meetings",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
+      "description": ""
+    },
+    {
+      "title": "World Sauna Forum 2026 Matchmaking",
+      "source": "EEN",
+      "date": "2026-06-11",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
       "description": ""
     },
     {
@@ -291,7 +246,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "AI ABEL 2026 Artificial Intelligence Applications in Business and Everyday Life",
       "source": "EEN",
       "date": "2026-06-12",
       "date_end": "",
@@ -300,7 +255,7 @@
       "description": ""
     },
     {
-      "title": "Interpoma Business Match 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-12",
       "date_end": "",
@@ -354,11 +309,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Open de l'International 2026",
       "source": "EEN",
       "date": "2026-06-29",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/open-de-linternational-2026",
       "description": ""
     },
@@ -399,11 +354,11 @@
       "description": ""
     },
     {
-      "title": "SEMICON India 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-09-19",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/semicon-india-2026",
       "description": ""
     },
@@ -444,7 +399,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Business Meetings Food Paris 2026 (SIAL)",
       "source": "EEN",
       "date": "2026-10-20",
       "date_end": "",
@@ -495,6 +450,15 @@
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/edf-partner-pool",
+      "description": ""
+    },
+    {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-04-17T00%3A00%3A00%2B00%3A00%7C2026-04-17T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
       "description": ""
     },
     {
