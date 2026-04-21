@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-20T05:19:13.965441+00:00",
-  "count": 81,
+  "generated": "2026-04-21T05:40:58.166251+00:00",
+  "count": 85,
   "events": [
     {
       "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
@@ -19,6 +19,15 @@
       "location": "",
       "url": "https://europeanstartupnetwork.eu/european-startup-and-investment-ecosystems-stand-united-in-call-for-a-true-28th-regime/",
       "description": "One Newsletter, Endless Startup Opportunities Across Europe. – Sign up now!"
+    },
+    {
+      "title": "Export Kit Dogana | Export and customs: practical tools for businesses",
+      "source": "EEN",
+      "date": "2026-04-22",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/export-kit-dogana-export-and-customs-practical-tools-businesses",
+      "description": ""
     },
     {
       "title": "EU Series: Food & Hospitality B2B Event",
@@ -66,9 +75,9 @@
       "description": ""
     },
     {
-      "title": "BUILD'N GREEN 2026 - Circularity in Action",
+      "title": "Filter by",
       "source": "EEN",
-      "date": "2026-04-29",
+      "date": "2026-04-30",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/buildn-green-2026-circularity-action",
@@ -111,12 +120,21 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "India Energy Storage Week (IESW) 2026",
       "source": "EEN",
       "date": "2026-05-07",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/india-energy-storage-week-iesw-2026",
+      "description": ""
+    },
+    {
+      "title": "Advanced Factories innovation meetings 2026",
+      "source": "EEN",
+      "date": "2026-05-13",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/advanced-factories-innovation-meetings-2026",
       "description": ""
     },
     {
@@ -129,6 +147,15 @@
       "description": ""
     },
     {
+      "title": "Matchmaking and Networking at Black Sea Defense & Aerospace (BSDA) 2026 Exhibition",
+      "source": "EEN",
+      "date": "2026-05-15",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/matchmaking-and-networking-black-sea-defense-aerospace-bsda-2026-exhibition",
+      "description": ""
+    },
+    {
       "title": "Ambelia Food&Drink",
       "source": "EEN",
       "date": "2026-05-17",
@@ -138,11 +165,11 @@
       "description": ""
     },
     {
-      "title": "Energy Storage B2B Session Spring Edition",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-21",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/energy-storage-b2b-session-spring-edition",
       "description": ""
     },
@@ -165,11 +192,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Speed-Match 2026",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/speed-match-2026",
       "description": ""
     },
@@ -228,11 +255,11 @@
       "description": ""
     },
     {
-      "title": "World Sauna Forum 2026 Matchmaking",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
       "description": ""
     },
@@ -255,7 +282,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Interpoma Business Match 2026",
       "source": "EEN",
       "date": "2026-06-12",
       "date_end": "",
@@ -327,11 +354,11 @@
       "description": ""
     },
     {
-      "title": "B2B TORINO FASHION MATCH 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
@@ -354,12 +381,21 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "SEMICON India 2026",
       "source": "EEN",
       "date": "2026-09-19",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/semicon-india-2026",
+      "description": ""
+    },
+    {
+      "title": "B2B-Meetings at Automotive Transformation Conference 2026",
+      "source": "EEN",
+      "date": "2026-09-22",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/b2b-meetings-automotive-transformation-conference-2026",
       "description": ""
     },
     {
@@ -408,6 +444,15 @@
       "description": ""
     },
     {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "2026-10-23",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/dronetech-world-meeting-2026-b2b-hybrid-matchmaking-event",
+      "description": ""
+    },
+    {
       "title": "Renewable Energy India Expo 2026",
       "source": "EEN",
       "date": "2026-10-24",
@@ -450,15 +495,6 @@
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/edf-partner-pool",
-      "description": ""
-    },
-    {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-04-20T00%3A00%3A00%2B00%3A00%7C2026-04-20T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
       "description": ""
     },
     {
