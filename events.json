@@ -1,34 +1,7 @@
 {
-  "generated": "2026-04-21T05:40:58.166251+00:00",
-  "count": 85,
+  "generated": "2026-04-22T05:36:46.809058+00:00",
+  "count": 84,
   "events": [
-    {
-      "title": "The EU Startup and Scaleup Strategy marks a positive step for European competitiveness; European Startup Network urges bold ambition",
-      "source": "European Startup Network",
-      "date": "2024-12-31",
-      "date_end": "",
-      "location": "",
-      "url": "https://europeanstartupnetwork.eu/eu-startup-scaleup-strategy/",
-      "description": ""
-    },
-    {
-      "title": "Latest news from European Startup Network",
-      "source": "European Startup Network",
-      "date": "2025-07-15",
-      "date_end": "",
-      "location": "",
-      "url": "https://europeanstartupnetwork.eu/european-startup-and-investment-ecosystems-stand-united-in-call-for-a-true-28th-regime/",
-      "description": "One Newsletter, Endless Startup Opportunities Across Europe. – Sign up now!"
-    },
-    {
-      "title": "Export Kit Dogana | Export and customs: practical tools for businesses",
-      "source": "EEN",
-      "date": "2026-04-22",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/export-kit-dogana-export-and-customs-practical-tools-businesses",
-      "description": ""
-    },
     {
       "title": "EU Series: Food & Hospitality B2B Event",
       "source": "EEN",
@@ -75,7 +48,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "BUILD'N GREEN 2026 - Circularity in Action",
       "source": "EEN",
       "date": "2026-04-30",
       "date_end": "",
@@ -111,6 +84,15 @@
       "description": ""
     },
     {
+      "title": "Space Resources Week 2026 - B2B Matchmaking",
+      "source": "EEN",
+      "date": "2026-05-06",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/space-resources-week-2026-b2b-matchmaking",
+      "description": ""
+    },
+    {
       "title": "Eureka Global Innovation Summit 2026",
       "source": "EEN",
       "date": "2026-05-06",
@@ -120,7 +102,7 @@
       "description": ""
     },
     {
-      "title": "India Energy Storage Week (IESW) 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-07",
       "date_end": "",
@@ -183,6 +165,15 @@
       "description": ""
     },
     {
+      "title": "L'énergie dans la construction en Grande Région",
+      "source": "EEN",
+      "date": "2026-05-21",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/lenergie-dans-la-construction-en-grande-region",
+      "description": ""
+    },
+    {
       "title": "Balkonnect Festival 2026 - B2B Matchmaking Event",
       "source": "EEN",
       "date": "2026-05-22",
@@ -192,12 +183,12 @@
       "description": ""
     },
     {
-      "title": "Speed-Match 2026",
+      "title": "Speed-Match International Networking Event 2026",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/speed-match-2026",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/speed-match-international-networking-event-2026",
       "description": ""
     },
     {
@@ -246,20 +237,20 @@
       "description": ""
     },
     {
-      "title": "DES2026 Business Meetings",
-      "source": "EEN",
-      "date": "2026-06-11",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
-      "description": ""
-    },
-    {
       "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
       "location": "Online",
+      "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
+      "description": ""
+    },
+    {
+      "title": "World Sauna Forum 2026 Matchmaking",
+      "source": "EEN",
+      "date": "2026-06-11",
+      "date_end": "",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
       "description": ""
     },
@@ -345,20 +336,20 @@
       "description": ""
     },
     {
-      "title": "Matchmaking@GITEX AI EUROPE 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-01",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/matchmakinggitex-ai-europe-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "B2B TORINO FASHION MATCH 2026",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
@@ -435,7 +426,7 @@
       "description": ""
     },
     {
-      "title": "Business Meetings Food Paris 2026 (SIAL)",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-20",
       "date_end": "",
@@ -444,7 +435,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Dronetech World Meeting 2026 B2B Hybrid Matchmaking Event",
       "source": "EEN",
       "date": "2026-10-23",
       "date_end": "",
