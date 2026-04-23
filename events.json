@@ -1,25 +1,7 @@
 {
-  "generated": "2026-04-22T05:36:46.809058+00:00",
-  "count": 84,
+  "generated": "2026-04-23T05:50:33.494190+00:00",
+  "count": 83,
   "events": [
-    {
-      "title": "EU Series: Food & Hospitality B2B Event",
-      "source": "EEN",
-      "date": "2026-04-23",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/eu-series-food-hospitality-b2b-event",
-      "description": ""
-    },
-    {
-      "title": "Technology & Business Cooperation Days @ HANNOVER MESSE 2026",
-      "source": "EEN",
-      "date": "2026-04-23",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/technology-business-cooperation-days-hannover-messe-2026",
-      "description": ""
-    },
     {
       "title": "DMEA Business Meetings 2026",
       "source": "EEN",
@@ -75,7 +57,7 @@
       "description": ""
     },
     {
-      "title": "Matchmaking at Eastern Finland Energy Days 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
@@ -102,7 +84,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "India Energy Storage Week (IESW) 2026",
       "source": "EEN",
       "date": "2026-05-07",
       "date_end": "",
@@ -147,11 +129,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Energy Storage B2B Session Spring Edition",
       "source": "EEN",
       "date": "2026-05-21",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/energy-storage-b2b-session-spring-edition",
       "description": ""
     },
@@ -174,11 +156,11 @@
       "description": ""
     },
     {
-      "title": "Balkonnect Festival 2026 - B2B Matchmaking Event",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-22",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/balkonnect-festival-2026-b2b-matchmaking-event",
       "description": ""
     },
@@ -237,21 +219,21 @@
       "description": ""
     },
     {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "2026-06-11",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
-      "description": ""
-    },
-    {
       "title": "World Sauna Forum 2026 Matchmaking",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
+      "description": ""
+    },
+    {
+      "title": "DES2026 Business Meetings",
+      "source": "EEN",
+      "date": "2026-06-11",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
       "description": ""
     },
     {
@@ -287,6 +269,15 @@
       "date": "2026-06-17",
       "date_end": "",
       "location": "",
+      "url": "https://een.ec.europa.eu/events/mirabilia-tourism-2026-0",
+      "description": ""
+    },
+    {
+      "title": "MIRABILIA TOURISM 2026",
+      "source": "EEN",
+      "date": "2026-06-17",
+      "date_end": "",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/mirabilia-tourism-2026",
       "description": ""
     },
@@ -309,7 +300,7 @@
       "description": ""
     },
     {
-      "title": "Connect Spain 2026 – Virtual Consultation & Matchmaking Event",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-23",
       "date_end": "",
@@ -318,12 +309,12 @@
       "description": ""
     },
     {
-      "title": "EEN Matchmaking at TAIWAN EXPO in EUROPE",
+      "title": "EEN Matchmaking at TAIWAN EXPO 2026 in EUROPE",
       "source": "EEN",
       "date": "2026-06-24",
       "date_end": "",
       "location": "",
-      "url": "https://een.ec.europa.eu/events/een-matchmaking-taiwan-expo-europe-0",
+      "url": "https://een.ec.europa.eu/events/een-matchmaking-taiwan-expo-2026-europe",
       "description": ""
     },
     {
@@ -336,20 +327,20 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Matchmaking@GITEX AI EUROPE 2026",
       "source": "EEN",
       "date": "2026-07-01",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/matchmakinggitex-ai-europe-2026",
       "description": ""
     },
     {
-      "title": "B2B TORINO FASHION MATCH 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
@@ -426,7 +417,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Business Meetings Food Paris 2026 (SIAL)",
       "source": "EEN",
       "date": "2026-10-20",
       "date_end": "",
@@ -435,7 +426,7 @@
       "description": ""
     },
     {
-      "title": "Dronetech World Meeting 2026 B2B Hybrid Matchmaking Event",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-23",
       "date_end": "",
