@@ -1,34 +1,7 @@
 {
-  "generated": "2026-04-23T05:50:33.494190+00:00",
+  "generated": "2026-04-24T05:46:17.719066+00:00",
   "count": 83,
   "events": [
-    {
-      "title": "DMEA Business Meetings 2026",
-      "source": "EEN",
-      "date": "2026-04-24",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/dmea-business-meetings-2026",
-      "description": ""
-    },
-    {
-      "title": "EU-Ukraine Business Summit matchmaking platform",
-      "source": "EEN",
-      "date": "2026-04-24",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/eu-ukraine-business-summit-matchmaking-platform",
-      "description": ""
-    },
-    {
-      "title": "Women Entrepreneurs: Be Prepared to Be Resilient",
-      "source": "EEN",
-      "date": "2026-04-24",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/women-entrepreneurs-be-prepared-be-resilient",
-      "description": ""
-    },
     {
       "title": "BUILD'N GREEN 2026 - Circularity in Action",
       "source": "EEN",
@@ -57,7 +30,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Matchmaking at Eastern Finland Energy Days 2026",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
@@ -66,11 +39,11 @@
       "description": ""
     },
     {
-      "title": "Space Resources Week 2026 - B2B Matchmaking",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/space-resources-week-2026-b2b-matchmaking",
       "description": ""
     },
@@ -90,6 +63,24 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/india-energy-storage-week-iesw-2026",
+      "description": ""
+    },
+    {
+      "title": "Matchmaking ERIAFF Annual Conference 2026",
+      "source": "EEN",
+      "date": "2026-05-11",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/matchmaking-eriaff-annual-conference-2026",
+      "description": ""
+    },
+    {
+      "title": "Plan-C Final Conference & Brokerage Event",
+      "source": "EEN",
+      "date": "2026-05-12",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/plan-c-final-conference-brokerage-event",
       "description": ""
     },
     {
@@ -126,6 +117,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/ambelia-fooddrink",
+      "description": ""
+    },
+    {
+      "title": "Connect Day 26 - Matchmaking event for startups, investors, and corporates in Vienna",
+      "source": "EEN",
+      "date": "2026-05-19",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/connect-day-26-matchmaking-event-startups-investors-and-corporates-vienna",
       "description": ""
     },
     {
