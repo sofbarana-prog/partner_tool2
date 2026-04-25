@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-24T05:46:17.719066+00:00",
+  "generated": "2026-04-25T05:28:16.681099+00:00",
   "count": 83,
   "events": [
     {
@@ -165,21 +165,21 @@
       "description": ""
     },
     {
-      "title": "Speed-Match International Networking Event 2026",
-      "source": "EEN",
-      "date": "2026-05-27",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/speed-match-international-networking-event-2026",
-      "description": ""
-    },
-    {
       "title": "Textile Connect 2026",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/textile-connect-2026",
+      "description": ""
+    },
+    {
+      "title": "Speed-Match International Networking Event 2026",
+      "source": "EEN",
+      "date": "2026-05-27",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/speed-match-international-networking-event-2026",
       "description": ""
     },
     {
