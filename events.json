@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-27T06:16:12.446790+00:00",
-  "count": 83,
+  "generated": "2026-04-28T06:25:01.928498+00:00",
+  "count": 84,
   "events": [
     {
       "title": "BUILD'N GREEN 2026 - Circularity in Action",
@@ -129,6 +129,15 @@
       "description": ""
     },
     {
+      "title": "INOVARMY Summit & Expo 26",
+      "source": "EEN",
+      "date": "2026-05-20",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/inovarmy-summit-expo-26",
+      "description": ""
+    },
+    {
       "title": "Energy Storage B2B Session Spring Edition",
       "source": "EEN",
       "date": "2026-05-21",
@@ -138,11 +147,11 @@
       "description": ""
     },
     {
-      "title": "chii 2026 - Conference & Matchmaking Event for Hyperspectral Imaging in Industry 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-21",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/chii-2026-conference-matchmaking-event-hyperspectral-imaging-industry-2026",
       "description": ""
     },
@@ -156,11 +165,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Balkonnect Festival 2026 - B2B Matchmaking Event",
       "source": "EEN",
       "date": "2026-05-22",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/balkonnect-festival-2026-b2b-matchmaking-event",
       "description": ""
     },
@@ -228,11 +237,11 @@
       "description": ""
     },
     {
-      "title": "DES2026 Business Meetings",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
       "description": ""
     },
@@ -300,7 +309,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Connect Spain 2026 – Virtual Consultation & Matchmaking Event",
       "source": "EEN",
       "date": "2026-06-23",
       "date_end": "",
@@ -327,20 +336,20 @@
       "description": ""
     },
     {
-      "title": "Matchmaking@GITEX AI EUROPE 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-01",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/matchmakinggitex-ai-europe-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "B2B TORINO FASHION MATCH 2026",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
@@ -417,7 +426,7 @@
       "description": ""
     },
     {
-      "title": "Business Meetings Food Paris 2026 (SIAL)",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-20",
       "date_end": "",
@@ -426,7 +435,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Dronetech World Meeting 2026 B2B Hybrid Matchmaking Event",
       "source": "EEN",
       "date": "2026-10-23",
       "date_end": "",
@@ -633,12 +642,12 @@
       "description": ""
     },
     {
-      "title": "How early is too early? To bring in a fundraiser",
+      "title": "Meet Tau20: Making Impact Investing Clearer, Fairer, and Actionable",
       "source": "EBAN",
       "date": "",
       "date_end": "",
       "location": "",
-      "url": "https://www.eban.org/news/how-early-is-too-early-to-bring-in-a-fundraiser/",
+      "url": "https://www.eban.org/news/meet-tau20-making-impact-investing-clearer-fairer-and-actionable/",
       "description": ""
     },
     {
