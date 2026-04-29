@@ -1,6 +1,6 @@
 {
-  "generated": "2026-04-28T06:25:01.928498+00:00",
-  "count": 84,
+  "generated": "2026-04-29T06:20:24.457211+00:00",
+  "count": 89,
   "events": [
     {
       "title": "BUILD'N GREEN 2026 - Circularity in Action",
@@ -9,6 +9,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/buildn-green-2026-circularity-action",
+      "description": ""
+    },
+    {
+      "title": "Ebit 2026 - The 17th International Exhibition of Tourism and Hotel Equipment Exhibition",
+      "source": "EEN",
+      "date": "2026-04-30",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/ebit-2026-17th-international-exhibition-tourism-and-hotel-equipment-exhibition",
       "description": ""
     },
     {
@@ -30,6 +39,15 @@
       "description": ""
     },
     {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "2026-05-05",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/food-safety-awareness-meeting-tourism-season-2026",
+      "description": ""
+    },
+    {
       "title": "Matchmaking at Eastern Finland Energy Days 2026",
       "source": "EEN",
       "date": "2026-05-06",
@@ -39,11 +57,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Space Resources Week 2026 - B2B Matchmaking",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/space-resources-week-2026-b2b-matchmaking",
       "description": ""
     },
@@ -120,11 +138,11 @@
       "description": ""
     },
     {
-      "title": "Connect Day 26 - Matchmaking event for startups, investors, and corporates in Vienna",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-19",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/connect-day-26-matchmaking-event-startups-investors-and-corporates-vienna",
       "description": ""
     },
@@ -147,11 +165,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "chii 2026 - Conference & Matchmaking Event for Hyperspectral Imaging in Industry 2026",
       "source": "EEN",
       "date": "2026-05-21",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/chii-2026-conference-matchmaking-event-hyperspectral-imaging-industry-2026",
       "description": ""
     },
@@ -201,6 +219,15 @@
       "description": ""
     },
     {
+      "title": "Regional Innovation Forum: Bridging Science and Industry through Technology Transfer",
+      "source": "EEN",
+      "date": "2026-05-27",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/regional-innovation-forum-bridging-science-and-industry-through-technology-transfer",
+      "description": ""
+    },
+    {
       "title": "OPD2026 Matchmaking",
       "source": "EEN",
       "date": "2026-05-28",
@@ -219,11 +246,11 @@
       "description": ""
     },
     {
-      "title": "Startup Pitching Session at the EBAN Congress 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-02",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/startup-pitching-session-eban-congress-2026",
       "description": ""
     },
@@ -237,11 +264,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "DES2026 Business Meetings",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
       "description": ""
     },
@@ -300,7 +327,7 @@
       "description": ""
     },
     {
-      "title": "Open to Scandinavia 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-17",
       "date_end": "",
@@ -336,11 +363,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Matchmaking@GITEX AI EUROPE 2026",
       "source": "EEN",
       "date": "2026-07-01",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/matchmakinggitex-ai-europe-2026",
       "description": ""
     },
@@ -399,7 +426,7 @@
       "description": ""
     },
     {
-      "title": "WindEnergy Match 2026 – SAVE THE DATE!Onsite & Online",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-09-29",
       "date_end": "",
@@ -426,7 +453,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Business Meetings Food Paris 2026 (SIAL)",
       "source": "EEN",
       "date": "2026-10-20",
       "date_end": "",
@@ -468,6 +495,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/cphi-india-2026",
+      "description": ""
+    },
+    {
+      "title": "Tous nos évènements",
+      "source": "BpiFrance",
+      "date": "2026-11-26",
+      "date_end": "",
+      "location": "",
+      "url": "https://evenements.bpifrance.fr/events/4df5af7f-0b43-f111-8ef3-000d3a4af15b/we-are-french-touch-2026",
       "description": ""
     },
     {
@@ -648,6 +684,15 @@
       "date_end": "",
       "location": "",
       "url": "https://www.eban.org/news/meet-tau20-making-impact-investing-clearer-fairer-and-actionable/",
+      "description": ""
+    },
+    {
+      "title": "Africa Forward - Inspire & Connect",
+      "source": "BpiFrance",
+      "date": "",
+      "date_end": "",
+      "location": "",
+      "url": "https://evenements.bpifrance.fr/events/5789be8c-06eb-f011-8195-000d3a2226fe/africa-forward-inspire-connect",
       "description": ""
     },
     {
