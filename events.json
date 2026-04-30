@@ -1,25 +1,7 @@
 {
-  "generated": "2026-04-29T06:20:24.457211+00:00",
-  "count": 89,
+  "generated": "2026-04-30T06:23:00.116191+00:00",
+  "count": 90,
   "events": [
-    {
-      "title": "BUILD'N GREEN 2026 - Circularity in Action",
-      "source": "EEN",
-      "date": "2026-04-30",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/buildn-green-2026-circularity-action",
-      "description": ""
-    },
-    {
-      "title": "Ebit 2026 - The 17th International Exhibition of Tourism and Hotel Equipment Exhibition",
-      "source": "EEN",
-      "date": "2026-04-30",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/ebit-2026-17th-international-exhibition-tourism-and-hotel-equipment-exhibition",
-      "description": ""
-    },
     {
       "title": "Business Forum: Istrian Region – Montenegro",
       "source": "EEN",
@@ -39,11 +21,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Food safety awareness meeting for the tourism season 2026",
       "source": "EEN",
       "date": "2026-05-05",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/food-safety-awareness-meeting-tourism-season-2026",
       "description": ""
     },
@@ -57,11 +39,11 @@
       "description": ""
     },
     {
-      "title": "Space Resources Week 2026 - B2B Matchmaking",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-06",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/space-resources-week-2026-b2b-matchmaking",
       "description": ""
     },
@@ -138,11 +120,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Connect Day 26 - Matchmaking event for startups, investors, and corporates in Vienna",
       "source": "EEN",
       "date": "2026-05-19",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/connect-day-26-matchmaking-event-startups-investors-and-corporates-vienna",
       "description": ""
     },
@@ -165,11 +147,11 @@
       "description": ""
     },
     {
-      "title": "chii 2026 - Conference & Matchmaking Event for Hyperspectral Imaging in Industry 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-21",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/chii-2026-conference-matchmaking-event-hyperspectral-imaging-industry-2026",
       "description": ""
     },
@@ -246,12 +228,39 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "X Solar Energy Business Mixer B2B meetings",
+      "source": "EEN",
+      "date": "2026-06-01",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/x-solar-energy-business-mixer-b2b-meetings",
+      "description": ""
+    },
+    {
+      "title": "Startup Pitching Session at the EBAN Congress 2026",
       "source": "EEN",
       "date": "2026-06-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/startup-pitching-session-eban-congress-2026",
+      "description": ""
+    },
+    {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "2026-06-04",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/horizon-europe-clean-industrial-deal-international-brokerage-event",
+      "description": ""
+    },
+    {
+      "title": "Research and Innovation Matchmaking Event 2026 (Cyprus, Greece and Czechia)",
+      "source": "EEN",
+      "date": "2026-06-09",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/research-and-innovation-matchmaking-event-2026-cyprus-greece-and-czechia",
       "description": ""
     },
     {
@@ -318,7 +327,7 @@
       "description": ""
     },
     {
-      "title": "MIRABILIA FOOD 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-17",
       "date_end": "",
@@ -327,7 +336,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Open to Scandinavia 2026",
       "source": "EEN",
       "date": "2026-06-17",
       "date_end": "",
@@ -417,16 +426,16 @@
       "description": ""
     },
     {
-      "title": "Matchmaking at IceFish 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-09-23",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/matchmaking-icefish-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "WindEnergy Match 2026 – SAVE THE DATE!Onsite & Online",
       "source": "EEN",
       "date": "2026-09-29",
       "date_end": "",
