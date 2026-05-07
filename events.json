@@ -1,16 +1,7 @@
 {
-  "generated": "2026-05-06T06:22:58.890750+00:00",
+  "generated": "2026-05-07T06:24:21.228083+00:00",
   "count": 85,
   "events": [
-    {
-      "title": "India Energy Storage Week (IESW) 2026",
-      "source": "EEN",
-      "date": "2026-05-07",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/india-energy-storage-week-iesw-2026",
-      "description": ""
-    },
     {
       "title": "Matchmaking ERIAFF Annual Conference 2026",
       "source": "EEN",
@@ -396,6 +387,15 @@
       "date_end": "",
       "location": "Online",
       "url": "https://een.ec.europa.eu/events/windenergy-match-2026-save-date-onsite-online",
+      "description": ""
+    },
+    {
+      "title": "Eureka Lightweighting Call 2026 Matchmaking Event",
+      "source": "EEN",
+      "date": "2026-10-01",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/eureka-lightweighting-call-2026-matchmaking-event",
       "description": ""
     },
     {
