@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-08T05:43:26.414600+00:00",
-  "count": 85,
+  "generated": "2026-05-09T05:28:04.291687+00:00",
+  "count": 87,
   "events": [
     {
       "title": "Matchmaking ERIAFF Annual Conference 2026",
@@ -18,6 +18,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/plan-c-final-conference-brokerage-event",
+      "description": ""
+    },
+    {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "2026-05-12",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/ulutek-technology-stage-technology-and-project-collaboration-opportunities-automotive",
       "description": ""
     },
     {
@@ -48,11 +57,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Matchmaking and Networking at Black Sea Defense & Aerospace (BSDA) 2026 Exhibition",
       "source": "EEN",
       "date": "2026-05-15",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/matchmaking-and-networking-black-sea-defense-aerospace-bsda-2026-exhibition",
       "description": ""
     },
@@ -129,7 +138,7 @@
       "description": ""
     },
     {
-      "title": "Textile Connect 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
@@ -138,7 +147,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Speed-Match International Networking Event 2026",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
@@ -219,20 +228,20 @@
       "description": ""
     },
     {
-      "title": "World Sauna Forum 2026 Matchmaking",
-      "source": "EEN",
-      "date": "2026-06-11",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
-      "description": ""
-    },
-    {
       "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
       "location": "Online",
+      "url": "https://een.ec.europa.eu/events/world-sauna-forum-2026-matchmaking",
+      "description": ""
+    },
+    {
+      "title": "DES2026 Business Meetings",
+      "source": "EEN",
+      "date": "2026-06-11",
+      "date_end": "",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
       "description": ""
     },
@@ -318,20 +327,20 @@
       "description": ""
     },
     {
-      "title": "Matchmaking@GITEX AI EUROPE 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-01",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/matchmakinggitex-ai-europe-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "B2B TORINO FASHION MATCH 2026",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
@@ -381,12 +390,12 @@
       "description": ""
     },
     {
-      "title": "WindEnergy Match 2026 – SAVE THE DATE!Onsite & Online",
+      "title": "WindEnergy Match 2026!Onsite & Online",
       "source": "EEN",
       "date": "2026-09-29",
       "date_end": "",
       "location": "Online",
-      "url": "https://een.ec.europa.eu/events/windenergy-match-2026-save-date-onsite-online",
+      "url": "https://een.ec.europa.eu/events/windenergy-match-2026-onsite-online",
       "description": ""
     },
     {
@@ -399,6 +408,15 @@
       "description": ""
     },
     {
+      "title": "Conxemar 2026 online B2B: Tech Challenges & Business Opportunities",
+      "source": "EEN",
+      "date": "2026-10-01",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/conxemar-2026-online-b2b-tech-challenges-business-opportunities",
+      "description": ""
+    },
+    {
       "title": "15th Micro & Nano Event",
       "source": "EEN",
       "date": "2026-10-02",
@@ -408,7 +426,7 @@
       "description": ""
     },
     {
-      "title": "ENVIRONTEC powered by ÖKOINDUSTRIA 2026 B2B Event",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-09",
       "date_end": "",
@@ -426,7 +444,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Dronetech World Meeting 2026 B2B Hybrid Matchmaking Event",
       "source": "EEN",
       "date": "2026-10-23",
       "date_end": "",
