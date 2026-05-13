@@ -1,34 +1,7 @@
 {
-  "generated": "2026-05-12T05:44:52.560676+00:00",
-  "count": 84,
+  "generated": "2026-05-13T05:55:30.711262+00:00",
+  "count": 83,
   "events": [
-    {
-      "title": "Advanced Factories innovation meetings 2026",
-      "source": "EEN",
-      "date": "2026-05-13",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/advanced-factories-innovation-meetings-2026",
-      "description": ""
-    },
-    {
-      "title": "South East Europe Automotive Conference- Connect & Supply 2026",
-      "source": "EEN",
-      "date": "2026-05-13",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/south-east-europe-automotive-conference-connect-supply-2026",
-      "description": ""
-    },
-    {
-      "title": "The Brokerage event between companies from North Macedonia and Albania",
-      "source": "EEN",
-      "date": "2026-05-13",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/brokerage-event-between-companies-north-macedonia-and-albania",
-      "description": ""
-    },
     {
       "title": "Matchmaking and Networking at Black Sea Defense & Aerospace (BSDA) 2026 Exhibition",
       "source": "EEN",
@@ -39,7 +12,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "ONLINE WEBINAR - Doing Business with North Macedonia- FINNO online webinar",
       "source": "EEN",
       "date": "2026-05-15",
       "date_end": "",
@@ -57,11 +30,11 @@
       "description": ""
     },
     {
-      "title": "Connect Day 26 - Matchmaking event for startups, investors, and corporates in Vienna",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-19",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/connect-day-26-matchmaking-event-startups-investors-and-corporates-vienna",
       "description": ""
     },
@@ -120,15 +93,6 @@
       "description": ""
     },
     {
-      "title": "Speed-Match International Networking Event 2026",
-      "source": "EEN",
-      "date": "2026-05-27",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/speed-match-international-networking-event-2026",
-      "description": ""
-    },
-    {
       "title": "Health Revolution Open Innovation Challenge 2026",
       "source": "EEN",
       "date": "2026-05-27",
@@ -138,11 +102,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Regional Innovation Forum: Bridging Science and Industry through Technology Transfer",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/regional-innovation-forum-bridging-science-and-industry-through-technology-transfer",
       "description": ""
     },
@@ -165,11 +129,20 @@
       "description": ""
     },
     {
-      "title": "X Solar Energy Business Mixer B2B meetings",
+      "title": "Subcontracting Meetings 2026",
       "source": "EEN",
       "date": "2026-06-01",
       "date_end": "",
       "location": "",
+      "url": "https://een.ec.europa.eu/events/subcontracting-meetings-2026",
+      "description": ""
+    },
+    {
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "2026-06-01",
+      "date_end": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/x-solar-energy-business-mixer-b2b-meetings",
       "description": ""
     },
@@ -180,6 +153,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/startup-pitching-session-eban-congress-2026",
+      "description": ""
+    },
+    {
+      "title": "Speed-Match International Networking Event 2026",
+      "source": "EEN",
+      "date": "2026-06-03",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/speed-match-international-networking-event-2026",
       "description": ""
     },
     {
@@ -219,11 +201,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Go International Business Meetings @ Nexus Luxembourg 2026",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/go-international-business-meetings-nexus-luxembourg-2026",
       "description": ""
     },
@@ -246,7 +228,7 @@
       "description": ""
     },
     {
-      "title": "MIRABILIA FOOD 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-17",
       "date_end": "",
@@ -327,11 +309,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "IFAT India 2026",
       "source": "EEN",
       "date": "2026-09-11",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/ifat-india-2026",
       "description": ""
     },
@@ -381,7 +363,7 @@
       "description": ""
     },
     {
-      "title": "Conxemar 2026 online B2B: Tech Challenges & Business Opportunities",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-01",
       "date_end": "",
@@ -408,6 +390,15 @@
       "description": ""
     },
     {
+      "title": "VIRTUAL BROKERAGE EVENT @ INNOVATION VILLAGE 2026",
+      "source": "EEN",
+      "date": "2026-10-16",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/virtual-brokerage-event-innovation-village-2026",
+      "description": ""
+    },
+    {
       "title": "Business Meetings Food Paris 2026 (SIAL)",
       "source": "EEN",
       "date": "2026-10-20",
@@ -426,7 +417,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Renewable Energy India Expo 2026",
       "source": "EEN",
       "date": "2026-10-24",
       "date_end": "",
@@ -462,7 +453,7 @@
       "description": ""
     },
     {
-      "title": "MEDICA Healthcare Brokerage Event 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-11-29",
       "date_end": "",
