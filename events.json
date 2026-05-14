@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-13T05:55:30.711262+00:00",
-  "count": 83,
+  "generated": "2026-05-14T05:54:43.140045+00:00",
+  "count": 87,
   "events": [
     {
       "title": "Matchmaking and Networking at Black Sea Defense & Aerospace (BSDA) 2026 Exhibition",
@@ -30,21 +30,39 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Muza Fashion Fair 2026 – B2B Networking & Fashion Industry Forum (EEN Albania)",
+      "source": "EEN",
+      "date": "2026-05-18",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/muza-fashion-fair-2026-b2b-networking-fashion-industry-forum-een-albania",
+      "description": ""
+    },
+    {
+      "title": "Connect Day 26 - Matchmaking event for startups, investors, and corporates in Vienna",
       "source": "EEN",
       "date": "2026-05-19",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/connect-day-26-matchmaking-event-startups-investors-and-corporates-vienna",
       "description": ""
     },
     {
-      "title": "INOVARMY Summit & Expo 26",
+      "title": "Filter by",
+      "source": "EEN",
+      "date": "2026-05-20",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/inovarmy-summit-expo-26",
+      "description": ""
+    },
+    {
+      "title": "Lower Silesia - Brandenburg Economic Forum",
       "source": "EEN",
       "date": "2026-05-20",
       "date_end": "",
       "location": "",
-      "url": "https://een.ec.europa.eu/events/inovarmy-summit-expo-26",
+      "url": "https://een.ec.europa.eu/events/lower-silesia-brandenburg-economic-forum",
       "description": ""
     },
     {
@@ -111,11 +129,11 @@
       "description": ""
     },
     {
-      "title": "OPD2026 Matchmaking",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-28",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/opd2026-matchmaking",
       "description": ""
     },
@@ -138,11 +156,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "X Solar Energy Business Mixer B2B meetings",
       "source": "EEN",
       "date": "2026-06-01",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/x-solar-energy-business-mixer-b2b-meetings",
       "description": ""
     },
@@ -153,6 +171,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/startup-pitching-session-eban-congress-2026",
+      "description": ""
+    },
+    {
+      "title": "Doing Business in Portugal: Exploring Trade and Collaboration Opportunities: Alberta–Portugal",
+      "source": "EEN",
+      "date": "2026-06-02",
+      "date_end": "",
+      "location": "Online",
+      "url": "https://een.ec.europa.eu/events/doing-business-portugal-exploring-trade-and-collaboration-opportunities-alberta-portugal",
       "description": ""
     },
     {
@@ -219,16 +246,16 @@
       "description": ""
     },
     {
-      "title": "Interpoma Business Match 2026",
+      "title": "Interpoma Online Business Match 2026",
       "source": "EEN",
       "date": "2026-06-12",
       "date_end": "",
       "location": "Online",
-      "url": "https://een.ec.europa.eu/events/interpoma-business-match-2026",
+      "url": "https://een.ec.europa.eu/events/interpoma-online-business-match-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "MIRABILIA FOOD 2026",
       "source": "EEN",
       "date": "2026-06-17",
       "date_end": "",
@@ -255,7 +282,16 @@
       "description": ""
     },
     {
-      "title": "Connect Spain 2026 – Virtual Consultation & Matchmaking Event",
+      "title": "Β2Β meetings between Greek and Slovak companies during BEYOND 2026",
+      "source": "EEN",
+      "date": "2026-06-17",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/b2b-meetings-between-greek-and-slovak-companies-during-beyond-2026",
+      "description": ""
+    },
+    {
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-23",
       "date_end": "",
@@ -291,11 +327,11 @@
       "description": ""
     },
     {
-      "title": "B2B TORINO FASHION MATCH 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
@@ -363,7 +399,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Conxemar 2026 online B2B: Tech Challenges & Business Opportunities",
       "source": "EEN",
       "date": "2026-10-01",
       "date_end": "",
@@ -381,7 +417,7 @@
       "description": ""
     },
     {
-      "title": "ENVIRONTEC powered by ÖKOINDUSTRIA 2026 B2B Event",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-09",
       "date_end": "",
@@ -453,7 +489,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "MEDICA Healthcare Brokerage Event 2026",
       "source": "EEN",
       "date": "2026-11-29",
       "date_end": "",
