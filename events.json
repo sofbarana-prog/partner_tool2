@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-15T06:01:21.501222+00:00",
-  "count": 85,
+  "generated": "2026-05-16T05:33:18.032425+00:00",
+  "count": 86,
   "events": [
     {
       "title": "Ambelia Food&Drink",
@@ -282,6 +282,15 @@
       "description": ""
     },
     {
+      "title": "B2B@BEYOND 2026",
+      "source": "EEN",
+      "date": "2026-06-19",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/b2bbeyond-2026",
+      "description": ""
+    },
+    {
       "title": "Connect Spain 2026 – Virtual Consultation & Matchmaking Event",
       "source": "EEN",
       "date": "2026-06-23",
@@ -318,20 +327,20 @@
       "description": ""
     },
     {
-      "title": "B2B TORINO FASHION MATCH 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Bharat TEX 2026",
       "source": "EEN",
       "date": "2026-07-17",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/bharat-tex-2026",
       "description": ""
     },
@@ -408,7 +417,7 @@
       "description": ""
     },
     {
-      "title": "ENVIRONTEC powered by ÖKOINDUSTRIA 2026 B2B Event",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-09",
       "date_end": "",
@@ -426,7 +435,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Business Meetings Food Paris 2026 (SIAL)",
       "source": "EEN",
       "date": "2026-10-20",
       "date_end": "",
