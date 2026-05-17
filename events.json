@@ -1,16 +1,7 @@
 {
-  "generated": "2026-05-16T05:33:18.032425+00:00",
-  "count": 86,
+  "generated": "2026-05-17T05:55:08.394181+00:00",
+  "count": 85,
   "events": [
-    {
-      "title": "Ambelia Food&Drink",
-      "source": "EEN",
-      "date": "2026-05-17",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/ambelia-fooddrink",
-      "description": ""
-    },
     {
       "title": "Muza Fashion Fair 2026 – B2B Networking & Fashion Industry Forum (EEN Albania)",
       "source": "EEN",
@@ -39,11 +30,11 @@
       "description": ""
     },
     {
-      "title": "Lower Silesia - Brandenburg Economic Forum",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-20",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/lower-silesia-brandenburg-economic-forum",
       "description": ""
     },
@@ -57,11 +48,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "chii 2026 - Conference & Matchmaking Event for Hyperspectral Imaging in Industry 2026",
       "source": "EEN",
       "date": "2026-05-21",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/chii-2026-conference-matchmaking-event-hyperspectral-imaging-industry-2026",
       "description": ""
     },
@@ -147,20 +138,20 @@
       "description": ""
     },
     {
-      "title": "X Solar Energy Business Mixer B2B meetings",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-01",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/x-solar-energy-business-mixer-b2b-meetings",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Startup Pitching Session at the EBAN Congress 2026",
       "source": "EEN",
       "date": "2026-06-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/startup-pitching-session-eban-congress-2026",
       "description": ""
     },
@@ -219,11 +210,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Go International Business Meetings @ Nexus Luxembourg 2026",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/go-international-business-meetings-nexus-luxembourg-2026",
       "description": ""
     },
@@ -237,7 +228,7 @@
       "description": ""
     },
     {
-      "title": "Interpoma Online Business Match 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-12",
       "date_end": "",
@@ -327,20 +318,20 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "B2B TORINO FASHION MATCH 2026",
       "source": "EEN",
       "date": "2026-07-02",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-torino-fashion-match-2026",
       "description": ""
     },
     {
-      "title": "Bharat TEX 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-07-17",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/bharat-tex-2026",
       "description": ""
     },
@@ -417,7 +408,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "ENVIRONTEC powered by ÖKOINDUSTRIA 2026 B2B Event",
       "source": "EEN",
       "date": "2026-10-09",
       "date_end": "",
@@ -435,7 +426,7 @@
       "description": ""
     },
     {
-      "title": "Business Meetings Food Paris 2026 (SIAL)",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-20",
       "date_end": "",
