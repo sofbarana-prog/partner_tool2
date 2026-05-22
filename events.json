@@ -1,25 +1,7 @@
 {
-  "generated": "2026-05-21T06:17:19.716467+00:00",
-  "count": 82,
+  "generated": "2026-05-22T06:15:33.419355+00:00",
+  "count": 81,
   "events": [
-    {
-      "title": "Balkonnect Festival 2026 - B2B Matchmaking Event",
-      "source": "EEN",
-      "date": "2026-05-22",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/balkonnect-festival-2026-b2b-matchmaking-event",
-      "description": ""
-    },
-    {
-      "title": "B2B Meetings between Greek and Albanian companies",
-      "source": "EEN",
-      "date": "2026-05-22",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/b2b-meetings-between-greek-and-albanian-companies",
-      "description": ""
-    },
     {
       "title": "Textile Connect 2026",
       "source": "EEN",
@@ -39,20 +21,20 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Regional Innovation Forum: Bridging Science and Industry through Technology Transfer",
       "source": "EEN",
       "date": "2026-05-27",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/regional-innovation-forum-bridging-science-and-industry-through-technology-transfer",
       "description": ""
     },
     {
-      "title": "OPD2026 Matchmaking",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-05-28",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/opd2026-matchmaking",
       "description": ""
     },
@@ -120,11 +102,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Research and Innovation Matchmaking Event 2026 (Cyprus, Greece and Czechia)",
       "source": "EEN",
       "date": "2026-06-09",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/research-and-innovation-matchmaking-event-2026-cyprus-greece-and-czechia",
       "description": ""
     },
@@ -138,11 +120,11 @@
       "description": ""
     },
     {
-      "title": "DES2026 Business Meetings",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-11",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/des2026-business-meetings",
       "description": ""
     },
@@ -183,15 +165,6 @@
       "description": ""
     },
     {
-      "title": "MIRABILIA TOURISM 2026",
-      "source": "EEN",
-      "date": "2026-06-17",
-      "date_end": "",
-      "location": "",
-      "url": "https://een.ec.europa.eu/events/mirabilia-tourism-2026",
-      "description": ""
-    },
-    {
       "title": "MIRABILIA FOOD 2026",
       "source": "EEN",
       "date": "2026-06-17",
@@ -201,21 +174,30 @@
       "description": ""
     },
     {
+      "title": "MIRABILIA TOURISM 2026",
+      "source": "EEN",
+      "date": "2026-06-17",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/mirabilia-tourism-2026",
+      "description": ""
+    },
+    {
+      "title": "Β2Β meetings between Greek and Slovak companies during BEYOND 2026",
+      "source": "EEN",
+      "date": "2026-06-17",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/b2b-meetings-between-greek-and-slovak-companies-during-beyond-2026",
+      "description": ""
+    },
+    {
       "title": "Open to Scandinavia 2026",
       "source": "EEN",
       "date": "2026-06-17",
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/open-scandinavia-2026",
-      "description": ""
-    },
-    {
-      "title": "Filter by",
-      "source": "EEN",
-      "date": "2026-06-17",
-      "date_end": "",
-      "location": "Online",
-      "url": "https://een.ec.europa.eu/events/b2b-meetings-between-greek-and-slovak-companies-during-beyond-2026",
       "description": ""
     },
     {
@@ -237,11 +219,11 @@
       "description": ""
     },
     {
-      "title": "EEN Matchmaking at TAIWAN EXPO 2026 in EUROPE",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-24",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/een-matchmaking-taiwan-expo-2026-europe",
       "description": ""
     },
@@ -309,11 +291,11 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "B2B-Meetings at Automotive Transformation Conference 2026",
       "source": "EEN",
       "date": "2026-09-22",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/b2b-meetings-automotive-transformation-conference-2026",
       "description": ""
     },
@@ -336,7 +318,7 @@
       "description": ""
     },
     {
-      "title": "WindEnergy Match 2026!Onsite & Online",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-09-29",
       "date_end": "",
@@ -426,7 +408,7 @@
       "description": ""
     },
     {
-      "title": "CPHI  India 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-11-25",
       "date_end": "",
@@ -440,11 +422,20 @@
       "date": "2026-11-26",
       "date_end": "",
       "location": "",
+      "url": "https://evenements.bpifrance.fr#",
+      "description": ""
+    },
+    {
+      "title": "We are French Touch 2026",
+      "source": "BpiFrance",
+      "date": "2026-11-26",
+      "date_end": "",
+      "location": "",
       "url": "https://evenements.bpifrance.fr/events/4df5af7f-0b43-f111-8ef3-000d3a4af15b/we-are-french-touch-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "MEDICA Healthcare Brokerage Event 2026",
       "source": "EEN",
       "date": "2026-11-29",
       "date_end": "",
