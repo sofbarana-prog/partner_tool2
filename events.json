@@ -1,6 +1,6 @@
 {
-  "generated": "2026-06-05T06:38:06.736828+00:00",
-  "count": 74,
+  "generated": "2026-06-06T05:59:56.421431+00:00",
+  "count": 75,
   "events": [
     {
       "title": "Research and Innovation Matchmaking Event 2026 (Cyprus, Greece and Czechia)",
@@ -36,6 +36,15 @@
       "date_end": "",
       "location": "",
       "url": "https://een.ec.europa.eu/events/go-international-business-meetings-nexus-luxembourg-2026",
+      "description": ""
+    },
+    {
+      "title": "ULUTEK Technology Stage: Defence Industry Collaboration Programme with Roketsan",
+      "source": "EEN",
+      "date": "2026-06-11",
+      "date_end": "",
+      "location": "",
+      "url": "https://een.ec.europa.eu/events/ulutek-technology-stage-defence-industry-collaboration-programme-roketsan",
       "description": ""
     },
     {
@@ -93,20 +102,20 @@
       "description": ""
     },
     {
-      "title": "Β2Β meetings between Greek, Slovak and Cypriote companies during BEYOND 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-06-17",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/b2b-meetings-between-greek-slovak-and-cypriote-companies-during-beyond-2026",
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "3rd Collaboration Room in the Field of Artificial Intelligence",
       "source": "EEN",
       "date": "2026-06-18",
       "date_end": "",
-      "location": "Online",
+      "location": "",
       "url": "https://een.ec.europa.eu/events/3rd-collaboration-room-field-artificial-intelligence",
       "description": ""
     },
@@ -210,11 +219,11 @@
       "description": ""
     },
     {
-      "title": "SEMICON India 2026",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-09-19",
       "date_end": "",
-      "location": "",
+      "location": "Online",
       "url": "https://een.ec.europa.eu/events/semicon-india-2026",
       "description": ""
     },
@@ -264,7 +273,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Conxemar 2026 online B2B: Tech Challenges & Business Opportunities",
       "source": "EEN",
       "date": "2026-10-01",
       "date_end": "",
@@ -309,7 +318,7 @@
       "description": ""
     },
     {
-      "title": "Dronetech World Meeting 2026 B2B Hybrid Matchmaking Event",
+      "title": "Filter by",
       "source": "EEN",
       "date": "2026-10-23",
       "date_end": "",
@@ -318,7 +327,7 @@
       "description": ""
     },
     {
-      "title": "Filter by",
+      "title": "Renewable Energy India Expo 2026",
       "source": "EEN",
       "date": "2026-10-24",
       "date_end": "",
@@ -395,7 +404,7 @@
       "date": "",
       "date_end": "",
       "location": "",
-      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-06-05T00%3A00%3A00%2B00%3A00%7C2026-06-05T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
+      "url": "https://een.ec.europa.eu?f%5B0%5D=event_date%3Agt%7C2026-06-06T00%3A00%3A00%2B00%3A00%7C2026-06-06T00%3A00%3A00%2B00%3A00&f%5B1%5D=t%3A627&page=3",
       "description": ""
     },
     {
